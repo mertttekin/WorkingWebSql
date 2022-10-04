@@ -74,7 +74,7 @@ class ArizaGönder(forms.ModelForm):
         Method that returns formatted information
         :return: subject, msg
         """
-        # Cleaned data
+        # Cleaned dataa
 
         cl_data = super().clean()
 
