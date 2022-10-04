@@ -1,0 +1,27 @@
+
+  <div class="row " >
+    <div class="col-sm-12"  >
+      <div class="card"  >
+        {%for pay in paylasimlar%}
+          {%if pay.gönderiDurumu %}
+           
+        <!-- <div class="card-body" >
+          <a></a>
+          <h5 class="card-title">{{pay.gönderiKonu}}</h5>
+          <p class="card-text " >{{pay.gönderiAciklama|safe|slice:"0:50"}}</p>
+          <p class="card-writer" >Yazar : {{pay.göndericiAdi}}</p>
+          <a href="{% url 'details' pay.slug %}" class="btn btn-primary">İncele</a>
+
+        </div> -->
+
+        <div class="card">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{pay.gönderiKonu}}</li>
+            <a href="{% url 'details' pay.slug %}" class="stretched-link"></a>
+          </ul>
+        </div>
+         {%endif%}
+        {%endfor%}
+      </div>
+    </div>
+</div> 

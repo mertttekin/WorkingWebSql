@@ -1,0 +1,23 @@
+{% extends "basee.html" %}
+{% load static %}
+
+{% block content %}
+
+    {% include 'partials/_navbar.html' %}
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="hidden-mobile col-3">
+              {% include 'partials/_yazilimlist.html' %}
+            </div>
+            <div class="hidden-mobile col-6">
+             {% include 'partials/_yazilimcards.html' %}
+               
+            </div>
+            <div class="col-lg mb-2">
+              {% include 'partials/_sidebar.html' %}  
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

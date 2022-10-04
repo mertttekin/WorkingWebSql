@@ -1,0 +1,123 @@
+{% load static %}
+
+{% for msg in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>   {{msg}}  </strong> Arşive Eklenmiştir .
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {%endfor%}
+
+
+    <h3 class="bas text-center mt-3"> {{firmabaslink2.FirmaName}}</h3>
+
+    
+  {%for ar in arizalar%}
+<div class="{%if ar.CozumVarMı == False %} cardd {% else %} card {%endif%} card-text mt-3">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-8">
+          <h1> {{arizalar.gelenKonu}}</h1>
+          <h5>{{ar.gelenKonu}}</h5>
+        </div>
+        <div class="col-4" >
+          <small class="text-muted">{{ar.create_time}}</small>
+        </div>
+      </div>
+        
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{ar.gelenAciklama|safe|slice:"0:200"}}.......</p>
+      <hr>
+        <ul>
+          <li>
+            <small class="text-muted">Firma: {{ar.firma_bilgi}}</small>
+          </li>
+          <li>
+            <small class="text-muted">Kimden: {{ar.gelenAdSoyad}}</small>
+          </li>
+          <li>
+            <small class="text-muted">Mail: {{ar.gelenMail}}</small>
+          </li>
+          <li>
+            <small class="text-muted">Telefon: {{ar.gelenTelefon}}</small>
+          </li>         
+        </ul>
+
+
+      <div class="row">
+          <div class="col-2">
+            <div class="d-grid gap-2">
+              <a href="{% url 'arizaDetay' ar.slug %}" class="btn btn-primary">Ayrıntılar</a>
+            </div>
+              
+          </div>
+          <div class="col-2">
+            <div class="d-grid gap-2">
+              <form action="" method="POST">
+                {% csrf_token %} 
+                <div class="hidden-mobile col-12">
+
+                  <a href="{% url 'ArsiveEkle' ar.slug %}" class="btn btn-danger">Arşive Ekle</a>
+                </div>
+              </form>            
+            </div>
+          </div>
+      </div>
+
+      <div class="dropdown show">
+</div>
+    </div>
+    <div class="card-footer text-muted">
+      {%if ar.CozumVarMı == False %}
+      <p>Çözüm Girilmedi</p>
+      {% else %}
+      <p>Çözüm Girildi</p>
+      {% endif %}
+      
+    </div>
+  </div>
+
+
+{%endfor%}
+
+<style>
+  .cardd {
+      position: relative;
+      background-color: rgba(39, 164, 180, 0.3);
+      border-radius: 16px;
+  }
+</style>
+
+<style>
+  .bas {
+    
+      border-radius: 6px;     
+      position: relative;
+      background-color: rgb(13,110,253);
+      margin-bottom: 2px;
+      padding-bottom: 4px;
+      color: rgb(255, 255, 255);
+
+  }
+</style>
+
+{% for msg in messages%}
+<!--<script>
+swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this imaginary file!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    swal("Poof! Your imaginary file has been deleted!", {
+      icon: "success",
+    });
+  } else {
+    swal("Your imaginary file is safe!");
+  }
+});
+</script>-->
+{% endfor %}
