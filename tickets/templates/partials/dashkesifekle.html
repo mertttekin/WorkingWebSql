@@ -1,0 +1,246 @@
+
+{% load static %}
+
+<div class="ooflex ooflex-column ooflex-shrink-0 p-3 text-white bg-dark" style="height:100%;width: 280px;position: fixed,; ">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-4">Aksiyon Teknoloji</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="{% url 'panel' %}" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+          Anasayfa
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+          Arızalar
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'arsiv' %}" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+          Arsiv
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          Paylaşım ekle
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'panelkesifekle' %}" class="nav-link active" aria-current="page">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          Keşif Ekle
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+          Keşifler
+        </a>
+      </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://avatars.githubusercontent.com/u/32420405?s…00&u=1a38cc5b6e754e1ca1db4ea75f7cadbce705b02d&v=4" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong>mdo</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Çıkış Yap</a></li>
+      </ul>
+    </div>
+  </div> -->
+  <style>
+    .ooflex {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #5f5555;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  </style>
+<!-- The sidebar
+<div class="sidebar">
+    <a class="active" href="#home">Anasayfa</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+  </div>
+  
+  <!-- Page content -->
+  <div class="content" style="margin-left: 300px; background: rgb(255, 255, 255);"  >
+    <div class="container">
+      <h5 class="bas text-center mt-3">KEŞİF FORMU</h5>
+      <div class="row mt-3">
+        <div class="col-12">
+          <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %} 
+            <table>
+              {{form.media}}
+              {{form.as_p}}
+              <label for="GenelSecim">Hangi Keşifler Yapılacak </label> 
+              <hr>
+              <div class="row">
+                <li>
+                  <label for="myCheck">Plaka Tanıma Sistemi</label> 
+                  <input type="checkbox" id="myCheckPTS" onclick="myFunctionPTS()">
+                </li>
+                <li>
+                  <label for="myCheck">Olay Algılama Sistemi</label> 
+                  <input type="checkbox" id="myCheckOlay" onclick="myFunctionOlay()">     
+                </li>
+                <li>
+                  <label for="myCheck">CCTV Sistemi </label> 
+                  <input type="checkbox" id="myCheckCCTV" onclick="myFunctionCCTV()">         
+                </li>
+              </div>
+
+              <p id="text" style="display:none">Checkbox is CHECKED!</p>
+              <hr>
+              <!-- <button class="btn btn-primary btn-lg" type="submit">Formu Getir</button> -->
+            </table>
+          </form>
+        </div>
+        <div class="col-12" id="deneme" style="display:none">
+          <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %} 
+            <table  >
+              <div class="div">
+                <h5 style="text-align: center;">Plaka Tanıma Sistemi Kesif Formu</h5>
+                {{PTSform.media}}
+                {{PTSform.as_p}}               
+              </div>
+              <button class="btn btn-primary btn-lg vertical-center" style="justify-content: center;" type="submit">Gönder</button>
+            </table>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        
+      </div>
+    </div>
+    
+    {% for msg in messages%}
+    <script>
+      swal({
+      title: "{{msg}}",
+      text: "Teşekkürler!",
+      icon: "success",
+      button: "Devam Et!",
+    });
+    </script>
+    {% endfor %}
+    
+    <style>
+      .bas {
+        
+          border-radius: 6px;     
+          position: relative;
+          background-color: rgb(13,110,253);
+          margin-bottom: 2px;
+          padding-bottom: 4px;
+          color: rgb(255, 255, 255);
+    
+      }
+    </style>
+  </div>
+</div>
+
+<script>
+  function myFunctionPTS() {
+    var checkBox = document.getElementById("myCheckPTS");
+    var deneme = document.getElementById("deneme");
+    if (checkBox.checked == true){
+      deneme.style.display = "block";
+    } else {
+      deneme.style.display = "none";
+    }
+  }
+  function myFunctionOlay() {
+    var checkBox = document.getElementById("myCheckOlay");
+    var deneme = document.getElementById("deneme");
+    if (checkBox.checked == true){
+      deneme.style.display = "block";
+    } else {
+      deneme.style.display = "none";
+    }
+  }
+  function myFunctionCCTV() {
+    var checkBox = document.getElementById("myFunctionCCTV");
+    var deneme = document.getElementById("deneme");
+    if (checkBox.checked == true){
+      deneme.style.display = "block";
+    } else {
+      deneme.style.display = "none";
+    }
+  }
+  </script>
+  
+<style>
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #5f5555;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  /* Sidebar links */
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>

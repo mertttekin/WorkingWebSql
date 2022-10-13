@@ -30,6 +30,9 @@ urlpatterns = [
     path('ariza/detaysil/<int:id>',
          views.yorumSil, name="yorumSil"),
     path('paylasim/search/', views.post_search, name="post_search"),
+    path('panel/',views.panel,name="panel"),
+    path('panel/kesifekle',views.panelkesifekle,name="panelkesifekle"),
+    
 
 ]
 # path(url,foksiyon,path ismi)

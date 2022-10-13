@@ -10,6 +10,9 @@
 # from xml.parsers.expat import model
 # from xmlrpc.client import Boolean
 # from django.conf import UserSettingsHolder
+from email.policy import default
+from unittest.util import _MAX_LENGTH
+from xmlrpc.client import boolean
 from django.db import models
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
@@ -137,3 +140,30 @@ class Comment(models.Model):
 
     def __str__(self):
         return 'Comment {} by {}'.format(self.göndericiUser, self.hangi_ariza)
+
+
+class Kesif(models.Model):
+
+    #check box dropdown menu
+    kesifYapilanYerAdi = models.CharField(max_length=50)
+    kesifYapanKisi = models.CharField(max_length=50)
+    kesifSenaryosu = models.TextField(max_length=2000)
+    kesifYapilanYerTarihi = models.DateTimeField(auto_now_add=True, auto_now=False)
+    kesifPTSVarMi = models.BooleanField(default=False)
+    kesifPTSKameraSayisi =  models.IntegerField()
+    kesifPTSDirekSayisi = models.IntegerField()
+    kesifPTSSwitchSayisi = models.IntegerField()
+    kesifPTSBigisayarConfigi = models.CharField(max_length=100)
+
+    slug = models.SlugField(null=False, unique=True,
+                            db_index=True, blank=True, editable=False)
+    
+
+    def __str__(self):
+        return f"{self.kesifYapilanYerAdi}"
+
+    def save(self, *args, **kwargs):
+        super(Kesif, self).save(*args, **kwargs)
+        if not self.slug:
+            self.slug = slugify(self.kesifYapilanYerTarihi) + "-" + str(self.id)
+            self.save()

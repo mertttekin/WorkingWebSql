@@ -9,10 +9,10 @@
 # from unicodedata import category
 
 # from django.http import HttpResponse, HttpResponseRedirect
-from . models import Category, Paylasim, Ariza, Firma, Comment
+from . models import Category, Paylasim, Ariza, Firma, Comment,Kesif
 from django.shortcuts import get_object_or_404, redirect, render
 # from django.db.models import F
-from .forms import ProductCreateForm, ArizaGönder, FirmaGönder, CommentForm
+from .forms import ProductCreateForm, ArizaGönder, FirmaGönder, CommentForm ,KesifForm,KesifPTSForm
 from django.contrib import messages
 # from django.core.mail import BadHeaderError, send_mail
 # from django.views.generic import FormView, TemplateView
@@ -403,6 +403,23 @@ def paylasimSil(request, slug):
 
     else:
         return redirect("tickets")
+
+def panel(request):
+    data = {
+       "paylasimlarall": Paylasim.objects.all(),
+    }
+    return render(request,"panel.html",data)
+
+def panelkesifekle(request):
+    if request.user.is_authenticated:
+
+        PTSform = KesifPTSForm()     
+        form = KesifForm()
+        data = {             
+            "form": form,
+            "PTSform":PTSform,
+        }
+        return render(request,"panelKesifEkle.html",data)
 
 
 # def Firmasay():
