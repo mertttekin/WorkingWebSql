@@ -412,7 +412,21 @@ def panel(request):
 
 def panelkesifekle(request):
     if request.user.is_authenticated:
-
+        if request.method == 'POST':
+            form = KesifForm(request.POST)
+            PTSform = KesifPTSForm(request.POST)
+            PTSform1 = KesifPTSForm()
+            if form.is_valid() & PTSform.is_valid():
+                PTSform1 = form.save()
+                for inline_form in PTSform:
+                    if inline_form.cleaned_data:
+                        last = inline_form.save(commit=False)
+                PTSform1 = PTSform.save(commit=False)
+                PTSform1.save()
+                print("kayıt gönderildi")
+                return redirect("panel")
+            else:
+                print("error")
         PTSform = KesifPTSForm()     
         form = KesifForm()
         data = {             

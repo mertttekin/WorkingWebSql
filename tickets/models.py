@@ -150,10 +150,10 @@ class Kesif(models.Model):
     kesifSenaryosu = models.TextField(max_length=2000)
     kesifYapilanYerTarihi = models.DateTimeField(auto_now_add=True, auto_now=False)
     kesifPTSVarMi = models.BooleanField(default=False)
-    kesifPTSKameraSayisi =  models.IntegerField()
-    kesifPTSDirekSayisi = models.IntegerField()
-    kesifPTSSwitchSayisi = models.IntegerField()
-    kesifPTSBigisayarConfigi = models.CharField(max_length=100)
+    kesifPTSKameraSayisi =  models.IntegerField(default=0)
+    kesifPTSDirekSayisi = models.IntegerField(default=0)
+    kesifPTSSwitchSayisi = models.IntegerField(default=0)
+    kesifPTSBigisayarConfigi = models.CharField(max_length=100,default="yok")
 
     slug = models.SlugField(null=False, unique=True,
                             db_index=True, blank=True, editable=False)
@@ -165,5 +165,31 @@ class Kesif(models.Model):
     def save(self, *args, **kwargs):
         super(Kesif, self).save(*args, **kwargs)
         if not self.slug:
-            self.slug = slugify(self.kesifYapilanYerTarihi) + "-" + str(self.id)
+            self.slug = slugify(self.kesifYapilanYerAdi) + "-" + str(self.id)
+            self.save()
+
+class KesifPTS(models.Model):
+
+    #check box dropdown menu
+    kesifYapilanYerAdi = models.CharField(max_length=50)
+    kesifYapanKisi = models.CharField(max_length=50)
+    kesifSenaryosu = models.TextField(max_length=2000)
+    kesifYapilanYerTarihi = models.DateTimeField(auto_now_add=True, auto_now=False)
+    kesifPTSVarMi = models.BooleanField(default=False)
+    kesifPTSKameraSayisi =  models.IntegerField(default=0)
+    kesifPTSDirekSayisi = models.IntegerField(default=0)
+    kesifPTSSwitchSayisi = models.IntegerField(default=0)
+    kesifPTSBigisayarConfigi = models.CharField(max_length=100,default="yok")
+
+    slug = models.SlugField(null=False, unique=True,
+                            db_index=True, blank=True, editable=False)
+    
+
+    def __str__(self):
+        return f"{self.kesifYapilanYerAdi}"
+
+    def save(self, *args, **kwargs):
+        super(Kesif, self).save(*args, **kwargs)
+        if not self.slug:
+            self.slug = slugify(self.kesifYapilanYerAdi) + "-" + str(self.id)
             self.save()
