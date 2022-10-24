@@ -9,10 +9,10 @@
 # from unicodedata import category
 
 # from django.http import HttpResponse, HttpResponseRedirect
-from . models import Category, Paylasim, Ariza, Firma, Comment,Kesif
+from . models import Category, Kesif, Paylasim, Ariza, Firma, Comment,KesifPTSMalzeme,KesifOlayMalzeme
 from django.shortcuts import get_object_or_404, redirect, render
 # from django.db.models import F
-from .forms import ProductCreateForm, ArizaGönder, FirmaGönder, CommentForm ,KesifForm,KesifPTSForm
+from .forms import ProductCreateForm, ArizaGönder, FirmaGönder, CommentForm, KesifForm,KesifPTSMalzemeForm,KesifOlayMalzemeForm
 from django.contrib import messages
 # from django.core.mail import BadHeaderError, send_mail
 # from django.views.generic import FormView, TemplateView
@@ -414,28 +414,95 @@ def panelkesifekle(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
             form = KesifForm(request.POST)
-            PTSform = KesifPTSForm(request.POST)
-            PTSform1 = KesifPTSForm()
-            if form.is_valid() & PTSform.is_valid():
-                PTSform1 = form.save()
-                for inline_form in PTSform:
-                    if inline_form.cleaned_data:
-                        last = inline_form.save(commit=False)
-                PTSform1 = PTSform.save(commit=False)
-                PTSform1.save()
-                print("kayıt gönderildi")
-                return redirect("panel")
-            else:
-                print("error")
-        PTSform = KesifPTSForm()     
+            form1 = KesifForm()
+            PTSform = KesifPTSMalzemeForm(request.POST)
+            PTSform1 = KesifPTSMalzemeForm()
+            Olayform = KesifOlayMalzemeForm(request.POST)
+            Olayform1 = KesifOlayMalzemeForm()
+
+            #cleaned data sadece form valid oldugunda gelir.
+            if form.is_valid():
+                formyeradi = form.cleaned_data['kesifYapilanYerAdi']
+                print(formyeradi)
+                if PTSform.is_valid():
+                    PTSform1 = PTSform.save(commit=False)
+                    PTSform1.kesifPTSyeradi = formyeradi
+                    PTSform1.save()
+                    PTSformid = KesifPTSMalzeme.objects.filter(kesifPTSyeradi=formyeradi)
+                    ids = PTSformid.values_list('pk',flat = True)
+                    form1 = form.save(commit=False)
+                    print(ids[0])
+                    form1.KesifPTSMalzemelerid_id = ids[0]
+                    form1.save()
+                    print("kayıt gönderildi")
+                    return redirect("panel")
+        
+                # elif Olayform.is_valid():
+                #     PTSform1 = PTSform.save(commit=False)
+                #     PTSform1.kesifPTSyeradi = formyeradi
+                #     PTSform1.save()
+                #     PTSformid = KesifPTSMalzeme.objects.filter(kesifPTSyeradi=formyeradi)
+                #     ids = PTSformid.values_list('pk',flat = True)
+                #     form1 = form.save(commit=False)
+                #     print(ids[0])
+                #     form1.KesifPTSMalzemelerid_id = ids[0]
+                #     form1.kesifPTSVarMi = True
+                #     form1.save()
+                #     print("kayıt gönderildi")
+                #     return redirect("panel")
+                else:
+                    print("error")
+        Olayform = KesifOlayMalzemeForm()            
+        PTSform = KesifPTSMalzemeForm()
         form = KesifForm()
         data = {             
             "form": form,
             "PTSform":PTSform,
+            "Olayform":Olayform,
+
         }
         return render(request,"panelKesifEkle.html",data)
 
+def panelkesifliste(request):
+    if request.user.is_authenticated:
+        data = {
+            "formliste": Kesif.objects.order_by('-kesifYapilanYerTarihi'),
+            "PTSliste":KesifPTSMalzeme.objects.all(),
+            # "Olayliste":KesifPTSMalzeme.objects.all(),
+        }
+        return render(request,"panelKesifListe.html",data)
 
+def panelkesifdetails(request,slug):
+    if request.user.is_authenticated:
+        kesifinfo = Kesif.objects.get(slug=slug)
+        malzeme_id = kesifinfo.KesifPTSMalzemelerid_id
+        print(malzeme_id)
+        data = {
+            "kesifinfo": Kesif.objects.get(slug=slug),
+            "malzemeinfo":KesifPTSMalzeme.objects.get(pk=malzeme_id),
+            # "Olayliste":KesifPTSMalzeme.objects.all(),
+        }
+        return render(request,"panelKesifdetails.html",data)
+
+def panelkesifedit(request,slug):
+    if request.user.is_authenticated:
+        form = get_object_or_404(Paylasim, slug=slug)
+        if request.method == 'POST':
+            form = KesifForm(
+            request.POST, request.FILES, instance=form)
+            if form.is_valid():
+                form.save()
+                return redirect("paylasimgir")
+            else:
+                # here you print errors to terminal
+                print(form.errors.as_data())
+        else:
+            form = KesifForm(instance=form)
+
+        data = {
+            "kesifinfo": Kesif.objects.filter(slug=slug),
+              }
+        return render(request,"panelKesifdetails.html",data)
 # def Firmasay():
 #     arizalar = {"arizalar":Ariza.objects.all()}
 #     firmalar = {"firmalar":Firma.objects.all()}

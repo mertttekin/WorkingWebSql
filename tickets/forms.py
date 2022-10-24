@@ -6,12 +6,12 @@
 # from urllib import request
 # from PIL import Image
 # from django.core.files.uploadedfile import SimpleUploadedFile
-from dataclasses import field
+from dataclasses import field, fields
 from pyexpat import model
 from django.forms import widgets
 from django import forms
 # from tickets import models
-from tickets.models import Ariza, Firma, Paylasim, Comment,Kesif
+from tickets.models import Ariza, Firma, KesifPTSMalzeme, Paylasim, Comment,Kesif,KesifOlayMalzeme
 # from ckeditor.fields import RichTextField
 # from django.db import models
 from django.core.mail import send_mail
@@ -243,11 +243,14 @@ class KesifForm(forms.ModelForm):
         fields = [
             "kesifYapilanYerAdi",
             "kesifYapanKisi",
-            "kesifSenaryosu"
+            "kesifSenaryosu",
+            "kesifPTSVarMi",
+            "kesifOlayVarMi",
+            "kesifCctvVarMi",
             ]
         exclude = [
             "kesifPTSKameraSayisi",
-            "kesifPTSVarMi",
+            # "kesifPTSVarMi",
             "kesifPTSDirekSayisi",
             "kesifPTSSwitchSayisi",
             "kesifPTSBigisayarConfigi",
@@ -256,35 +259,66 @@ class KesifForm(forms.ModelForm):
             "kesifYapilanYerAdi":"Keşif yapılan yerin adını:",
             "kesifYapanKisi":"Keşif yapan kişi-kişiler:",
             "kesifSenaryosu":"Keşif Senaryosunu giriniz",
+            "kesifPTSVarMi":"Keşif Senaryosunu giriniz",
+            "kesifOlayVarMi":"Keşif Senaryosunu giriniz",
+            "kesifCctvVarMi":"Keşif Senaryosunu giriniz",
 
         }
         widgets={
             "kesifYapilanYerAdi":widgets.TextInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
             "kesifYapanKisi":widgets.TextInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
             "kesifSenaryosu":widgets.Textarea(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifPTSVarMi":widgets.NullBooleanSelect(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifOlayVarMi":widgets.NullBooleanSelect(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifCctvVarMi":widgets.NullBooleanSelect(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
 
         }
         
-class KesifPTSForm(forms.ModelForm):
+class KesifPTSMalzemeForm(forms.ModelForm):
     class Meta:
-        model = Kesif
-        fields = (
-            "kesifPTSKameraSayisi",
-            "kesifPTSDirekSayisi",
-            "kesifPTSSwitchSayisi",
-            "kesifPTSBigisayarConfigi",
-            )
-        labels={
-            "kesifPTSKameraSayisi":"Kamera Adedi:",
-            "kesifPTSDirekSayisi":"Direk Adedi:",
-            "kesifPTSSwitchSayisi":"Switch Sayısı",
-            "kesifPTSBigisayarConfigi":"Bilgisayar Configi",
-
-        }
+        model = KesifPTSMalzeme
+        fields = "__all__"
+        exclude = [
+            'kesifPTSyeradi'
+        ]
         widgets={
-            "kesifPTSKameraSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "06"}),
-            "kesifPTSDirekSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "06"}),
-            "kesifPTSSwitchSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "06"}),
-            "kesifPTSBigisayarConfigi":widgets.TextInput(attrs={"class": "form-control", "placeholder": "i9 10.Nesil - 16 GB 2666mhz RAM - 1070 Nvdia Ekran Kartı"}),
-
+            "kesifKameraSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifDirekSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifAdaptorSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifDirekUzunlugu":widgets.TextInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifSwitchTipi":widgets.TextInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifSwitchSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifBigisayarConfigi":widgets.TextInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifIoKartTipi":widgets.TextInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifIoKartmodulaciklamasi":widgets.TextInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifIoKartSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifPanoTipi":widgets.TextInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifPanoSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifCAT6kablometre":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifEnerjikablometre":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifDT8kablometre":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifSprellTipi":widgets.TextInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifSprellmetre":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifFiberVarMi":widgets.NullBooleanSelect(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifFiberMetre":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifPatchPanelTipi":widgets.TextInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifPatchPanelSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifCibikModuleVarMi":widgets.NullBooleanSelect(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifCibikModuleSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            
+        }
+class KesifOlayMalzemeForm(forms.ModelForm):
+    class Meta:
+        model = KesifOlayMalzeme
+        fields = "__all__"
+        exclude = [
+            'kesifPTSyeradi'
+        ]
+        widgets={
+            "kesifKameraSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifDirekSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifSwitchSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifDirekUzunlugu":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifBigisayarConfigi":widgets.TextInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+  
         }

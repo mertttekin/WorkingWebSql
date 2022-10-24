@@ -39,7 +39,7 @@
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+        <a href="{% url 'panelkesifliste' %}" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           Keşifler
         </a>
@@ -81,56 +81,7 @@
   
   <!-- Page content -->
   <div class="content" style="margin-left: 300px; background: rgb(255, 255, 255);"  >
-    <div class="container">
-      <h5 class="bas text-center mt-3">KEŞİF FORMU</h5>
-      <div class="row mt-3">
-        <div class="col-12">
-          <form action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %} 
-            <table>
-              {{form.media}}
-              {{form.as_p}}
-              <label for="GenelSecim">Hangi Keşifler Yapılacak </label> 
-              <hr>
-              <div class="row">
-                <li>
-                  <label for="myCheck">Plaka Tanıma Sistemi</label> 
-                  <input type="checkbox" id="myCheckPTS" onclick="myFunctionPTS()">
-                </li>
-                <li>
-                  <label for="myCheck">Olay Algılama Sistemi</label> 
-                  <input type="checkbox" id="myCheckOlay" onclick="myFunctionOlay()">     
-                </li>
-                <li>
-                  <label for="myCheck">CCTV Sistemi </label> 
-                  <input type="checkbox" id="myCheckCCTV" onclick="myFunctionCCTV()">         
-                </li>
-              </div>
-
-              <p id="text" style="display:none">Checkbox is CHECKED!</p>
-              <hr>
-              <!-- <button class="btn btn-primary btn-lg" type="submit">Formu Getir</button> -->
-            </table>
-          </form>
-        </div>
-        <div class="col-12" id="deneme" style="display:none">
-          <form action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %} 
-            <table  >
-              <div class="div">
-                <h5 style="text-align: center;">Plaka Tanıma Sistemi Kesif Formu</h5>
-                {{PTSform.media}}
-                {{PTSform.as_p}}               
-              </div>
-              <button class="btn btn-primary btn-lg vertical-center" style="justify-content: center;" type="submit">Gönder</button>
-            </table>
-          </form>
-        </div>
-      </div>
-      <div class="row">
-        
-      </div>
-    </div>
+    {% include 'partials/_contentKesifEkle.html' %}
     
     {% for msg in messages%}
     <script>
@@ -161,8 +112,11 @@
 <script>
   function myFunctionPTS() {
     var checkBox = document.getElementById("myCheckPTS");
-    var deneme = document.getElementById("deneme");
+    var deneme = document.getElementById("PTSform");
+    let new_status = "True"
+    
     if (checkBox.checked == true){
+      
       deneme.style.display = "block";
     } else {
       deneme.style.display = "none";
@@ -170,11 +124,11 @@
   }
   function myFunctionOlay() {
     var checkBox = document.getElementById("myCheckOlay");
-    var deneme = document.getElementById("deneme");
+    var deneme2 = document.getElementById("Olayform");
     if (checkBox.checked == true){
-      deneme.style.display = "block";
+      deneme2.style.display = "block";
     } else {
-      deneme.style.display = "none";
+      deneme2.style.display = "none";
     }
   }
   function myFunctionCCTV() {

@@ -32,6 +32,10 @@ urlpatterns = [
     path('paylasim/search/', views.post_search, name="post_search"),
     path('panel/',views.panel,name="panel"),
     path('panel/kesifekle',views.panelkesifekle,name="panelkesifekle"),
+    path('panel/kesifliste',views.panelkesifliste,name="panelkesifliste"),
+    path('panel/kesifliste/<slug:slug>',views.panelkesifdetails,name="panelkesifdetails"),
+    path('panel/editt/<slug:slug>', views.panelkesifedit, name="panelkesifedit"),
+
     
 
 ]

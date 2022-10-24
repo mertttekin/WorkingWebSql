@@ -9,7 +9,7 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="{% url 'panel' %}" class="nav-link active" aria-current="page">
+        <a href="{% url 'panel' %}" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
           Anasayfa
         </a>
@@ -39,7 +39,7 @@
         </a>
       </li>
       <li>
-        <a href="{% url 'panelkesifliste' %}" class="nav-link text-white">
+        <a href="{% url 'panelkesifliste' %}" class="nav-link active" aria-current="page">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
           Keşifler
         </a>
@@ -47,7 +47,7 @@
     </ul>
     <hr>
     <div class="dropdown">
-      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle position: absolute; " id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="https://avatars.githubusercontent.com/u/32420405?s…00&u=1a38cc5b6e754e1ca1db4ea75f7cadbce705b02d&v=4" alt="" width="32" height="32" class="rounded-circle me-2">
         <strong>mdo</strong>
       </a>
@@ -80,10 +80,67 @@
   </div>
   
   <!-- Page content -->
-  <div class="content">
+  <div class="content" style="margin-left: 300px; background: rgb(255, 255, 255);"  >
+    <h5 class="bas text-center mt-1 mb-3">KESİF DETAYLAR</h5>
+
+    <!-- {% include 'partials/_contentKesifListe.html' %} -->
     
+    {% for msg in messages%}
+    <script>
+      swal({
+      title: "{{msg}}",
+      text: "Teşekkürler!",
+      icon: "success",
+      button: "Devam Et!",
+    });
+    </script>
+    {% endfor %}
+    
+    <style>
+      .bas {
+        
+          border-radius: 6px;     
+          position: relative;
+          background-color: rgb(13,110,253);
+          margin-bottom: 2px;
+          padding-bottom: 4px;
+          color: rgb(255, 255, 255);
+    
+      }
+    </style>
   </div>
 </div>
+
+<script>
+  function myFunctionPTS() {
+    var checkBox = document.getElementById("kesifPTSVarMi");
+    var deneme = document.getElementById("PTSform");
+    if (checkBox.checked == true){
+      deneme.style.display = "block";
+    } else {
+      deneme.style.display = "none";
+    }
+  }
+  function myFunctionOlay() {
+    var checkBox = document.getElementById("myCheckOlay");
+    var deneme = document.getElementById("deneme");
+    if (checkBox.checked == true){
+      deneme.style.display = "block";
+    } else {
+      deneme.style.display = "none";
+    }
+  }
+  function myFunctionCCTV() {
+    var checkBox = document.getElementById("myFunctionCCTV");
+    var deneme = document.getElementById("deneme");
+    if (checkBox.checked == true){
+      deneme.style.display = "block";
+    } else {
+      deneme.style.display = "none";
+    }
+  }
+  </script>
+  
 <style>
 .sidebar {
     margin: 0;
