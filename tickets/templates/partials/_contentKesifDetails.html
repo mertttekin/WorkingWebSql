@@ -1,0 +1,232 @@
+{% load static %}
+
+<table style="width: 100%" class="table table-primary">
+  <h4>Kesif Genel Bilgileri</h4>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th style="width: 10%" scope="col-5">--</th>
+      <th style="width: 80%" scope="col-5">-/-</th>
+      <th style="width: 10%" scope="col-2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Locasyon</td>
+      <td>{{kesifbilgi.kesifYapilanYerAdi}}</td>
+      <td>
+        <a href="" class="btn btn-primary">Düzenle</a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Kişi-Kişiler</td>
+      <td>{{kesifbilgi.kesifYapanKisi}}</td>
+      <td>
+        <a href="" class="btn btn-primary">Düzenle</a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Senaryo</td>
+      <td>{{kesifbilgi.kesifSenaryosu}} Bird</td>
+      <td>
+        <a href="" class="btn btn-primary">Düzenle</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+ 
+
+      <hr />
+      {% if kesifbilgi.kesifPTSVarMi%}
+      <table style="width: 100%" class="table table-primary">
+        <h4>PTS Kesif Detay Bilgileri</h4>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th style="width: 20%" scope="col-5">--</th>
+            <th style="width: 70%" scope="col-5">Sayı/Metre/Model</th>
+            <th style="width: 10%" scope="col-2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">-</th>
+            <td>Kamera Adet</td>
+            <td>{{malzemeinfo.kesifPTSKameraSayisi}}</td>
+            <td>
+              <a href="" class="btn btn-primary">Düzenle</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">-</th>
+            <td>Kamera Model</td>
+            <td>{{malzemeinfo.kesifPTSKameraTipi}}</td>
+            <td>
+              <a href="" class="btn btn-primary">Düzenle</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">-</th>
+            <td>Kamera Boat Sayısı</td>
+            <td>{{malzemeinfo.kesifPTSKameraBoatSayisi}}</td>
+            <td>
+              <a href="" class="btn btn-primary">Düzenle</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">-</th>
+            <td>Kamera Adaptor Sayısı</td>
+            <td>{{malzemeinfo.kesifPTSKameraAdaptorSayisi}}</td>
+            <td>
+              <a href="" class="btn btn-primary">Düzenle</a>
+            </td>
+          </tr>
+          {% if malzemeinfo.kesifPTSExtraKameraSayisi %}
+          <tr>
+            <th scope="row">-</th>
+            <td>Extra Kamera Adet</td>
+            <td>{{malzemeinfo.kesifPTSExtraKameraSayisi}}</td>
+            <td>
+              <a href="" class="btn btn-primary">Düzenle</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">-</th>
+            <td>Extra Kamera Model</td>
+            <td>{{malzemeinfo.kesifPTSExtraKameraTipi}}</td>
+            <td>
+              <a href="" class="btn btn-primary">Düzenle</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">-</th>
+            <td>Extra Kamera Adaptor Sayısı</td>
+            <td>{{malzemeinfo.kesifPTSExtraKameraAdaptorSayisi}}</td>
+            <td>
+              <a href="" class="btn btn-primary">Düzenle</a>
+            </td>
+          </tr>
+          {%endif%} {% if malzemeinfo.kesifPTSDirekSayisi %}
+          <tr>
+            <th scope="row">-</th>
+            <td>Direk Adet</td>
+            <td>{{malzemeinfo.kesifPTSDirekSayisi}}</td>
+            <td>
+              <a href="" class="btn btn-primary">Düzenle</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">-</th>
+            <td>Direk Uzunluğu</td>
+            <td>{{malzemeinfo.kesifPTSDirekUzunlugu}}</td>
+            <td>
+              <a href="" class="btn btn-primary">Düzenle</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">-</th>
+            <td>Direk Flansh Sayısı</td>
+            <td>{{malzemeinfo.kesifPTSFlanshSayisi}}</td>
+            <td>
+              <a href="" class="btn btn-primary">Düzenle</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">-</th>
+            <td>Direk Hakkında Açıklama</td>
+            <td>{{malzemeinfo.kesifPTSDirekAçıklama}}</td>
+            <td>
+              <a href="" class="btn btn-primary">Düzenle</a>
+            </td>
+          </tr>
+          {%endif%} {% if malzemeinfo.kesifPTSBilgisayarConfigi %}
+          <tr>
+            <th scope="row">-</th>
+            <td>Bilgisayar Configi</td>
+            <td>{{malzemeinfo.kesifPTSBilgisayarConfigi}}</td>
+            <td>
+              <a href="" class="btn btn-primary">Düzenle</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">-</th>
+            <td>Bilgisayar Sayısı</td>
+            <td>{{malzemeinfo.kesifPTSBilgisayarSayısı}}</td>
+            <td>
+              <a href="" class="btn btn-primary">Düzenle</a>
+            </td>
+          </tr>
+          {%endif%} {% if malzemeinfo.kesifPTSIoKartSayısı %}
+          <tr>
+            <th scope="row">-</th>
+            <td>IO-kart Sayısı</td>
+            <td>{{malzemeinfo.kesifPTSIoKartSayısı}}</td>
+            <td>
+              <a href="" class="btn btn-primary">Düzenle</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">-</th>
+            <td>IO-kart Tipi</td>
+            <td>{{malzemeinfo.kesifPTSIoKartTipi}}</td>
+            <td>
+              <a href="" class="btn btn-primary">Düzenle</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">-</th>
+            <td>IO-kart Modul Sayısı</td>
+            <td>{{malzemeinfo.kesifPTSIoKartModulSayısı}}</td>
+            <td>
+              <a href="" class="btn btn-primary">Düzenle</a>
+            </td>
+          </tr>
+          {%endif%}
+        </tbody>
+      </table>
+      {%endif%}
+
+      <div class="row"> <hr />
+        <div id="CarouselWithControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            {% for item in images %} {% if forloop.first %}
+            <div class="carousel-item {% if forloop.first %} active {% endif %}">
+              <h2 class="text-center">{{ item.frame_title }}</h2>
+              <img src="{{ item.kesifImage.url }}" class="d-block w-100" />
+              <h5 class="text-center">{{ item.frame_description }}</h5>
+            </div>
+            {% else %}
+            <div class="carousel-item {% if forloop.first %} active {% endif %}">
+              <h2 class="text-center">{{ item.frame_title }}</h2>
+              <img src="{{ item.kesifImage.url }}" class="d-block w-100" />
+              <h5 class="text-center">{{ item.frame_description }}</h5>
+            </div>
+            {% endif %}
+            <a
+              class="carousel-control-prev"
+              href="#CarouselWithControls"
+              role="button"
+              data-bs-slide="prev"
+            >
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#CarouselWithControls"
+              role="button"
+              data-bs-slide="next"
+            >
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+            {% endfor %}</div>
+      <a href="" class="btn text-align: center btn-lg btn-success">Onayla</a>
+      <div class="row"></div>
+      <style></style>
+    </div>
+  </div>
+</div>

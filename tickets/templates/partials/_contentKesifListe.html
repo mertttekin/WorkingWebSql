@@ -5,7 +5,7 @@
 <ul class="list-group">
   
   {% for kesif in formliste %}
-  <a href="{% url 'panelkesifdetails' kesif.slug %}" class="list-group-item list-group-item-action">
+  <div class="list-group-item list-group-item-action">
     <div class="row">
       <div class="col-md-12">
         <div class="d-flex w-100 justify-content-between">
@@ -18,52 +18,63 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row ">
       <div class="col-md-6">
         <p class="mb-1">{{kesif.kesifSenaryosu|safe|slice:"0:200"}}</p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-8">
-        <small class="text-muted">Hazırlayan : {{kesif.kesifYapanKisi}}</small>
-      </div>
-      <div class="col-md-4">
-        <div class="col-12">
-          {% if kesif.kesifPTSVarMi %}
-          <img src="{% static 'img/PTSvarmılogoyesil.png' %}" class="img-fluid rounded-start mt-3" alt="...">
-          {% else %}
-          <img src="{% static 'img/PTSvarmılogogri.png' %}" class="img-fluid rounded-start mt-3" alt="...">
-          {% endif %}
-          
-          {% if kesif.kesifOlayVarMi %}
-          <img src="{% static 'img/OlayVarMıLogoYesil.png' %}" class="img-fluid rounded-start mt-3" alt="...">
-          {% else %}
-          <img src="{% static 'img/OlayVarMıLogoGri.png' %}" class="img-fluid rounded-start mt-3" alt="...">
-          {% endif %}
+    <div class="row height:20px">
+      <div class="d-flex w-100 justify-content-between">
+        <lu id="hazırlayan">
+          <small class="text-muted">Hazırlayan : {{kesif.kesifYapanKisi}}</small>
+        </lu>
+        <lu>
+          <div class="div">
+            {% if kesif.kesifPTSVarMi %}
+            <img src="{% static 'img/PTSvarmılogoyesil.png' %}" class="img-fluid rounded-start mt-3" alt="...">
+            {% else %}
+            <img src="{% static 'img/PTSvarmılogogri.png' %}" class="img-fluid rounded-start mt-3" alt="...">
+            {% endif %}
+            
+            {% if kesif.kesifOlayVarMi %}
+            <img src="{% static 'img/OlayVarMıLogoYesil.png' %}" class="img-fluid rounded-start mt-3" alt="...">
+            {% else %}
+            <img src="{% static 'img/OlayVarMıLogoGri.png' %}" class="img-fluid rounded-start mt-3" alt="...">
+            {% endif %}
+  
+            {% if kesif.kesifCctvVarMi %}
+            <img src="{% static 'img/CCTVVarMıLogoYesil.png' %}" class="img-fluid rounded-start mt-3" alt="...">
+            {% else %}
+            <img src="{% static 'img/CCTVVarMıLogoGri.png' %}" class="img-fluid rounded-start mt-3" alt="...">
+            {% endif %}
+              <!-- <img src="{% static 'img/DüzenleLogo.png' %}" class="img-fluid rounded-start mt-3" alt="..."> -->
+              <a href="{% url 'panelkesifdetails' kesif.slug %}" class="btn btn-primary">Detaylar</a>
+              <a href="" class="btn btn-warning badge-secondary">İndir</a>
+              <!-- <a href="" class="btn btn-danger">Sil</a> -->
 
-          {% if kesif.kesifCctvVarMi %}
-          <img src="{% static 'img/CCTVVarMıLogoYesil.png' %}" class="img-fluid rounded-start mt-3" alt="...">
-          {% else %}
-          <img src="{% static 'img/CCTVVarMıLogoGri.png' %}" class="img-fluid rounded-start mt-3" alt="...">
-          {% endif %}
-        <!-- <a href="{% url 'panelkesifedit' kesif.slug %}" title=""> -->
-          
-          <img src="{% static 'img/DüzenleLogo.png' %}" class="img-fluid rounded-start mt-3" alt="...">
-        <!-- </a> -->
-          <!-- <a href="{% url 'panelkesifedit' kesif.slug %}" title=""><img src="{% static 'img/DüzenleLogo.png' %}" class="img-responsive" width="130" ></a> -->
-
-        </div>
+          </div>
+        </lu>
       </div>
     </div>
-</a>
+  </div>
 {% endfor %}
   </ul>
 
 <style>
-  .date11{
-    text-align: right
+  .btn{
+    font-size: 10px;
+    margin-top: 11px;
+    text-size-adjust: 10px;
+    /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
 }
 
+  .btn:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+  .hazırlayan{
+    margin-top: 5px;
+  }
 </style>
 
 <div class="list-group">

@@ -1,60 +1,85 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="mx-5 container-fluid" >
-      <a href="{% url 'tickets' %}" title=""><img src="{% static 'img/akslogok.png' %}" class="img-responsive" width="130" ></a>
-      
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'tickets' %}">Sorun-Şikayet Bildir</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'sss' %}">Sık Sorulan Sorular</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'came' %}">Came</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'yazilim' %}">Yazılım</a>
-          </li>
-          {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'arizalar' %}">Arızalar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'arsiv' %}">Arsiv</a>
-          </li>
-          {% endif %}
-        </ul>
+  <div class="mx-5 container-fluid">
+    <a href="{% url 'tickets' %}" title=""
+      ><img
+        src="{% static 'img/akslogok.png' %}"
+        class="img-responsive"
+        width="130"
+    /></a>
 
-        <ul class="mx-2 navbar-nav ms-auto mb-2 mb-lg-0">
-          <form action="{% url 'post_search' %}" method="post" class="d-flex" role="search">
-            {% csrf_token %} 
-            <input name="search_data" class="form-control me-2" type="search" placeholder="Ara" aria-label="Search">
-            <button class="btn btn-outline-light" type="submit">Arama</button>
-          </form>
-          {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">Çıkış yap</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'paylasimgir' %}">Hoşgeldin {{user.first_name}}</a>
-          </li>
-          {% else %}
-         <!-- <li class="nav-item">             
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarColor02"
+      aria-controls="navbarColor02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'tickets' %}"
+            >Sorun-Şikayet Bildir</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'sss' %}">Sık Sorulan Sorular</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'came' %}">Came</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'yazilim' %}">Yazılım</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'arizalar' %}">Arızalar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'arsiv' %}">Arsiv</a>
+        </li>
+        {% endif %}
+      </ul>
+
+      <ul class="mx-2 navbar-nav ms-auto mb-2 mb-lg-0">
+        <form
+          action="{% url 'post_search' %}"
+          method="post"
+          class="d-flex"
+          role="search"
+        >
+          {% csrf_token %}
+          <input
+            name="search_data"
+            class="form-control me-2"
+            type="search"
+            placeholder="Ara"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-light" type="submit">Arama</button>
+        </form>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Çıkış yap</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'paylasimgir' %}"
+            >Hoşgeldin {{user.first_name}}</a
+          >
+        </li>
+        {% else %}
+        <!-- <li class="nav-item">             
             <a class="nav-link" href="{% url 'register' %}">Kayıt Ol</a>
           </li>-->
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Giriş yap</a>
-          </li>
-          {% endif %}
-
-
-        </ul>
-      </div>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Giriş yap</a>
+        </li>
+        {% endif %}
+      </ul>
     </div>
-  </nav>
-
+  </div>
+</nav>

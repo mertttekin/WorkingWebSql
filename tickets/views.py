@@ -9,10 +9,10 @@
 # from unicodedata import category
 
 # from django.http import HttpResponse, HttpResponseRedirect
-from . models import Category, Kesif, Paylasim, Ariza, Firma, Comment,KesifPTSMalzeme,KesifOlayMalzeme
+from . models import Category, Image, Kesif, Paylasim, Ariza, Firma, Comment,KesifPTSMalzeme,KesifOlayMalzeme
 from django.shortcuts import get_object_or_404, redirect, render
 # from django.db.models import F
-from .forms import ProductCreateForm, ArizaGönder, FirmaGönder, CommentForm, KesifForm,KesifPTSMalzemeForm,KesifOlayMalzemeForm
+from .forms import ImageForm, ProductCreateForm, ArizaGönder, FirmaGönder, CommentForm, KesifForm,KesifPTSMalzemeForm,KesifOlayMalzemeForm
 from django.contrib import messages
 # from django.core.mail import BadHeaderError, send_mail
 # from django.views.generic import FormView, TemplateView
@@ -259,7 +259,7 @@ def paylasimgir(request):
                 form.save()
                 messages.success(
                     request, "Paylaşım yapılmıştır", extra_tags="success")
-                return redirect("paylasimgir")
+                return redirect("came")
             else:
                 messages.error(request, "Bir hata oluştu")
                 print(form.errors.as_data())
@@ -269,9 +269,9 @@ def paylasimgir(request):
             "paylasimlarall": Paylasim.objects.all(),
             "form": form,
         }
-        return render(request, "paylasimgir.html", data)
+        return render(request, "panelPaylasim.html", data)
     else:
-        return redirect("tickets")
+        return redirect("came")
 
 
 def editt(request, slug):
@@ -408,7 +408,7 @@ def panel(request):
     data = {
        "paylasimlarall": Paylasim.objects.all(),
     }
-    return render(request,"panel.html",data)
+    return redirect("paylasimgir")
 
 def panelkesifekle(request):
     if request.user.is_authenticated:
@@ -419,6 +419,7 @@ def panelkesifekle(request):
             PTSform1 = KesifPTSMalzemeForm()
             Olayform = KesifOlayMalzemeForm(request.POST)
             Olayform1 = KesifOlayMalzemeForm()
+            files = request.FILES.getlist("kesifImage")
 
             #cleaned data sadece form valid oldugunda gelir.
             if form.is_valid():
@@ -434,6 +435,9 @@ def panelkesifekle(request):
                     print(ids[0])
                     form1.KesifPTSMalzemelerid_id = ids[0]
                     form1.save()
+                    for i in files:
+                        Image.objects.create(aitKesif=form1,kesifImage=i)
+                    messages.success(request,"Yeni Kesif Eklendi")
                     print("kayıt gönderildi")
                     return redirect("panel")
         
@@ -455,10 +459,12 @@ def panelkesifekle(request):
         Olayform = KesifOlayMalzemeForm()            
         PTSform = KesifPTSMalzemeForm()
         form = KesifForm()
+        images = ImageForm()
         data = {             
             "form": form,
             "PTSform":PTSform,
             "Olayform":Olayform,
+            "images":images,
 
         }
         return render(request,"panelKesifEkle.html",data)
@@ -474,19 +480,26 @@ def panelkesifliste(request):
 
 def panelkesifdetails(request,slug):
     if request.user.is_authenticated:
-        kesifinfo = Kesif.objects.get(slug=slug)
-        malzeme_id = kesifinfo.KesifPTSMalzemelerid_id
+        tamplate_name = 'panelKesifdetails.html'
+        hangi_kesif = get_object_or_404(Kesif, slug=slug)
+        kesifid = hangi_kesif.pk
+        malzeme_id = hangi_kesif.KesifPTSMalzemelerid_id
         print(malzeme_id)
+        print("kesif id = {}".format(kesifid) )
         data = {
-            "kesifinfo": Kesif.objects.get(slug=slug),
-            "malzemeinfo":KesifPTSMalzeme.objects.get(pk=malzeme_id),
+            "kesifbilgi": hangi_kesif,
+            "malzemeinfo":KesifPTSMalzeme.objects.get(id=malzeme_id),
+            "images":Image.objects.filter(aitKesif=kesifid),
             # "Olayliste":KesifPTSMalzeme.objects.all(),
         }
-        return render(request,"panelKesifdetails.html",data)
+        # print(data["kesifbilgi"].__dict__)
+        # kesiflist= list(data["kesifbilgi"])
+        # print(kesiflist)
+        return render(request,tamplate_name,data)
 
 def panelkesifedit(request,slug):
     if request.user.is_authenticated:
-        form = get_object_or_404(Paylasim, slug=slug)
+        form = get_object_or_404(Kesif, slug=slug)
         if request.method == 'POST':
             form = KesifForm(
             request.POST, request.FILES, instance=form)
@@ -502,6 +515,7 @@ def panelkesifedit(request,slug):
         data = {
             "kesifinfo": Kesif.objects.filter(slug=slug),
               }
+        print(type(data))
         return render(request,"panelKesifdetails.html",data)
 # def Firmasay():
 #     arizalar = {"arizalar":Ariza.objects.all()}

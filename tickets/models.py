@@ -11,6 +11,8 @@
 # from xmlrpc.client import Boolean
 # from django.conf import UserSettingsHolder
 from email.policy import default
+from pyexpat import model
+from random import choices
 from unittest.util import _MAX_LENGTH
 from xmlrpc.client import boolean
 from django.db import models
@@ -143,31 +145,70 @@ class Comment(models.Model):
 
 class KesifPTSMalzeme(models.Model):
 
+    COLOR_CHOICES = (
+    ('yok','yok'),
+    ('IPC-HFW1431TP-ZS 4MP','IPC-HFW1431TP-ZS 4MP'),
+    ('IPC-HFW5231EP-Z 2MP', 'IPC-HFW5231EP-Z 2MP'),
+    ('Muhafazalı Set (Box)', 'Muhafazalı Set (Box)'), 
+    )
+    DIREK_FLANSH_CHOICE = (
+        ("1","1"),
+        ("2","2"),
+    )
+    IO_MODUL_CHOICE = (
+        ("TİNY","TİNY"),
+        ("AKSİYON","AKSİYON"),
+    )
+    SWITCH_PORT_CHOICE = (
+        ("5","5"),
+        ("8","8"),
+    )
+    ENERJİ_KABLO_CHOICE = (
+        ("3x1.5 TTR","3x1.5 TTR"),
+        ("3x2.5 TTR","3x2.5 TTR"),
+        ("2x1.5 TTR","2x1.5 TTR"),
+    )
+    PANO_ORTAM_CHOICE = (
+        ("iç ortam ","iç ortam "),
+        ("dış ortam","dış ortam"),
+    )
     #check box dropdown menu
     kesifPTSyeradi = models.CharField(max_length=50, null=True)
-    kesifKameraSayisi =  models.IntegerField(default=0)
-    kesifDirekSayisi = models.IntegerField(default=0)
-    kesifAdaptorSayisi = models.IntegerField(default=0)
-    kesifDirekUzunlugu = models.CharField(max_length=25,default="yok")
-    kesifSwitchTipi = models.CharField(max_length=25, null=True,default="yok")
-    kesifSwitchSayisi = models.IntegerField(default=0)
-    kesifBigisayarConfigi = models.CharField(max_length=100,default="yok")
-    kesifIoKartTipi = models.CharField(max_length=25,default="yok")
-    kesifIoKartmodulaciklamasi = models.CharField(max_length=50,default="yok")
-    kesifIoKartSayisi = models.IntegerField(default=0)
-    kesifPanoTipi = models.CharField(max_length=50,default="yok")
-    kesifPanoSayisi = models.IntegerField(default=0)
-    kesifCAT6kablometre = models.IntegerField(default=0)
-    kesifEnerjikablometre = models.IntegerField(default=0)
-    kesifDT8kablometre = models.IntegerField(default=0)
-    kesifSprellTipi = models.CharField(max_length=25,default="yok") 
-    kesifSprellmetre = models.IntegerField(default=0)
-    kesifFiberVarMi = models.BooleanField(default=False)
-    kesifFiberMetre = models.IntegerField(default=0)
-    kesifPatchPanelTipi = models.CharField(max_length=25, null=True,default="yok") 
-    kesifPatchPanelSayisi =  models.IntegerField(default=0)
-    kesifCibikModuleVarMi = models.BooleanField(default=False)
-    kesifCibikModuleSayisi =  models.IntegerField(default=0)
+    kesifPTSKameraSayisi =  models.IntegerField(default=0)
+    kesifPTSKameraBoatSayisi =  models.IntegerField(default=0)
+    kesifPTSKameraAdaptorSayisi =  models.IntegerField(default=0)
+    kesifPTSExtraKameraAdaptorSayisi =  models.IntegerField(default=0)
+    kesifPTSKameraTipi = models.CharField(default="yok",max_length=25,choices=COLOR_CHOICES)
+    kesifPTSExtraKameraSayisi =  models.IntegerField(default=0)
+    kesifPTSExtraKameraTipi = models.CharField(default="yok",max_length=25,choices=COLOR_CHOICES)
+    kesifPTSDirekSayisi = models.IntegerField(default=0)
+    kesifPTSDirekUzunlugu = models.CharField(max_length=25,default="yok")
+    kesifPTSFlanshSayisi = models.CharField(max_length=25,default="1",choices=DIREK_FLANSH_CHOICE)
+    kesifPTSDirekAçıklama = models.TextField(max_length=200,default="yok")
+    kesifPTSAdaptorSayisi = models.IntegerField(default=0)
+    kesifPTSSwitchPortSayisi = models.CharField(max_length=25, null=True,default="yok",choices=SWITCH_PORT_CHOICE)
+    kesifPTSSwitchSayisi = models.IntegerField(default=0)
+    kesifPTSBilgisayarConfigi = models.CharField(max_length=100,default="yok")
+    kesifPTSBilgisayarSayısı = models.IntegerField(default=0)
+    kesifPTSIoKartSayısı = models.IntegerField(default=0)
+    kesifPTSIoKartTipi = models.CharField(max_length=25,default="yok",choices=IO_MODUL_CHOICE)
+    kesifPTSIoKartModulSayısı = models.IntegerField(default=0)
+    kesifPTSIoKartAdaptorSayısı = models.IntegerField(default=0)
+    kesifPTSPanoTipi = models.CharField(max_length=50,default="yok",choices=PANO_ORTAM_CHOICE)
+    kesifPTSPanoOlcusu = models.CharField(max_length=50,default="yok")
+    kesifPTSPanoSayisi = models.IntegerField(default=0)
+    kesifPTSCAT6kablometre = models.IntegerField(default=0)
+    kesifPTSEnerjikablometre = models.IntegerField(default=0)
+    kesifPTSEnerjikabloTipi = models.CharField(max_length=50,default="yok",choices=ENERJİ_KABLO_CHOICE)
+    kesifPTSDT8kablometre = models.IntegerField(default=0)
+    kesifPTSSpiralMetre = models.IntegerField(default=0)
+    kesifPTSSpiralÇapı = models.CharField(max_length=25,default="yok") 
+    kesifPTSFiberVarMi = models.BooleanField(default=False)
+    kesifPTSFiberMetre = models.IntegerField(default=0)
+    kesifPTSPatchPanelTipi = models.CharField(max_length=25, null=True,default="yok") 
+    kesifPTSPatchPanelSayisi =  models.IntegerField(default=0)
+    kesifPTSCibikModuleVarMi = models.BooleanField(default=False)
+    kesifPTSCibikModuleSayisi =  models.IntegerField(default=0)
 
     slug = models.SlugField(null=False, unique=True,
                             db_index=True, blank=True, editable=False)
@@ -185,10 +226,10 @@ class KesifPTSMalzeme(models.Model):
 class KesifOlayMalzeme(models.Model):
 
     #check box dropdown menu
-    kesifKameraSayisi =  models.IntegerField(default=0)
-    kesifDirekSayisi = models.IntegerField(default=0)
-    kesifSwitchSayisi = models.IntegerField(default=0)
-    kesifBigisayarConfigi = models.CharField(max_length=100,default="yok")
+    kesifOlayKameraSayisi =  models.IntegerField(default=0)
+    kesifOlayDirekSayisi = models.IntegerField(default=0)
+    kesifOlaySwitchSayisi = models.IntegerField(default=0)
+    kesifOlayBigisayarConfigi = models.CharField(max_length=100,default="yok")
 
 
     slug = models.SlugField(null=False, unique=True,
@@ -203,6 +244,7 @@ class KesifOlayMalzeme(models.Model):
         if not self.slug:
             self.slug = slugify(self.kesifKameraSayisi) + "-" + str(self.id)
             self.save()
+
 
 class Kesif(models.Model):
 
@@ -233,3 +275,7 @@ class Kesif(models.Model):
             self.slug = slugify(self.kesifYapilanYerAdi) + "-" + str(self.id)
             self.save()
 
+
+class Image(models.Model):
+    aitKesif = models.ForeignKey(Kesif,on_delete=models.CASCADE)
+    kesifImage = models.ImageField(upload_to="Kesif/",null=True,blank = True)

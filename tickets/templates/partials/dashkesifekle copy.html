@@ -59,7 +59,7 @@
         <li><a class="dropdown-item" href="#">Çıkış Yap</a></li>
       </ul>
     </div>
-  </div> -->
+  </div>
   <style>
     .ooflex {
     margin: 0;
@@ -70,6 +70,18 @@
     height: 100%;
     overflow: auto;
   }
+  @media (max-width: 1000px) {
+        .hidden-tablet {
+          display: none;
+          margin: 0;
+          padding: 0;
+          width: 200px;
+          background-color: #5f5555;
+          position: fixed;
+          height: 100%;
+          overflow: auto;
+              }
+      }
   </style>
 <!-- The sidebar
 <div class="sidebar">
@@ -80,7 +92,8 @@
   </div>
   
   <!-- Page content -->
-  <div class="content" style="margin-left: 300px; background: rgb(255, 255, 255);"  >
+  <div class="col-12">
+      <div class="content" style="margin-left: 300px; background: rgb(255, 255, 255);"  >
     {% include 'partials/_contentKesifEkle.html' %}
     
     {% for msg in messages%}
@@ -107,6 +120,8 @@
       }
     </style>
   </div>
+  </div>
+
 </div>
 
 <script>
@@ -138,6 +153,114 @@
       deneme.style.display = "block";
     } else {
       deneme.style.display = "none";
+    }
+  }
+  function myFunctionKamera() {
+    var checkBox = document.getElementById("myCheckKamera");
+    var deneme4 = document.getElementById("PTSformKamera");
+    if (checkBox.checked == true){
+      deneme4.style.display = "block";
+    } else {
+      deneme4.style.display = "none";
+    }
+  }
+  function myFunctionExtraKamera() {
+    var checkBox = document.getElementById("myCheckExtraKamera");
+    var deneme5 = document.getElementById("PTSformExtraKamera");
+    if (checkBox.checked == true){
+      deneme5.style.display = "block";
+    } else {
+      deneme5.style.display = "none";
+    }
+  }
+  function myFunctionDirek() {
+    var checkBox = document.getElementById("myCheckDirek");
+    var deneme5 = document.getElementById("PTSformDirek");
+    if (checkBox.checked == true){
+      deneme5.style.display = "block";
+    } else {
+      deneme5.style.display = "none";
+    }
+  }
+  function myFunctionBilgisayar() {
+    var checkBox = document.getElementById("myCheckBilgisayar");
+    var deneme5 = document.getElementById("PTSformBilgisayar");
+    if (checkBox.checked == true){
+      deneme5.style.display = "block";
+    } else {
+      deneme5.style.display = "none";
+    }
+  }
+  function myFunctionIOkart() {
+    var checkBox = document.getElementById("myCheckIOkart");
+    var deneme5 = document.getElementById("PTSformIOkart");
+    if (checkBox.checked == true){
+      deneme5.style.display = "block";
+    } else {
+      deneme5.style.display = "none";
+    }
+  }
+  function myFunctionModulVarMı() {
+    var checkBox = document.getElementById("myCheckModulVarMı");
+    var deneme5 = document.getElementById("PTSformModulVarMı");
+    if (checkBox.checked == true){
+      deneme5.style.display = "block";
+    } else {
+      deneme5.style.display = "none";
+    }
+  }
+  function myFunctionSwitch() {
+    var checkBox = document.getElementById("myCheckSwitch");
+    var deneme5 = document.getElementById("PTSformSwitch");
+    if (checkBox.checked == true){
+      deneme5.style.display = "block";
+    } else {
+      deneme5.style.display = "none";
+    }
+  }
+  function myFunctionKameraBoat() {
+    var checkBox = document.getElementById("myCheckKameraBoat");
+    var deneme5 = document.getElementById("PTSformKameraBoat");
+    if (checkBox.checked == true){
+      deneme5.style.display = "block";
+    } else {
+      deneme5.style.display = "none";
+    }
+  }
+  function myFunctionKameraAdaptor() {
+    var checkBox = document.getElementById("myCheckKameraAdaptor");
+    var deneme5 = document.getElementById("PTSformKameraAdaptor");
+    if (checkBox.checked == true){
+      deneme5.style.display = "block";
+    } else {
+      deneme5.style.display = "none";
+    }
+  }
+  function myFunctionExtraKameraAdaptor() {
+    var checkBox = document.getElementById("myCheckExtraKameraAdaptor");
+    var deneme5 = document.getElementById("PTSformExtraKameraAdaptor");
+    if (checkBox.checked == true){
+      deneme5.style.display = "block";
+    } else {
+      deneme5.style.display = "none";
+    }
+  }
+  function myFunctionIoKartAdaptorVarMı() {
+    var checkBox = document.getElementById("myCheckIoKartAdaptorVarMı");
+    var deneme5 = document.getElementById("PTSformIoKartAdaptorSayisi");
+    if (checkBox.checked == true){
+      deneme5.style.display = "block";
+    } else {
+      deneme5.style.display = "none";
+    }
+  }
+  function myFunctionSarfMalzeme() {
+    var checkBox = document.getElementById("myCheckSarfMalzeme");
+    var deneme5 = document.getElementById("PTSformSarfMalzeme");
+    if (checkBox.checked == true){
+      deneme5.style.display = "block";
+    } else {
+      deneme5.style.display = "none";
     }
   }
   </script>

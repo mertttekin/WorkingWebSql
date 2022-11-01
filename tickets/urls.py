@@ -17,7 +17,7 @@ urlpatterns = [
     path('yazilim/<slug:slug>', views.yazılımCategory, name="yazılımCategory"),
     path('arizalar/<slug:slug>', views.arızaFirma, name="arızaFirma"),
     path('ariza/detay/<slug:slug>', views.arizaDetay, name="arizaDetay"),
-    path('paylasimgir/', views.paylasimgir, name="paylasimgir"),
+    path('panel/paylasimgir/', views.paylasimgir, name="paylasimgir"),
     path('paylasimgir/editt/<slug:slug>', views.editt, name="editt"),
     path('arizalar/arsiv/ekle/<slug:slug>',
          views.ArsiveEkle, name="ArsiveEkle"),
