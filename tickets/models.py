@@ -24,6 +24,7 @@ from ckeditor.fields import RichTextField
 # from pkg_resources import safe_name
 from django.contrib.auth import get_user_model
 from django_userforeignkey.models.fields import UserForeignKey
+from PIL import Image
 # from django.core.mail import send_mail
 # from django.conf import settings
 
@@ -323,6 +324,15 @@ class Kesif(models.Model):
             self.save()
 
 
-class Image(models.Model):
+class ImageKesif(models.Model):
     aitKesif = models.ForeignKey(Kesif,on_delete=models.CASCADE)
     kesifImage = models.ImageField(upload_to="Kesif/",null=True,blank = True)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img = Image.open(self.kesifImage.path)
+
+        if img.height > 300 or img.weight>300:
+            output_size = (300,300)
+            img.thumbnail(output_size)
+            img.save(self.kesifImage.path)

@@ -13,7 +13,7 @@ from random import choices
 from django.forms import widgets
 from django import forms
 # from tickets import models
-from tickets.models import Ariza, Firma, Image, KesifPTSMalzeme, Paylasim, Comment,Kesif,KesifOlayMalzeme,Image
+from tickets.models import Ariza, Firma, ImageKesif, KesifPTSMalzeme, Paylasim, Comment,Kesif,KesifOlayMalzeme,Image
 # from ckeditor.fields import RichTextField
 # from django.db import models
 from django.core.mail import send_mail
@@ -367,7 +367,7 @@ class KesifOlayMalzemeForm(forms.ModelForm):
 
 class ImageForm(forms.ModelForm):
     class Meta:
-        model = Image
+        model = ImageKesif
         fields=('kesifImage',)
         labels ={
             "kesifImage":"Keşifte Çekilen Fotoğrafları Ekleyiniz."

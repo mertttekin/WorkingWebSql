@@ -9,7 +9,7 @@
 # from unicodedata import category
 
 # from django.http import HttpResponse, HttpResponseRedirect
-from . models import Category, Image, Kesif, Paylasim, Ariza, Firma, Comment,KesifPTSMalzeme,KesifOlayMalzeme
+from . models import Category, ImageKesif, Kesif, Paylasim, Ariza, Firma, Comment,KesifPTSMalzeme,KesifOlayMalzeme
 from django.shortcuts import get_object_or_404, redirect, render
 # from django.db.models import F
 from .forms import ImageForm, ProductCreateForm, ArizaGönder, FirmaGönder, CommentForm, KesifForm,KesifPTSMalzemeForm,KesifOlayMalzemeForm
@@ -439,7 +439,7 @@ def panelkesifekle(request):
                     form1.KesifPTSMalzemelerid_id = ids[0]
                     form1.save()
                     for i in files:
-                        Image.objects.create(aitKesif=form1,kesifImage=i)
+                        ImageKesif.objects.create(aitKesif=form1,kesifImage=i)
                     messages.success(request,"Yeni Kesif Eklendi")
                     print("kayıt gönderildi")
                     return redirect("panel")
@@ -492,7 +492,7 @@ def panelkesifdetails(request,slug):
         data = {
             "kesifbilgi": hangi_kesif,
             "malzemeinfo":KesifPTSMalzeme.objects.get(id=malzeme_id),
-            "images":Image.objects.filter(aitKesif=kesifid),
+            "images":ImageKesif.objects.filter(aitKesif=kesifid),
             # "Olayliste":KesifPTSMalzeme.objects.all(),
         }
         # print(data["kesifbilgi"].__dict__)
