@@ -162,6 +162,11 @@ class KesifPTSMalzeme(models.Model):
     SWITCH_PORT_CHOICE = (
         ("5","5"),
         ("8","8"),
+        ("5+2","5+2"),
+        ("8+2","8+2"),
+        ("16+2","16+2"),
+        ("8+4","8+4"),
+        ("16+4","16+4"),
     )
     ENERJİ_KABLO_CHOICE = (
         ("3x1.5 TTR","3x1.5 TTR"),
@@ -171,6 +176,31 @@ class KesifPTSMalzeme(models.Model):
     PANO_ORTAM_CHOICE = (
         ("iç ortam ","iç ortam "),
         ("dış ortam","dış ortam"),
+    )
+    BARIYER_MODELİ_CHOICE = (
+        ("3250","3250"),
+        ("G-4000","G-4000"),
+        ("4040E","4040E"),
+        ("2080E","2080E"),
+        ("GT-4","GT-4"),
+        ("GT-8","GT-8"),
+    )
+    FIBER_KABLO_MODELİ_CHOICE = (
+        ("2 Core","2 Core"),
+        ("4 Core","4 Core"),
+        ("8 Core","8 Core"),
+        ("16 Core","16 Core"),
+    )
+    PATCH_PANEL_MODELİ_CHOICE = (
+        ("2 li","2 li"),
+        ("4 lu","4 lu"),
+        ("8 li","8 li"),
+        ("12 li","12 li"),
+    )
+    PATCH_CORD_AND_FIBER_ADAPTOR_MODELİ_CHOICE = (
+        ("SC-LC","SC-LC"),
+        ("SC-SC","SC-SC"),
+        ("LC-LC","LC-LC"),
     )
     #check box dropdown menu
     kesifPTSyeradi = models.CharField(max_length=50, null=True)
@@ -188,6 +218,7 @@ class KesifPTSMalzeme(models.Model):
     kesifPTSAdaptorSayisi = models.IntegerField(default=0)
     kesifPTSSwitchPortSayisi = models.CharField(max_length=25, null=True,default="yok",choices=SWITCH_PORT_CHOICE)
     kesifPTSSwitchSayisi = models.IntegerField(default=0)
+    kesifPTSSwitchPoeMi = models.BooleanField(default=False)
     kesifPTSBilgisayarConfigi = models.CharField(max_length=100,default="yok")
     kesifPTSBilgisayarSayısı = models.IntegerField(default=0)
     kesifPTSIoKartSayısı = models.IntegerField(default=0)
@@ -203,12 +234,28 @@ class KesifPTSMalzeme(models.Model):
     kesifPTSDT8kablometre = models.IntegerField(default=0)
     kesifPTSSpiralMetre = models.IntegerField(default=0)
     kesifPTSSpiralÇapı = models.CharField(max_length=25,default="yok") 
-    kesifPTSFiberVarMi = models.BooleanField(default=False)
+    kesifPTSBariyerSayisi =  models.IntegerField(default=0)
+    kesifPTSBariyerModeli = models.CharField(max_length=25,default="yok",choices=BARIYER_MODELİ_CHOICE) 
+    kesifPTSBariyerKolBoyu =  models.IntegerField(default=0)
+    kesifPTSLedEkranSayisi =  models.IntegerField(default=0)
+    kesifPTSLedEkranModeli = models.CharField(max_length=25, null=True,default="yok") 
+
     kesifPTSFiberMetre = models.IntegerField(default=0)
-    kesifPTSPatchPanelTipi = models.CharField(max_length=25, null=True,default="yok") 
+    kesifPTSFiberKabloModeli = models.CharField(max_length=25,default="yok",choices=FIBER_KABLO_MODELİ_CHOICE) 
+
     kesifPTSPatchPanelSayisi =  models.IntegerField(default=0)
-    kesifPTSCibikModuleVarMi = models.BooleanField(default=False)
+    kesifPTSPatchPanelTipi = models.CharField(max_length=25,default="yok",choices=PATCH_PANEL_MODELİ_CHOICE) 
+
+    kesifPTSPatchPanelEkKasetSayisi =  models.IntegerField(default=0)
+    kesifPTSPatchCordSayisi =  models.IntegerField(default=0)
+    kesifPTSPatchCordTipi = models.CharField(max_length=25,default="yok",choices=PATCH_CORD_AND_FIBER_ADAPTOR_MODELİ_CHOICE) 
+
+    kesifPTSFiberAdaptorSayisi =  models.IntegerField(default=0)
+    kesifPTSFiberAdaptorTipi = models.CharField(max_length=25,default="yok",choices=PATCH_CORD_AND_FIBER_ADAPTOR_MODELİ_CHOICE) 
+
     kesifPTSCibikModuleSayisi =  models.IntegerField(default=0)
+
+
 
     slug = models.SlugField(null=False, unique=True,
                             db_index=True, blank=True, editable=False)

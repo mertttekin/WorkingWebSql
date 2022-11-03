@@ -306,6 +306,7 @@ class KesifPTSMalzemeForm(forms.ModelForm):
             "kesifPTSAdaptorSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
             "kesifPTSSwitchPortSayisi":widgets.Select(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
             "kesifPTSSwitchSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifPTSSwitchPoeMi":widgets.NullBooleanSelect(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
             "kesifPTSBilgisayarConfigi":widgets.TextInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
             "kesifPTSBilgisayarSayısı":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
             "kesifPTSIoKartSayısı":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
@@ -325,9 +326,28 @@ class KesifPTSMalzemeForm(forms.ModelForm):
             "kesifPTSFiberMetre":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
             "kesifPTSPatchPanelTipi":widgets.TextInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
             "kesifPTSPatchPanelSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
-            "kesifPTSCibikModuleVarMi":widgets.NullBooleanSelect(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
-            "kesifPTSCibikModuleSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifPTSBariyerModeli":widgets.Select(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifPTSBariyerSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifPTSBariyerKolBoyu":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifPTSLedEkranModeli":widgets.TextInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifPTSLedEkranSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
             
+            "kesifPTSFiberMetre":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifPTSFiberKabloModeli":widgets.Select(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+
+            "kesifPTSPatchPanelSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifPTSPatchPanelTipi":widgets.Select(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            
+            "kesifPTSPatchPanelEkKasetSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifPTSPatchCordSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifPTSPatchCordTipi":widgets.Select(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+
+            "kesifPTSFiberAdaptorSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+            "kesifPTSFiberAdaptorTipi":widgets.Select(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+
+            "kesifPTSCibikModuleSayisi":widgets.NumberInput(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
+
+
         }
 class KesifOlayMalzemeForm(forms.ModelForm):
     class Meta:

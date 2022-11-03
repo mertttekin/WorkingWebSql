@@ -13,7 +13,7 @@
 		
 		 <div id="wrapper">
         
-      
+    
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -43,9 +43,9 @@
                 </li>
             </ul>
         </div>
-        <!-- /#sidebar-wrapper -->{% block content %}  {% endblock %}
+        <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->  
+        <!-- Page Content -->   {% block content %}  {% endblock %}
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
@@ -209,33 +209,6 @@
           deneme5.style.display = "none";
         }
       }
-      function myFunctionBariyer() {
-        var checkBox = document.getElementById("myCheckBariyer");
-        var deneme5 = document.getElementById("PTSformBariyer");
-        if (checkBox.checked == true){
-          deneme5.style.display = "block";
-        } else {
-          deneme5.style.display = "none";
-        }
-      }
-      function myFunctionLedEkran() {
-        var checkBox = document.getElementById("myCheckLedEkran");
-        var deneme5 = document.getElementById("PTSformLedEkran");
-        if (checkBox.checked == true){
-          deneme5.style.display = "block";
-        } else {
-          deneme5.style.display = "none";
-        }
-      }
-      function myFunctionFiber() {
-        var checkBox = document.getElementById("myCheckFiber");
-        var deneme5 = document.getElementById("PTSformFiber");
-        if (checkBox.checked == true){
-          deneme5.style.display = "block";
-        } else {
-          deneme5.style.display = "none";
-        }
-      }
       </script>
       {% for msg in messages%}
 
@@ -354,13 +327,11 @@
 
 @media(min-width:768px) {
     #wrapper {
-      padding-left: 70px;
-      padding-right: 0px;
-      
+        padding-left: 220px;
     }
 
     #wrapper.toggled {
-      padding-left: 10px;
+        padding-left: 0px;
     }
 
     #sidebar-wrapper {
@@ -378,7 +349,7 @@
         
     }
   #wrapper.toggled   i {
- float:left;
+ float:right;
  } 
 
     #page-content-wrapper {

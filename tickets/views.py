@@ -259,7 +259,7 @@ def paylasimgir(request):
                 form.save()
                 messages.success(
                     request, "Paylaşım yapılmıştır", extra_tags="success")
-                return redirect("came")
+                return redirect("paylasimgir")
             else:
                 messages.error(request, "Bir hata oluştu")
                 print(form.errors.as_data())
@@ -283,7 +283,7 @@ def editt(request, slug):
 
             if form.is_valid():
                 form.save()
-                return redirect("paylasimgir")
+                return redirect("panelPaylasim")
             else:
                 # here you print errors to terminal
                 print(form.errors.as_data())
@@ -293,7 +293,7 @@ def editt(request, slug):
             "paylasimlarall": Paylasim.objects.filter(slug=slug),
             "form": form,
         }
-        return render(request, "paylasimgir.html", data)
+        return render(request, "panelPaylasim.html", data)
     else:
         return redirect("tickets")
 
@@ -405,10 +405,13 @@ def paylasimSil(request, slug):
         return redirect("tickets")
 
 def panel(request):
-    data = {
-       "paylasimlarall": Paylasim.objects.all(),
-    }
-    return redirect("paylasimgir")
+    if request.user.is_authenticated:
+        data = {
+        "paylasimlarall": Paylasim.objects.all(),
+        }
+        return redirect("paylasimgir")
+    else:
+        return redirect("tickets")
 
 def panelkesifekle(request):
     if request.user.is_authenticated:
@@ -500,23 +503,49 @@ def panelkesifdetails(request,slug):
 def panelkesifedit(request,slug):
     if request.user.is_authenticated:
         form = get_object_or_404(Kesif, slug=slug)
+        kesifid = form.KesifPTSMalzemelerid_id
+        malzemekesif=KesifPTSMalzeme.objects.get(pk=kesifid)
+        malzemekesifid = malzemekesif.id
+        print(kesifid)
+        print(malzemekesifid)
+        malzemeinfo = get_object_or_404(KesifPTSMalzeme, id=malzemekesifid)
+        print(malzemeinfo.id)
+
+        
         if request.method == 'POST':
             form = KesifForm(
             request.POST, request.FILES, instance=form)
+            PTSform = KesifPTSMalzemeForm(
+            request.POST, request.FILES, instance=malzemeinfo)
+
+
             if form.is_valid():
-                form.save()
-                return redirect("paylasimgir")
+                formyeradi = form.cleaned_data['kesifYapilanYerAdi']
+                print(formyeradi)
+                if PTSform.is_valid():
+                    form.save()
+                    PTSform.save()
+                    messages.success(request,"Kesif Güncellendi")
+                    print("Güncelleme gönderildi")
+                    return redirect("panelkesifliste")
             else:
                 # here you print errors to terminal
                 print(form.errors.as_data())
         else:
             form = KesifForm(instance=form)
+            malzemeinfo = KesifPTSMalzemeForm(instance=malzemeinfo)
+
 
         data = {
-            "kesifinfo": Kesif.objects.filter(slug=slug),
+            # "kesifinfo": Kesif.objects.filter(slug=slug),
+            "form":form,
+            "malzemeinfo":malzemeinfo,
+
               }
         print(type(data))
-        return render(request,"panelKesifdetails.html",data)
+        return render(request,"panelKesifEdit.html",data)
+    else:
+        return redirect("panelKesifListe")
 # def Firmasay():
 #     arizalar = {"arizalar":Ariza.objects.all()}
 #     firmalar = {"firmalar":Firma.objects.all()}

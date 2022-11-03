@@ -34,7 +34,7 @@ urlpatterns = [
     path('panel/kesifekle',views.panelkesifekle,name="panelkesifekle"),
     path('panel/kesifliste',views.panelkesifliste,name="panelkesifliste"),
     path('panel/kesifliste/<slug:slug>',views.panelkesifdetails,name="panelkesifdetails"),
-    path('panel/editt/<slug:slug>', views.panelkesifedit, name="panelkesifedit"),
+    path('panel/edit/<slug:slug>', views.panelkesifedit, name="panelkesifedit"),
 
     
 
