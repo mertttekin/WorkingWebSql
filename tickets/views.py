@@ -14,6 +14,14 @@ from django.shortcuts import get_object_or_404, redirect, render
 # from django.db.models import F
 from .forms import ImageForm, ProductCreateForm, ArizaGönder, FirmaGönder, CommentForm, KesifForm,KesifPTSMalzemeForm,KesifOlayMalzemeForm
 from django.contrib import messages
+from django.http import FileResponse
+from django.http import HttpResponse
+from django.views.generic import View
+
+from .utils import render_to_pdf 
+#created in step 4
+
+
 # from django.core.mail import BadHeaderError, send_mail
 # from django.views.generic import FormView, TemplateView
 # from django.urls import reverse_lazy
@@ -33,6 +41,8 @@ from django.contrib import messages
 #         # In reality we'd use a form class
 #         # to get proper validation errors.
 #         return HttpResponse('Make sure all fields are entered and valid.')
+
+
 
 
 def arizakayit(request, **kwargs):
@@ -283,7 +293,7 @@ def editt(request, slug):
 
             if form.is_valid():
                 form.save()
-                return redirect("panelPaylasim")
+                return redirect("paylasimgir")
             else:
                 # here you print errors to terminal
                 print(form.errors.as_data())
@@ -413,6 +423,9 @@ def panel(request):
     else:
         return redirect("tickets")
 
+
+
+
 def panelkesifekle(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
@@ -433,32 +446,28 @@ def panelkesifekle(request):
                     PTSform1.kesifPTSyeradi = formyeradi
                     PTSform1.save()
                     PTSformid = KesifPTSMalzeme.objects.filter(kesifPTSyeradi=formyeradi)
-                    ids = PTSformid.values_list('pk',flat = True)
+                    plakaid = PTSformid.values_list('pk',flat = True)
                     form1 = form.save(commit=False)
-                    print(ids[0])
-                    form1.KesifPTSMalzemelerid_id = ids[0]
-                    form1.save()
-                    for i in files:
-                        ImageKesif.objects.create(aitKesif=form1,kesifImage=i)
-                    messages.success(request,"Yeni Kesif Eklendi")
-                    print("kayıt gönderildi")
-                    return redirect("panel")
-        
-                # elif Olayform.is_valid():
-                #     PTSform1 = PTSform.save(commit=False)
-                #     PTSform1.kesifPTSyeradi = formyeradi
-                #     PTSform1.save()
-                #     PTSformid = KesifPTSMalzeme.objects.filter(kesifPTSyeradi=formyeradi)
-                #     ids = PTSformid.values_list('pk',flat = True)
-                #     form1 = form.save(commit=False)
-                #     print(ids[0])
-                #     form1.KesifPTSMalzemelerid_id = ids[0]
-                #     form1.kesifPTSVarMi = True
-                #     form1.save()
-                #     print("kayıt gönderildi")
-                #     return redirect("panel")
+                    print(plakaid[0])
+                    form1.KesifPTSMalzemelerid_id = plakaid[0]
+                    if Olayform.is_valid():
+                        Olayform1 = Olayform.save(commit=False)
+                        Olayform1.kesifOlayyeradi = formyeradi
+                        Olayform1.save()
+                        Olayformid = KesifOlayMalzeme.objects.filter(kesifOlayyeradi=formyeradi)
+                        olayid = Olayformid.values_list('pk',flat = True)
+                        print(olayid[0])
+                        form1.KesifOlayMalzemelerid_id = olayid[0]
+                        form1.save()
+                        for i in files:
+                            ImageKesif.objects.create(aitKesif=form1,kesifImage=i)
+                        messages.success(request,"Yeni Kesif Eklendi")
+                        print("kayıt gönderildi")
+                        return redirect("panelkesifliste")
+                    else:
+                        print("Olay kayıt hatası")
                 else:
-                    print("error")
+                    print("PTS kayıt hatası")
         Olayform = KesifOlayMalzemeForm()            
         PTSform = KesifPTSMalzemeForm()
         form = KesifForm()
@@ -475,7 +484,7 @@ def panelkesifekle(request):
 def panelkesifliste(request):
     if request.user.is_authenticated:
         data = {
-            "formliste": Kesif.objects.order_by('-kesifYapilanYerTarihi'),
+            "formliste": Kesif.objects.order_by('-kesifYapilanYerTarihi').filter(kesifArsivMi=False),
             "PTSliste":KesifPTSMalzeme.objects.all(),
             # "Olayliste":KesifPTSMalzeme.objects.all(),
         }
@@ -486,12 +495,14 @@ def panelkesifdetails(request,slug):
         tamplate_name = 'panelKesifdetails.html'
         hangi_kesif = get_object_or_404(Kesif, slug=slug)
         kesifid = hangi_kesif.pk
-        malzeme_id = hangi_kesif.KesifPTSMalzemelerid_id
-        print(malzeme_id)
+        ptsmalzeme_id = hangi_kesif.KesifPTSMalzemelerid_id
+        olaymalzeme_id = hangi_kesif.KesifOlayMalzemelerid_id
+        print(ptsmalzeme_id)
         print("kesif id = {}".format(kesifid) )
         data = {
             "kesifbilgi": hangi_kesif,
-            "malzemeinfo":KesifPTSMalzeme.objects.get(id=malzeme_id),
+            "ptsmalzemeinfo":KesifPTSMalzeme.objects.get(id=ptsmalzeme_id),
+            "olaymalzemeinfo":KesifOlayMalzeme.objects.get(id=olaymalzeme_id),
             "images":ImageKesif.objects.filter(aitKesif=kesifid),
             # "Olayliste":KesifPTSMalzeme.objects.all(),
         }
@@ -503,20 +514,27 @@ def panelkesifdetails(request,slug):
 def panelkesifedit(request,slug):
     if request.user.is_authenticated:
         form = get_object_or_404(Kesif, slug=slug)
-        kesifid = form.KesifPTSMalzemelerid_id
-        malzemekesif=KesifPTSMalzeme.objects.get(pk=kesifid)
-        malzemekesifid = malzemekesif.id
-        print(kesifid)
-        print(malzemekesifid)
-        malzemeinfo = get_object_or_404(KesifPTSMalzeme, id=malzemekesifid)
-        print(malzemeinfo.id)
+        # PTS Malzeme veri çekme
+        ptskesifid = form.KesifPTSMalzemelerid_id
+        ptsmalzemekesif=KesifPTSMalzeme.objects.get(pk=ptskesifid)
+        ptsmalzemekesifid = ptsmalzemekesif.id
+        ptsmalzemeinfo = get_object_or_404(KesifPTSMalzeme, id=ptsmalzemekesifid)
+
+        #Olay Malzeme veri çekme
+        olaykesifid = form.KesifOlayMalzemelerid_id
+        olaymalzemekesif=KesifOlayMalzeme.objects.get(pk=olaykesifid)
+        olaymalzemekesifid = olaymalzemekesif.id
+        olaymalzemeinfo = get_object_or_404(KesifOlayMalzeme, id=olaymalzemekesifid)
+
 
         
         if request.method == 'POST':
             form = KesifForm(
             request.POST, request.FILES, instance=form)
             PTSform = KesifPTSMalzemeForm(
-            request.POST, request.FILES, instance=malzemeinfo)
+            request.POST, request.FILES, instance=ptsmalzemeinfo)
+            Olayform = KesifOlayMalzemeForm(
+            request.POST,request.FILES, instance=olaymalzemeinfo)
 
 
             if form.is_valid():
@@ -525,6 +543,7 @@ def panelkesifedit(request,slug):
                 if PTSform.is_valid():
                     form.save()
                     PTSform.save()
+                    Olayform.save()
                     messages.success(request,"Kesif Güncellendi")
                     print("Güncelleme gönderildi")
                     return redirect("panelkesifliste")
@@ -533,19 +552,111 @@ def panelkesifedit(request,slug):
                 print(form.errors.as_data())
         else:
             form = KesifForm(instance=form)
-            malzemeinfo = KesifPTSMalzemeForm(instance=malzemeinfo)
+            ptsmalzemeinfo = KesifPTSMalzemeForm(instance=ptsmalzemeinfo)
+            olaymalzemeinfo = KesifOlayMalzemeForm(instance=olaymalzemeinfo)
 
 
         data = {
             # "kesifinfo": Kesif.objects.filter(slug=slug),
             "form":form,
-            "malzemeinfo":malzemeinfo,
+            "ptsmalzemeinfo":ptsmalzemeinfo,
+            "olaymalzemeinfo":olaymalzemeinfo,
 
               }
         print(type(data))
         return render(request,"panelKesifEdit.html",data)
     else:
         return redirect("panelKesifListe")
+
+
+
+def panelkesifindir(request,slug):
+    hangi_kesif = get_object_or_404(Kesif, slug=slug)
+    kesifid = hangi_kesif.pk
+    ptsmalzeme_id = hangi_kesif.KesifPTSMalzemelerid_id
+    olaymalzeme_id = hangi_kesif.KesifOlayMalzemelerid_id
+
+    data = {
+        "kesifbilgi": hangi_kesif,
+        "ptsmalzemeinfo":KesifPTSMalzeme.objects.get(id=ptsmalzeme_id),
+        "olaymalzemeinfo":KesifOlayMalzeme.objects.get(id=olaymalzeme_id),
+        "images":ImageKesif.objects.filter(aitKesif=kesifid),
+    }
+    pdf = render_to_pdf('invoice.html', data)
+    if pdf:
+        response = HttpResponse(pdf, content_type='application/pdf')
+        filename = "Kesif_%s.pdf"%(hangi_kesif.kesifYapilanYerAdi)
+        content = "inline; filename='%s'"%(filename)
+        download = request.GET.get("download")
+        if download:
+            content = "inline; filename='%s'"%(filename)
+        response["Content-Disposition"] = content
+        return response
+    return HttpResponse("Not found")
+
+    return HttpResponse(pdf, content_type='application/pdf')
+
+def panelkesifonayla(request,slug):
+    if request.user.is_authenticated:
+        hangi_kesif = get_object_or_404(Kesif, slug=slug)
+        hangi_kesif.kesifOnaylandiMi=True
+        hangi_kesif.save()
+        messages.warning(request, "Kesif Onaylanmıştır", extra_tags="success")
+        return redirect("panelkesifliste")
+    else:
+        return redirect("tickets")
+
+def panelkesifarsivle(request,slug):
+    if request.user.is_authenticated:
+        hangi_kesif = get_object_or_404(Kesif, slug=slug)
+        hangi_kesif.kesifArsivMi=True
+        hangi_kesif.save()
+        messages.warning(request, "Kesif Arsivlenmiştir", extra_tags="success")
+        return redirect("panelkesifliste")
+    else:
+        return redirect("tickets")
+
+
+
+
+
+
+# def panelkesifindir(request,slug):
+#     #Crete bytestream buffer
+#     buf = io.BytesIO()
+#     #Create canvas      
+#     c = canvas.Canvas(buf,pagesize=letter,bottomup=0)
+#     #Create text object
+#     textob = c.beginText()
+#     textob.setTextOrigin(inch,inch)
+
+
+#     hangi_kesif = get_object_or_404(Kesif, slug=slug)
+#     kesifid = hangi_kesif.pk
+#     malzeme_id = hangi_kesif.KesifPTSMalzemelerid_id
+
+#     kesifbilgi = Kesif.objects.get(slug=slug)
+#     malzemebilgileri = KesifPTSMalzeme.objects.get(id=malzeme_id)
+#     resimler =ImageKesif.objects.filter(aitKesif=kesifid)
+
+
+#     lines=[]
+
+#     for i in range(10):
+#         lines.append(Kesif.i)
+
+#     for line in lines:
+#         textob.textLine(line)
+
+#     c.drawText(textob)
+#     c.showPage()
+#     c.save()
+#     buf.seek(0)
+
+#     return FileResponse(buf,as_attachment=True,filename="something.pdf")
+    
+
+
 # def Firmasay():
 #     arizalar = {"arizalar":Ariza.objects.all()}
 #     firmalar = {"firmalar":Firma.objects.all()}

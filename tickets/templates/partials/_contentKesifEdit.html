@@ -9,7 +9,16 @@
         <table>
           {{form.media}} {{form.as_p }}
           <hr>
-          {{malzemeinfo.media}} {{malzemeinfo.as_p }}
+          <h5 class="bas text-center mt-3">Plaka Tanıma Malzemeler</h5>
+
+          <hr>
+          {{ptsmalzemeinfo.media}} {{ptsmalzemeinfo.as_p }}
+          <hr>
+
+          <h5 class="bas text-center mt-3">Olay Algılama Malzemeler</h5>
+
+          <hr>
+          {{olaymalzemeinfo.media}} {{olaymalzemeinfo.as_p }}
           <hr>
 
           <!-- <button class="btn btn-primary btn-lg" type="submit">Formu Getir</button> -->
@@ -45,6 +54,15 @@
     padding: 14px 28px;
     font-size: 16px;
     cursor: pointer;
-    text-align: center;
+    text-align:
+     center;
+  }
+  .bas {
+    border-radius: 16px;
+    position: relative;
+    background-color: rgb(70, 103, 151);
+    padding-top: 5px;
+    padding-bottom: 2px;
+    color: rgb(255, 255, 255);
   }
 </style>

@@ -1,12 +1,19 @@
 {% load static %}
+<!-- <img src="{% static 'img/akslogok.png' %}" alt="Flowers in Chania"> -->
 
-<table style="width: 100%" class="table table-primary">
+<div id="onbilgi">
+  <small id="serialno">Kesif No: {{kesifbilgi.id}}</small>
+  <small id="date"
+    >Tarih: {{kesifbilgi.kesifYapilanYerTarihi |date:"d M Y"}}
+  </small>
+</div>
+<table style="width: 90%; margin-right: 10%" class="table table-primary">
   <h4>Kesif Genel Bilgileri</h4>
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th style="width: 10%" scope="col-5">--</th>
-      <th style="width: 80%" scope="col-5">-/-</th>
+      <th scope="col"></th>
+      <th style="width: 10%" scope="col-5"></th>
+      <th style="width: 80%" scope="col-5"></th>
       <th style="width: 10%" scope="col-2"></th>
     </tr>
   </thead>
@@ -15,407 +22,764 @@
       <th scope="row">1</th>
       <td>Locasyon</td>
       <td>{{kesifbilgi.kesifYapilanYerAdi}}</td>
-      <td>
-      </td>
+      <td></td>
     </tr>
     <tr>
       <th scope="row">2</th>
       <td>Kişi-Kişiler</td>
       <td>{{kesifbilgi.kesifYapanKisi}}</td>
-      <td>
-      </td>
+      <td></td>
     </tr>
     <tr>
       <th scope="row">3</th>
       <td>Senaryo</td>
-      <td>{{kesifbilgi.kesifSenaryosu}} Bird</td>
       <td>
+        <p>{{kesifbilgi.kesifSenaryosu}}</p>
       </td>
+      <td></td>
     </tr>
   </tbody>
 </table>
- 
 
-      <hr />
-      {% if kesifbilgi.kesifPTSVarMi%}
-      <table style="width: 100%" class="table table-primary">
-        <h4>PTS Kesif Detay Bilgileri</h4>
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th style="width: 40%" scope="col-5">--</th>
-            <th style="width: 60%" scope="col-5">Sayı/Metre/Model</th>
-            <th style="width: 0%" scope="col-2"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">-</th>
-            <td>Kamera Adet</td>
-            <td>{{malzemeinfo.kesifPTSKameraSayisi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Kamera Model</td>
-            <td>{{malzemeinfo.kesifPTSKameraTipi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Kamera Boat Sayısı</td>
-            <td>{{malzemeinfo.kesifPTSKameraBoatSayisi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Kamera Adaptor Sayısı</td>
-            <td>{{malzemeinfo.kesifPTSKameraAdaptorSayisi}}</td>
-            <td>
-            </td>
-          </tr>
-          {% if malzemeinfo.kesifPTSExtraKameraSayisi %}
-          <tr>
-            <th scope="row">-</th>
-            <td>Extra Kamera Adet</td>
-            <td>{{malzemeinfo.kesifPTSExtraKameraSayisi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Extra Kamera Model</td>
-            <td>{{malzemeinfo.kesifPTSExtraKameraTipi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Extra Kamera Adaptor Sayısı</td>
-            <td>{{malzemeinfo.kesifPTSExtraKameraAdaptorSayisi}}</td>
-            <td>
-            </td>
-          </tr>
-          {%endif%} {% if malzemeinfo.kesifPTSDirekSayisi %}
-          <tr>
-            <th scope="row">-</th>
-            <td>Direk Adet</td>
-            <td>{{malzemeinfo.kesifPTSDirekSayisi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Direk Uzunluğu</td>
-            <td>{{malzemeinfo.kesifPTSDirekUzunlugu}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Direk Flansh Sayısı</td>
-            <td>{{malzemeinfo.kesifPTSFlanshSayisi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Direk Hakkında Açıklama</td>
-            <td>{{malzemeinfo.kesifPTSDirekAçıklama}}</td>
-            <td>
-            </td>
-          </tr>
-          {%endif%} {% if malzemeinfo.kesifPTSBilgisayarConfigi %}
-          <tr>
-            <th scope="row">-</th>
-            <td>Bilgisayar Configi</td>
-            <td>{{malzemeinfo.kesifPTSBilgisayarConfigi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Bilgisayar Sayısı</td>
-            <td>{{malzemeinfo.kesifPTSBilgisayarSayısı}}</td>
-            <td>
-            </td>
-          </tr>
-          {%endif%} {% if malzemeinfo.kesifPTSIoKartSayısı %}
-          <tr>
-            <th scope="row">-</th>
-            <td>IO-kart Sayısı</td>
-            <td>{{malzemeinfo.kesifPTSIoKartSayısı}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>IO-kart Tipi</td>
-            <td>{{malzemeinfo.kesifPTSIoKartTipi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>IO-kart Modul Sayısı</td>
-            <td>{{malzemeinfo.kesifPTSIoKartModulSayısı}}</td>
-            <td>
-            </td>
-          </tr>
-          {%endif%} {% if malzemeinfo.kesifPTSSwitchSayisi %}
-          <tr>
-            <th scope="row">-</th>
-            <td>Switch Sayısı</td>
-            <td>{{malzemeinfo.kesifPTSSwitchSayisi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Switch Portu</td>
-            <td>{{malzemeinfo.kesifPTSSwitchPortSayisi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Switch Poe Mi</td>
-            <td>{{malzemeinfo.kesifPTSSwitchPoeMi}}</td>
-            <td>
-            </td>
-          </tr>
-          {%endif%} {% if malzemeinfo.kesifPTSSpiralMetre %}
-          <tr>
-            <th scope="row">-</th>
-            <td>Spiral Metresi</td>
-            <td>{{malzemeinfo.kesifPTSSpiralMetre}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Spiral Çapı</td>
-            <td>{{malzemeinfo.kesifPTSSpiralÇapı}}</td>
-            <td>
-            </td>
-          </tr>
-          {%endif%} {% if malzemeinfo.kesifPTSEnerjikablometre %}
-          <tr>
-            <th scope="row">-</th>
-            <td>Enerji Kablo Metresi</td>
-            <td>{{malzemeinfo.kesifPTSEnerjikablometre}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Enerji Kablo Tipi</td>
-            <td>{{malzemeinfo.kesifPTSEnerjikabloTipi}}</td>
-            <td>
-            </td>
-          </tr>
-          {%endif%} {% if malzemeinfo.kesifPTSDT8kablometre %}
-          <tr>
-            <th scope="row">-</th>
-            <td>DT-8 Kablo Metresi</td>
-            <td>{{malzemeinfo.kesifPTSDT8kablometre}}</td>
-            <td>
-            </td>
-          </tr>
-          {%endif%} {% if malzemeinfo.kesifPTSCAT6kablometre %}
-          <tr>
-            <th scope="row">-</th>
-            <td>CAT-6 Kablo Metresi</td>
-            <td>{{malzemeinfo.kesifPTSCAT6kablometre}}</td>
-            <td>
-            </td>
-          </tr>
-          {%endif%} {% if malzemeinfo.kesifPTSPanoSayisi %}
-          <tr>
-            <th scope="row">-</th>
-            <td>Pano Sayısı</td>
-            <td>{{malzemeinfo.kesifPTSPanoSayisi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Pano Olcusu</td>
-            <td>{{malzemeinfo.kesifPTSPanoOlcusu}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Pano Tipi</td>
-            <td>{{malzemeinfo.kesifPTSPanoTipi}}</td>
-            <td>
-            </td>
-          </tr>
-          {%endif%}
-          {% if malzemeinfo.kesifPTSBariyerSayisi %}
-          <tr>
-            <th scope="row">-</th>
-            <td>Bariyer Sayısı</td>
-            <td>{{malzemeinfo.kesifPTSBariyerSayisi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Bariyer Modeli</td>
-            <td>{{malzemeinfo.kesifPTSBariyerModeli}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Bariyer Kol Boyu</td>
-            <td>{{malzemeinfo.kesifPTSBariyerKolBoyu}}</td>
-            <td>
-            </td>
-          </tr>
-          {%endif%}
-          {% if malzemeinfo.kesifPTSLedEkranSayisi %}
-          <tr>
-            <th scope="row">-</th>
-            <td>LedEkran Sayısı</td>
-            <td>{{malzemeinfo.kesifPTSLedEkranSayisi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>LedEkran Modeli</td>
-            <td>{{malzemeinfo.kesifPTSLedEkranModeli}}</td>
-            <td>
-            </td>
-          </tr>
-          {%endif%}
-          {% if malzemeinfo.kesifPTSFiberMetre %}
-          <tr>
-            <th scope="row">-</th>
-            <td>Fiber Metresi </td>
-            <td>{{malzemeinfo.kesifPTSFiberMetre}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Fiber Kablo Tipi</td>
-            <td>{{malzemeinfo.kesifPTSFiberKabloModeli}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Patch Panel Sayısı</td>
-            <td>{{malzemeinfo.kesifPTSPatchPanelSayisi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Patch Panel Tipi</td>
-            <td>{{malzemeinfo.kesifPTSPatchPanelTipi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Patch Panel Ek Kaset Sayısı</td>
-            <td>{{malzemeinfo.kesifPTSPatchPanelEkKasetSayisi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Patch Cord Sayısı</td>
-            <td>{{malzemeinfo.kesifPTSPatchCordSayisi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Patch Cord Tipi</td>
-            <td>{{malzemeinfo.kesifPTSPatchCordTipi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Fiber Adaptor Sayısı</td>
-            <td>{{malzemeinfo.kesifPTSFiberAdaptorSayisi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Fiber Adaptor Tipi</td>
-            <td>{{malzemeinfo.kesifPTSFiberAdaptorTipi}}</td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">-</th>
-            <td>Cibik Modul Sayısı</td>
-            <td>{{malzemeinfo.kesifPTSCibikModuleSayisi}}</td>
-            <td>
-            </td>
-          </tr>
-          {%endif%}
-        </tbody>
-      </table>
-      {%endif%}
+<hr />
+{% if kesifbilgi.kesifPTSVarMi%}
+<table style="width: 90%; margin-right: 10%" class="table table-primary">
+  <h4>PTS Kesif Detay Bilgileri</h4>
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th class="column-header" style="width: 40%" scope="col-5">Ürün</th>
+      <th class="column-header" style="width: 60%" scope="col-5">
+        Sayı/Metre/Model
+      </th>
+      <th style="width: 0%" scope="col-2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">-</th>
+      <td>Kamera Adet</td>
+      <td>{{ptsmalzemeinfo.kesifPTSKameraSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Kamera Model</td>
+      <td>{{ptsmalzemeinfo.kesifPTSKameraTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Kamera Boat Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSKameraBoatSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Kamera Adaptor Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSKameraAdaptorSayisi}}</td>
+      <td></td>
+    </tr>
+    {% if ptsmalzemeinfo.kesifPTSExtraKameraSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Extra Kamera Adet</td>
+      <td>{{ptsmalzemeinfo.kesifPTSExtraKameraSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Extra Kamera Model</td>
+      <td>{{ptsmalzemeinfo.kesifPTSExtraKameraTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Extra Kamera Adaptor Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSExtraKameraAdaptorSayisi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if ptsmalzemeinfo.kesifPTSDirekSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Direk Adet</td>
+      <td>{{ptsmalzemeinfo.kesifPTSDirekSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Direk Uzunluğu</td>
+      <td>{{ptsmalzemeinfo.kesifPTSDirekUzunlugu}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Direk Flansh Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSFlanshSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Direk Hakkında Açıklama</td>
+      <td>{{ptsmalzemeinfo.kesifPTSDirekAçıklama}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if olaymalzemeinfo.kesifPTSBilgisayarConfigi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Bilgisayar Configi</td>
+      <td>{{ptsmalzemeinfo.kesifPTSBilgisayarConfigi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Bilgisayar Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSBilgisayarSayısı}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if ptsmalzemeinfo.kesifPTSIoKartSayısı %}
+    <tr>
+      <th scope="row">-</th>
+      <td>IO-kart Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSIoKartSayısı}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>IO-kart Tipi</td>
+      <td>{{ptsmalzemeinfo.kesifPTSIoKartTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>IO-kart Modul Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSIoKartModulSayısı}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if ptsmalzemeinfo.kesifPTSSwitchSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Switch Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSSwitchSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Switch Portu</td>
+      <td>{{ptsmalzemeinfo.kesifPTSSwitchPortSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Switch Poe Mi</td>
+      <td>{{ptsmalzemeinfo.kesifPTSSwitchPoeMi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if ptsmalzemeinfo.kesifPTSLoopDedektorSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Loop Dedektor Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSLoopDedektorSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Loop Trafo Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSLoopTrafoSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Loop Kablo Çeşidi</td>
+      <td>{{ptsmalzemeinfo.kesifPTSLoopKabloCesidi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Loop Kablo Metresi</td>
+      <td>{{ptsmalzemeinfo.kesifPTSLoopKabloMetresi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if ptsmalzemeinfo.kesifPTSSpiralMetre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Spiral Metresi</td>
+      <td>{{ptsmalzemeinfo.kesifPTSSpiralMetre}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Spiral Çapı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSSpiralÇapı}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if ptsmalzemeinfo.kesifPTSEnerjikablometre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Enerji Kablo Metresi</td>
+      <td>{{ptsmalzemeinfo.kesifPTSEnerjikablometre}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Enerji Kablo Tipi</td>
+      <td>{{ptsmalzemeinfo.kesifPTSEnerjikabloTipi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if ptsmalzemeinfo.kesifPTSDT8kablometre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>DT-8 Kablo Metresi</td>
+      <td>{{ptsmalzemeinfo.kesifPTSDT8kablometre}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if ptsmalzemeinfo.kesifPTSCAT6kablometre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>CAT-6 Kablo Metresi</td>
+      <td>{{ptsmalzemeinfo.kesifPTSCAT6kablometre}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if ptsmalzemeinfo.kesifPTSPanoSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Pano Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSPanoSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Pano Olcusu</td>
+      <td>{{ptsmalzemeinfo.kesifPTSPanoOlcusu}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Pano Tipi</td>
+      <td>{{ptsmalzemeinfo.kesifPTSPanoTipi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if ptsmalzemeinfo.kesifPTSBariyerSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Bariyer Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSBariyerSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Bariyer Modeli</td>
+      <td>{{ptsmalzemeinfo.kesifPTSBariyerModeli}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Bariyer Kol Boyu</td>
+      <td>{{ptsmalzemeinfo.kesifPTSBariyerKolBoyu}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if ptsmalzemeinfo.kesifPTSMantarBariyerAciklama %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Mantar Bariyer Açıklama</td>
+      <td>{{ptsmalzemeinfo.kesifPTSMantarBariyerAciklama}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if ptsmalzemeinfo.kesifPTSLedEkranSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>LedEkran Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSLedEkranSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>LedEkran Modeli</td>
+      <td>{{ptsmalzemeinfo.kesifPTSLedEkranModeli}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if ptsmalzemeinfo.kesifPTSFiberMetre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Fiber Metresi</td>
+      <td>{{ptsmalzemeinfo.kesifPTSFiberMetre}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Fiber Kablo Tipi</td>
+      <td>{{ptsmalzemeinfo.kesifPTSFiberKabloModeli}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Panel Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSPatchPanelSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Panel Tipi</td>
+      <td>{{ptsmalzemeinfo.kesifPTSPatchPanelTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Panel Ek Kaset Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSPatchPanelEkKasetSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Cord Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSPatchCordSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Cord Tipi</td>
+      <td>{{ptsmalzemeinfo.kesifPTSPatchCordTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Fiber Adaptor Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSFiberAdaptorSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Fiber Adaptor Tipi</td>
+      <td>{{ptsmalzemeinfo.kesifPTSFiberAdaptorTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Cibik Modul Sayısı</td>
+      <td>{{ptsmalzemeinfo.kesifPTSCibikModuleSayisi}}</td>
+      <td></td>
+    </tr>
+    {%endif%}
+  </tbody>
+</table>
+{%endif%} {% if kesifbilgi.kesifOlayVarMi%}
+<table style="width: 90%; margin-right: 10%" class="table table-primary">
+  <h4>OLay Algılama Kesif Detay Bilgileri</h4>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th style="width: 40%" scope="col-5">--</th>
+      <th style="width: 60%" scope="col-5">Sayı/Metre/Model</th>
+      <th style="width: 0%" scope="col-2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">-</th>
+      <td>Kamera Adet</td>
+      <td>{{olaymalzemeinfo.kesifOlayKameraSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Kamera Model</td>
+      <td>{{olaymalzemeinfo.kesifOlayKameraTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Kamera Boat Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlayKameraBoatSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Kamera Adaptor Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlayKameraAdaptorSayisi}}</td>
+      <td></td>
+    </tr>
+    {% if olaymalzemeinfo.kesifOlayExtraKameraSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Extra Kamera Adet</td>
+      <td>{{olaymalzemeinfo.kesifOlayExtraKameraSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Extra Kamera Model</td>
+      <td>{{olaymalzemeinfo.kesifOlayExtraKameraTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Extra Kamera Adaptor Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlayExtraKameraAdaptorSayisi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if olaymalzemeinfo.kesifOlayDirekSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Direk Adet</td>
+      <td>{{olaymalzemeinfo.kesifOlayDirekSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Direk Uzunluğu</td>
+      <td>{{olaymalzemeinfo.kesifOlayDirekUzunlugu}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Direk Flansh Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlayFlanshSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Direk Hakkında Açıklama</td>
+      <td>{{olaymalzemeinfo.kesifOlayDirekAçıklama}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if olaymalzemeinfo.kesifOlayBilgisayarConfigi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Bilgisayar Configi</td>
+      <td>{{olaymalzemeinfo.kesifOlayBilgisayarConfigi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Bilgisayar Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlayBilgisayarSayısı}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if olaymalzemeinfo.kesifOlayIoKartSayısı %}
+    <tr>
+      <th scope="row">-</th>
+      <td>IO-kart Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlayIoKartSayısı}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>IO-kart Tipi</td>
+      <td>{{olaymalzemeinfo.kesifOlayIoKartTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>IO-kart Modul Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlayIoKartModulSayısı}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if olaymalzemeinfo.kesifOlaySwitchSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Switch Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlaySwitchSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Switch Portu</td>
+      <td>{{olaymalzemeinfo.kesifOlaySwitchPortSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Switch Poe Mi</td>
+      <td>{{olaymalzemeinfo.kesifOlaySwitchPoeMi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if olaymalzemeinfo.kesifOlayLoopDedektorSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Loop Dedektor Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlayLoopDedektorSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Loop Trafo Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlayLoopTrafoSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Loop Kablo Çeşidi</td>
+      <td>{{olaymalzemeinfo.kesifOlayLoopKabloCesidi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Loop Kablo Metresi</td>
+      <td>{{olaymalzemeinfo.kesifOlayLoopKabloMetresi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if olaymalzemeinfo.kesifOlaySpiralMetre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Spiral Metresi</td>
+      <td>{{olaymalzemeinfo.kesifOlaySpiralMetre}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Spiral Çapı</td>
+      <td>{{olaymalzemeinfo.kesifOlaySpiralÇapı}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if olaymalzemeinfo.kesifOlayEnerjikablometre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Enerji Kablo Metresi</td>
+      <td>{{olaymalzemeinfo.kesifOlayEnerjikablometre}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Enerji Kablo Tipi</td>
+      <td>{{olaymalzemeinfo.kesifOlayEnerjikabloTipi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if olaymalzemeinfo.kesifOlayDT8kablometre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>DT-8 Kablo Metresi</td>
+      <td>{{olaymalzemeinfo.kesifOlayDT8kablometre}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if olaymalzemeinfo.kesifOlayCAT6kablometre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>CAT-6 Kablo Metresi</td>
+      <td>{{olaymalzemeinfo.kesifOlayCAT6kablometre}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if olaymalzemeinfo.kesifOlayPanoSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Pano Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlayPanoSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Pano Olcusu</td>
+      <td>{{olaymalzemeinfo.kesifOlayPanoOlcusu}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Pano Tipi</td>
+      <td>{{olaymalzemeinfo.kesifOlayPanoTipi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if olaymalzemeinfo.kesifOlayBariyerSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Bariyer Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlayBariyerSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Bariyer Modeli</td>
+      <td>{{olaymalzemeinfo.kesifOlayBariyerModeli}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Bariyer Kol Boyu</td>
+      <td>{{olaymalzemeinfo.kesifOlayBariyerKolBoyu}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if olaymalzemeinfo.kesifOlayMantarBariyerAciklama %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Mantar Bariyer Açıklama</td>
+      <td>{{olaymalzemeinfo.kesifOlayMantarBariyerAciklama}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if olaymalzemeinfo.kesifOlayLedEkranSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>LedEkran Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlayLedEkranSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>LedEkran Modeli</td>
+      <td>{{olaymalzemeinfo.kesifOlayLedEkranModeli}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if olaymalzemeinfo.kesifOlayFiberMetre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Fiber Metresi</td>
+      <td>{{olaymalzemeinfo.kesifOlayFiberMetre}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Fiber Kablo Tipi</td>
+      <td>{{olaymalzemeinfo.kesifOlayFiberKabloModeli}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Panel Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlayPatchPanelSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Panel Tipi</td>
+      <td>{{olaymalzemeinfo.kesifOlayPatchPanelTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Panel Ek Kaset Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlayPatchPanelEkKasetSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Cord Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlayPatchCordSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Cord Tipi</td>
+      <td>{{olaymalzemeinfo.kesifOlayPatchCordTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Fiber Adaptor Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlayFiberAdaptorSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Fiber Adaptor Tipi</td>
+      <td>{{olaymalzemeinfo.kesifOlayFiberAdaptorTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Cibik Modul Sayısı</td>
+      <td>{{olaymalzemeinfo.kesifOlayCibikModuleSayisi}}</td>
+      <td></td>
+    </tr>
+    {%endif%}
+  </tbody>
+</table>
+{%endif%}
 
-      <div class="row" id="center" style="margin:100px ;" > <hr />
-        <div id="CarouselWithControls" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            {% for item in images %} {% if forloop.first %}
-            <div class="carousel-item {% if forloop.first %} active {% endif %}">
-              <h2 class="text-center">{{ item.frame_title }}</h2>
-              <img src="{{ item.kesifImage.url }}" class="d-block" />
-              <h5 class="text-center">{{ item.frame_description }}</h5>
-            </div>
-            {% else %}
-            <div class="carousel-item {% if forloop.first %} active {% endif %}">
-              <h2 class="text-center">{{ item.frame_title }}</h2>
-              <img src="{{ item.kesifImage.url }}" class="d-block" />
-              <h5 class="text-center">{{ item.frame_description }}</h5>
-            </div>
-            {% endif %}
-            <a
-              class="carousel-control-prev"
-              href="#CarouselWithControls"
-              role="button"
-              data-bs-slide="prev"
-            >
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a
-              class="carousel-control-next"
-              href="#CarouselWithControls"
-              role="button"
-              data-bs-slide="next"
-            >
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-            {% endfor %}</div>
-
-      <div class="row"></div>
-      <style>
-
-      </style>
+<div class="row" id="center" style="margin: 10px">
+  <hr />
+  <div id="CarouselWithControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      {% for item in images %} {% if forloop.first %}
+      <div class="carousel-item {% if forloop.first %} active {% endif %}">
+        <h2 class="text-center">{{ item.frame_title }}</h2>
+        <img src="{{ item.kesifImage.url }}" class="d-block" />
+        <h5 class="text-center">{{ item.frame_description }}</h5>
+      </div>
+      {% else %}
+      <div class="carousel-item {% if forloop.first %} active {% endif %}">
+        <h2 class="text-center">{{ item.frame_title }}</h2>
+        <img src="{{ item.kesifImage.url }}" class="d-block" />
+        <h5 class="text-center">{{ item.frame_description }}</h5>
+      </div>
+      {% endif %}
+      <a
+        class="carousel-control-prev"
+        href="#CarouselWithControls"
+        role="button"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#CarouselWithControls"
+        role="button"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+      {% endfor %}
     </div>
 
-    </div>
-    <a href="{% url 'panelkesifedit' kesifbilgi.slug %}" class="btn text-align: center btn-lg btn-primary">Düzenle</a>
-    
-    <a href="" class="btn text-align: center btn-lg btn-success">Onayla</a>
-
+    <div class="row"></div>
+    <style></style>
+  </div>
 </div>
+
+<div class="row" style="width: 90%; margin-right: 10%" id="buttonlar">
+  <div class="col-6">
+    <a
+      href="{% url 'panelkesifedit' kesifbilgi.slug %}"
+      class="btn text-align: center btn-lg btn-primary"
+      >Düzenle</a
+    >
+  </div>
+  {% if not kesifbilgi.kesifOnaylandiMi%}
+  <div class="col-6">
+    <a
+      href="{% url 'panelkesifonayla' kesifbilgi.slug %}"
+      class="btn text-align: center btn-lg btn-success"
+      >Onayla</a
+    >
+  </div>
+  {%else%}
+  <div class="col-6">
+    <a
+      href="{% url 'panelkesifarsivle' kesifbilgi.slug %}"
+      class="btn text-align: center btn-lg btn-danger"
+      >Arsivle</a
+    >
+  </div>
+  {%endif%}
+</div>
+
+<style>
+  .btn {
+    width: 100%;
+  }
+  .buttonlar {
+    margin-left: 250px;
+    padding-left: 250px;
+  }
+  .center {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .d-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #onbilgi {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+  }
+  #date {
+    float: right;
+    padding-right: 10%;
+  }
+  #serialno {
+    color: red;
+  }
+</style>

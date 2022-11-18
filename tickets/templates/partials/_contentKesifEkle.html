@@ -1,9 +1,19 @@
+<style>
+  .bas {
+    border-radius: 16px;
+    position: relative;
+    background-color: rgb(70, 103, 151);
+    padding-top: 5px;
+    padding-bottom: 2px;
+    color: rgb(255, 255, 255);
+  }
+</style>
 
 <div class="container">
   <h5 class="bas text-center mt-3">KEŞİF FORMU</h5>
   <div class="row mt-3">
 
-    <div class="col-11" style="margin-left:10px ;">
+    <div class="col-11" style="margin-left:10px ; ">
       <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <table>
@@ -12,6 +22,7 @@
 
           <!-- <label for="GenelSecim">Hangi Keşifler Yapılacak </label>  -->
           <hr />
+          
           <div class="row">
             <li>
               <!-- {{form.kesifPTSVarMi}} -->
@@ -55,19 +66,28 @@
             </div>
           </table>
         </div>
+        <div class="col-12" id="Olayformgizli" style="display: none">
+          <table>
+            <div class="div">
+              <h5 class="bas text-center mt-3">Olay Kesif Formu</h5>
+              {{Olayform.media}} {{Olayform.as_p}}
+            </div>
+          </table>
+        </div>
         <!-- PTS Sol taraf formu --------------------- -->
         <div class="div" id="PTSform" style="display: none">
           <h5 class="bas text-center mt-3">Plaka Tanıma Sistemi Kesif Formu</h5>
           <div class="row">
             <div class="col-4">
-              <li>
-                <label for="myCheckKamera" class="mt-3">Kamera</label>
-                <input
-                  type="checkbox"
-                  id="myCheckKamera"
-                  onclick="myFunctionKamera()"
-                />
-              </li>
+                <div class="form-check">
+                  <label for="myCheckKamera" class="form-check-label">Kamera</label>
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="myCheckKamera"
+                    onclick="myFunctionKamera()"
+                  />
+                </div>
             </div>
             <div class="col-8">
               <!-- PTS SAĞ TARAF FORMU -->
@@ -187,14 +207,15 @@
           </div>
           <div class="row">
             <div class="col-4">
-              <li>
-                <label for="myCheckDirek" class="mt-3">Direk</label>
+              <div class="form-check">
+                <label for="myCheckDirek" class="form-check-label">Direk</label>
                 <input
+                  class="form-check-input"
                   type="checkbox"
                   id="myCheckDirek"
                   onclick="myFunctionDirek()"
                 />
-              </li>
+              </div>
             </div>
             <div class="col-8">
               <div class="div" id="PTSformDirek" style="display: none">
@@ -232,16 +253,15 @@
           </div>
           <div class="row">
             <div class="col-4">
-              <li>
-                <label for="myCheckBilgisayar" class="mt-3"
-                  >Bilgisayar</label
-                >
+              <div class="form-check">
+                <label for="myCheckBilgisayar" class="form-check-label">Bilgisayar</label>
                 <input
+                  class="form-check-input"
                   type="checkbox"
                   id="myCheckBilgisayar"
                   onclick="myFunctionBilgisayar()"
                 />
-              </li>
+              </div>
             </div>
             <div class="col-8">
               <div class="div" id="PTSformBilgisayar" style="display: none">
@@ -265,14 +285,15 @@
           </div>
           <div class="row">
             <div class="col-4">
-              <li>
-                <label for="myCheckIOkart" class="mt-3">IO-kart</label>
+              <div class="form-check">
+                <label for="myCheckIOkart" class="form-check-label">IO-kart</label>
                 <input
+                  class="form-check-input"
                   type="checkbox"
                   id="myCheckIOkart"
                   onclick="myFunctionIOkart()"
                 />
-              </li>
+              </div>
             </div>
             <div class="col-8">
               <div class="div" id="PTSformIOkart" style="display: none">
@@ -317,14 +338,15 @@
           </div>
           <div class="row">
             <div class="col-4">
-              <li>
-                <label for="myCheckSwitch" class="mt-3">Switch</label>
+              <div class="form-check">
+                <label for="myCheckSwitch" class="form-check-label">Switch</label>
                 <input
+                  class="form-check-input"
                   type="checkbox"
                   id="myCheckSwitch"
                   onclick="myFunctionSwitch()"
                 />
-              </li>
+              </div>
             </div>
             <div class="col-8">
               <div class="div" id="PTSformSwitch" style="display: none">
@@ -355,14 +377,61 @@
           </div>
           <div class="row">
             <div class="col-4">
-              <li>
-                <label for="myCheckLedEkran" class="mt-3">Led Ekran</label>
+              <div class="form-check">
+                <label for="myCheckLoop" class="form-check-label">Loop Dedektor</label>
                 <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="myCheckLoop"
+                  onclick="myFunctionLoop()"
+                />
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="div" id="PTSformLoop" style="display: none">
+                <h5 class="bas text-center mt-3" >Loop Dedektor Formu</h5>
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSLoopDedektorSayisi.id_for_label}}"
+                >
+                Loop Dedektor Sayısı
+                </label>
+                {{PTSform.kesifPTSLoopDedektorSayisi}}
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSLoopTrafoSayisi.id_for_label}}"
+                >
+                Loop Trafo Sayısı
+                </label>
+                {{PTSform.kesifPTSLoopTrafoSayisi}}           
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSLoopKabloCesidi.id_for_label}}"
+                >
+                  Loop Kablo Çeşidi
+                </label>
+                {{PTSform.kesifPTSLoopKabloCesidi}}           
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSLoopKabloMetresi.id_for_label}}"
+                >
+                  Loop Kablo Metresi
+                </label>
+                {{PTSform.kesifPTSLoopKabloMetresi}}           
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check">
+                <label for="myCheckLedEkran" class="form-check-label">Led Ekran</label>
+                <input
+                  class="form-check-input"
                   type="checkbox"
                   id="myCheckLedEkran"
                   onclick="myFunctionLedEkran()"
                 />
-              </li>
+              </div>
             </div>
             <div class="col-8">
               <div class="div" id="PTSformLedEkran" style="display: none">
@@ -388,14 +457,15 @@
           </div>
           <div class="row">
               <div class="col-4">
-                <li>
-                  <label for="myCheckBariyer" class="mt-3">Bariyer</label>
+                <div class="form-check">
+                  <label for="myCheckBariyer" class="form-check-label">Bariyer</label>
                   <input
+                    class="form-check-input"
                     type="checkbox"
                     id="myCheckBariyer"
                     onclick="myFunctionBariyer()"
                   />
-                </li>
+                </div>
               </div>
               <div class="col-8">
                 <div class="div" id="PTSformBariyer" style="display: none">
@@ -421,21 +491,27 @@
                   Bariyer Kol Boyu
                   </label>
                   {{PTSform.kesifPTSBariyerKolBoyu}}           
-                          
-                 
+                  <label
+                    class="form-label"
+                    for="{{PTSform.kesifPTSMantarBariyerAciklama.id_for_label}}"
+                  >
+                  Mantar Bariyer Açıklama
+                  </label>
+                  {{PTSform.kesifPTSMantarBariyerAciklama}}                            
                 </div>
               </div>
           </div>  
           <div class="row">
             <div class="col-4">
-              <li>
-                <label for="myCheckSarfMalzeme" class="mt-3">Sarf Malzeme</label>
+              <div class="form-check">
+                <label for="myCheckSarfMalzeme" class="form-check-label">Sarf Malzeme</label>
                 <input
+                  class="form-check-input"
                   type="checkbox"
                   id="myCheckSarfMalzeme"
                   onclick="myFunctionSarfMalzeme()"
                 />
-              </li>
+              </div>
             </div>
             <div class="col-8">
               <div class="div" id="PTSformSarfMalzeme" style="display: none">
@@ -509,14 +585,15 @@
           </div>
           <div class="row">
             <div class="col-4">
-              <li>
-                <label for="myCheckFiber" class="mt-3">Fiber</label>
+              <div class="form-check">
+                <label for="myCheckFiber" class="form-check-label">Fiber</label>
                 <input
+                  class="form-check-input"
                   type="checkbox"
                   id="myCheckFiber"
                   onclick="myFunctionFiber()"
                 />
-              </li>
+              </div>
             </div>
             <div class="col-8">
               <div class="div" id="PTSformFiber" style="display: none">
@@ -599,18 +676,486 @@
                 </div>
               </div>
           </div>
-    </div>
+      </div>
 
-    <div class="col-11"  id="Olayform" style="margin-left:10px ; display: none">
-          <table>
-            <div class="div">
-              <h5 class="bas text-center mt-3">
-                Olay Algılama Sistemi Kesif Formu
-              </h5>
-              {{Olayform.media}} {{Olayform.as_p}}
+
+        <div class="div" id="Olayform" style="display: none">
+          <h5 class="bas text-center mt-3">Olay Algılama Sistemi Kesif Formu</h5>
+          <div class="row">
+            <div class="col-4">
+                <div class="form-check">
+                  <label for="myCheckKameraOlay" class="form-check-label">Kamera</label>
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="myCheckKameraOlay"
+                    onclick="myFunctionKameraOlay()"
+                  />
+                </div>
             </div>
-          </table>
-    </div>
+            <div class="col-8">
+              <!-- PTS SAĞ TARAF FORMU -->
+              <table>
+                <div class="div" id="OlayformKamera" style="display: none">
+                  <h5 class="bas text-center mt-3">Kamera Formu</h5>
+                  <label
+                    class="form-label"
+                    for="{{Olayform.kesifOlayKameraSayisi.id_for_label}}"
+                  >
+                    Kamera Sayısı
+                  </label>
+                  {{Olayform.kesifOlayKameraSayisi}}
+                  <label
+                    class="form-label"
+                    for="{{Olayform.kesifOlayKameraTipi.id_for_label}}"
+                  >
+                    Kamera Modeli
+                  </label>
+                  {{Olayform.kesifOlayKameraTipi}}
+                  <div class="form-check mt-3">
+                    <label for="myCheckKameraBoatOlay" class="form-check-label"
+                      >Kamera Boat var mı ?</label
+                    >
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="myCheckKameraBoatOlay"
+                      onclick="myFunctionKameraBoatOlay()"
+                    />
+                  </div>
+                  <div class="div"id="OlayformKameraBoat"
+                  style="display: none">
+                  <label
+                      class="form-label"
+                      for="{{Olayform.kesifOlayKameraBoatSayisi.id_for_label}}"
+                    >
+                      Kamera Boat Sayısı
+                    </label>
+                    {{Olayform.kesifOlayKameraBoatSayisi}}
+                  </div>
+                  <div class="form-check mt-3">
+                    <label for="myCheckKameraAdaptorOlay" class="form-check-label"
+                      >Kamera Adaptör var mı ?</label
+                    >
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="myCheckKameraAdaptorOlay"
+                      onclick="myFunctionKameraAdaptorOlay()"
+                    />
+                  </div>
+                  <div class="div"id="OlayformKameraAdaptor"
+                  style="display: none">
+                  <label
+                      class="form-label"
+                      for="{{Olayform.kesifOlayKameraAdaptorSayisi.id_for_label}}"
+                    >
+                      Kamera Adaptör Sayısı
+                    </label>
+                    {{Olayform.kesifOlayKameraAdaptorSayisi}}
+                  </div>
+                  <div class="form-check mt-3">
+                    <label for="myCheckExtraKameraOlay" class="form-check-label"
+                      >Extra Kamera var mı ?</label
+                    >
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="myCheckExtraKameraOlay"
+                      onclick="myFunctionExtraKameraOlay()"
+                    />
+                  </div>
+                  <div
+                    class="div"
+                    id="OlayformExtraKamera"
+                    style="display: none"
+                  >
+                    <label
+                      class="form-label"
+                      for="{{Olayform.kesifOlayExtraKameraSayisi.id_for_label}}"
+                    >
+                      Extra Kamera Sayısı
+                    </label>
+                    {{Olayform.kesifOlayExtraKameraSayisi}}
+                    <label
+                      class="form-label"
+                      for="{{Olayform.kesifOlayExtraKameraTipi.id_for_label}}"
+                    >
+                      Extra Kamera Modeli
+                    </label>
+                    {{Olayform.kesifOlayExtraKameraTipi}}
+                    <div class="form-check mt-3">
+                      <label for="myCheckExtraKameraAdaptorOlay" class="form-check-label"
+                        >Extra Kamera Adaptör var mı ?</label
+                      >
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="myCheckExtraKameraAdaptorOlay"
+                        onclick="myFunctionExtraKameraAdaptorOlay()"
+                      />
+                    </div>
+                    <div class="div"id="OlayformExtraKameraAdaptor"
+                    style="display: none">
+                    <label
+                        class="form-label"
+                        for="{{Olayform.kesifOlayExtraKameraAdaptorSayisi.id_for_label}}"
+                      >
+                        Extra Kamera Adaptör Sayısı
+                      </label>
+                      {{Olayform.kesifOlayExtraKameraAdaptorSayisi}}
+                  </div>
+                </div>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check">
+                <label for="myCheckDirekOlay" class="form-check-label">Direk</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="myCheckDirekOlay"
+                  onclick="myFunctionDirekOlay()"
+                />
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="div" id="OlayformDirek" style="display: none">
+                <h5 class="bas text-center mt-3">Direk Formu</h5>
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayDirekSayisi.id_for_label}}"
+                >
+                  Direk Sayısı
+                </label>
+                {{Olayform.kesifOlayDirekSayisi}}
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayDirekUzunlugu.id_for_label}}"
+                >
+                  Direk Uzunluğu
+                </label>
+                {{Olayform.kesifOlayDirekUzunlugu}}
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayFlanshSayisi.id_for_label}}"
+                >
+                  Direk Flansh Sayısı
+                </label>
+                {{Olayform.kesifOlayFlanshSayisi}}
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayDirekAçıklama.id_for_label}}"
+                >
+                  Direk Açıklama
+                </label>
+                {{Olayform.kesifOlayDirekAçıklama}}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check">
+                <label for="myCheckBilgisayarOlay" class="form-check-label">Bilgisayar</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="myCheckBilgisayarOlay"
+                  onclick="myFunctionBilgisayarOlay()"
+                />
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="div" id="OlayformBilgisayar" style="display: none">
+                <h5 class="bas text-center mt-3">Bilgisayar Formu</h5>
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayBilgisayarConfigi.id_for_label}}"
+                >
+                  Bilgisayar Özellikleri
+                </label>
+                {{Olayform.kesifOlayBilgisayarConfigi}}
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayBilgisayarSayısı.id_for_label}}"
+                >
+                  Bilgisayar Sayısı
+                </label>
+                {{Olayform.kesifOlayBilgisayarSayısı}}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check">
+                <label for="myCheckIOkartOlay" class="form-check-label">IO-kart</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="myCheckIOkartOlay"
+                  onclick="myFunctionIOkartOlay()"
+                />
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="div" id="OlayformIOkart" style="display: none">
+                <h5 class="bas text-center mt-3">IO-Kart Formu</h5>
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayIoKartSayısı.id_for_label}}"
+                >
+                  IO-kart Sayısı
+                </label>
+                {{Olayform.kesifOlayIoKartSayısı}}
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayIoKartTipi.id_for_label}}"
+                >
+                  IO-kart Tipi
+                </label>
+                {{Olayform.kesifOlayIoKartTipi}}
+                <div class="form-check mt-3">
+                  <label for="myCheckModulVarMıOlay" class="form-check-label"
+                    >Modul var mı ?</label
+                  >
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="myCheckModulVarMıOlay"
+                    onclick="myFunctionModulVarMıOlay()"
+                  />
+                </div>
+                <div class="div" id="OlayformModulVarMı" style="display: none">
+                  <label
+                    class="form-label"
+                    for="{{Olayform.kesifOlayIoKartModulSayısı.id_for_label}}"
+                  >
+                    Modul Sayısı
+                  </label>
+                  {{Olayform.kesifOlayIoKartModulSayısı}}
+                
+                </div>    
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check">
+                <label for="myCheckSwitchOlay" class="form-check-label">Switch</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="myCheckSwitchOlay"
+                  onclick="myFunctionSwitchOlay()"
+                />
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="div" id="OlayformSwitch" style="display: none">
+                <h5 class="bas text-center mt-3" >Switch Formu</h5>
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlaySwitchSayisi.id_for_label}}"
+                >
+                  Switch Sayısı
+                </label>
+                {{Olayform.kesifOlaySwitchSayisi}}
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlaySwitchPortSayisi.id_for_label}}"
+                >
+                  Switch Portu
+                </label>
+                {{Olayform.kesifOlaySwitchPortSayisi}}           
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlaySwitchPoeMi.id_for_label}}"
+                >
+                  Switch Poe Mi
+                </label>
+                {{Olayform.kesifOlaySwitchPoeMi}}           
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check">
+                <label for="myCheckSarfMalzemeOlay" class="form-check-label">Sarf Malzeme</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="myCheckSarfMalzemeOlay"
+                  onclick="myFunctionSarfMalzemeOlay()"
+                />
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="div" id="OlayformSarfMalzeme" style="display: none">
+                <h5 class="bas text-center mt-3">Kablolama Formu</h5>
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlaySpiralMetre.id_for_label}}"
+                >
+                Spiral Metresi 
+                </label>
+                {{Olayform.kesifOlaySpiralMetre}}
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlaySpiralÇapı.id_for_label}}"
+                >
+                Spiral Çapı
+                </label>
+                {{Olayform.kesifOlaySpiralÇapı}}           
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayEnerjikablometre.id_for_label}}"
+                >
+                Enerji Kablosu Metre
+                </label>
+                {{Olayform.kesifOlayEnerjikablometre}}           
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayEnerjikabloTipi.id_for_label}}"
+                >
+                Enerji Kablosu Tipi
+                </label>
+                {{Olayform.kesifOlayEnerjikabloTipi}}           
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayCAT6kablometre.id_for_label}}"
+                >
+                CAT6 kablo metresi
+                </label>
+                {{Olayform.kesifOlayCAT6kablometre}}           
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayDT8kablometre.id_for_label}}"
+                >
+                DT8 kablo metresi
+                </label>
+                {{Olayform.kesifOlayDT8kablometre}}     
+                <h5 class="bas text-center mt-3">Pano Formu</h5>
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayPanoSayisi.id_for_label}}"
+                >
+                Pano Sayısı
+                </label>
+                {{Olayform.kesifOlayPanoSayisi}}
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayPanoOlcusu.id_for_label}}"
+                >
+                Pano Ölçüsü
+                </label>
+                {{Olayform.kesifOlayPanoOlcusu}}
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayPanoTipi.id_for_label}}"
+                >
+                Pano Ortam Tipi
+                </label>
+                {{Olayform.kesifOlayPanoTipi}}            
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check">
+                <label for="myCheckFiberOlay" class="form-check-label">Fiber</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="myCheckFiberOlay"
+                  onclick="myFunctionFiberOlay()"
+                />
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="div" id="OlayformFiber" style="display: none">
+                <h5 class="bas text-center mt-3">Fiber Formu</h5>
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayFiberMetre.id_for_label}}"
+                >
+                Fiber Metresi 
+                </label>
+                {{Olayform.kesifOlayFiberMetre}}
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayFiberKabloModeli.id_for_label}}"
+                >
+                Fiber Kablo Tipi
+                </label>
+                {{Olayform.kesifOlayFiberKabloModeli}}           
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayPatchPanelSayisi.id_for_label}}"
+                >
+                Patch Panel Sayısı
+                </label>
+                {{Olayform.kesifOlayPatchPanelSayisi}}           
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayPatchPanelTipi.id_for_label}}"
+                >
+                Patch Panel Tipi
+                </label>
+                {{Olayform.kesifOlayPatchPanelTipi}}           
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayPatchPanelEkKasetSayisi.id_for_label}}"
+                >
+                Patch Panel Kaset Sayısı
+                </label>
+                {{Olayform.kesifOlayPatchPanelEkKasetSayisi}}           
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayPatchCordSayisi.id_for_label}}"
+                >
+                Patch Cord Sayısı
+                </label>
+                {{Olayform.kesifOlayPatchCordSayisi}}     
+                  
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayPatchCordTipi.id_for_label}}"
+                >
+                Patch Cord Tipi
+                </label>
+                {{Olayform.kesifOlayPatchCordTipi}}     
+                  
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayFiberAdaptorSayisi.id_for_label}}"
+                >
+                Fiber Adaptor Sayısı
+                </label>
+                {{Olayform.kesifOlayFiberAdaptorSayisi}}     
+                  
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayFiberAdaptorTipi.id_for_label}}"
+                >
+                Fiber Adaptor Tipi
+                </label>
+                {{Olayform.kesifOlayFiberAdaptorTipi}}     
+                  
+                <label
+                  class="form-label"
+                  for="{{Olayform.kesifOlayCibikModuleSayisi.id_for_label}}"
+                >
+                Cibik Modul Sayısı
+                </label>
+                {{Olayform.kesifOlayCibikModuleSayisi}}     
+                  
+                </div>
+              </div>
+          </div>
+      </div>
+
       <div class="col-11">
         <hr class="mt-3" />
         <button

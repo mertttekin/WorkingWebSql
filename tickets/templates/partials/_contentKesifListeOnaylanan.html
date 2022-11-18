@@ -1,10 +1,10 @@
 {% load static %}
 
 <style>
-  .bas {
+  .bass {
     border-radius: 16px;
     position: relative;
-    background-color: rgb(226, 149, 25);
+    background-color: rgb(56, 211, 64);
     padding-top: 5px;
     padding-bottom: 2px;
     color: rgb(255, 255, 255);
@@ -12,10 +12,10 @@
 </style>
 
 <div class="col-12">
-  <h5 class="bas text-center mt-3">BEKLEYEN KESİF LİSTESİ</h5>
+  <h5 class="bass text-center mt-3">ONAYLANAN KESİF LİSTESİ</h5>
 
   <ul class="list-group">
-    {% for kesif in formliste %} {% if not kesif.kesifOnaylandiMi %}
+    {% for kesif in formliste %} {% if kesif.kesifOnaylandiMi%}
     <div class="list-group-item list-group-item-action" style="margin: 1px">
       <div class="row">
         <div class="col-md-12">

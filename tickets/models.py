@@ -186,6 +186,13 @@ class KesifPTSMalzeme(models.Model):
         ("GT-4","GT-4"),
         ("GT-8","GT-8"),
     )
+    MANTAR_BARIYER_MODELİ_CHOICE = (
+        ("2 li","2 li"),
+        ("3 lu","3 lu"),
+        ("4 lu","4 lu"),
+        ("5 li","5 li"),
+        ("6 li","6 li"),
+    )
     FIBER_KABLO_MODELİ_CHOICE = (
         ("2 Core","2 Core"),
         ("4 Core","4 Core"),
@@ -203,94 +210,236 @@ class KesifPTSMalzeme(models.Model):
         ("SC-SC","SC-SC"),
         ("LC-LC","LC-LC"),
     )
-    #check box dropdown menu
-    kesifPTSyeradi = models.CharField(max_length=50, null=True)
-    kesifPTSKameraSayisi =  models.IntegerField(default=0)
-    kesifPTSKameraBoatSayisi =  models.IntegerField(default=0)
-    kesifPTSKameraAdaptorSayisi =  models.IntegerField(default=0)
-    kesifPTSExtraKameraAdaptorSayisi =  models.IntegerField(default=0)
-    kesifPTSKameraTipi = models.CharField(default="yok",max_length=25,choices=COLOR_CHOICES)
-    kesifPTSExtraKameraSayisi =  models.IntegerField(default=0)
-    kesifPTSExtraKameraTipi = models.CharField(default="yok",max_length=25,choices=COLOR_CHOICES)
-    kesifPTSDirekSayisi = models.IntegerField(default=0)
-    kesifPTSDirekUzunlugu = models.CharField(max_length=25,default="yok")
-    kesifPTSFlanshSayisi = models.CharField(max_length=25,default="1",choices=DIREK_FLANSH_CHOICE)
-    kesifPTSDirekAçıklama = models.TextField(max_length=200,default="yok")
-    kesifPTSAdaptorSayisi = models.IntegerField(default=0)
-    kesifPTSSwitchPortSayisi = models.CharField(max_length=25, null=True,default="yok",choices=SWITCH_PORT_CHOICE)
-    kesifPTSSwitchSayisi = models.IntegerField(default=0)
-    kesifPTSSwitchPoeMi = models.BooleanField(default=False)
-    kesifPTSBilgisayarConfigi = models.CharField(max_length=100,default="yok")
-    kesifPTSBilgisayarSayısı = models.IntegerField(default=0)
-    kesifPTSIoKartSayısı = models.IntegerField(default=0)
-    kesifPTSIoKartTipi = models.CharField(max_length=25,default="yok",choices=IO_MODUL_CHOICE)
-    kesifPTSIoKartModulSayısı = models.IntegerField(default=0)
-    kesifPTSIoKartAdaptorSayısı = models.IntegerField(default=0)
-    kesifPTSPanoTipi = models.CharField(max_length=50,default="yok",choices=PANO_ORTAM_CHOICE)
-    kesifPTSPanoOlcusu = models.CharField(max_length=50,default="yok")
-    kesifPTSPanoSayisi = models.IntegerField(default=0)
-    kesifPTSCAT6kablometre = models.IntegerField(default=0)
-    kesifPTSEnerjikablometre = models.IntegerField(default=0)
-    kesifPTSEnerjikabloTipi = models.CharField(max_length=50,default="yok",choices=ENERJİ_KABLO_CHOICE)
-    kesifPTSDT8kablometre = models.IntegerField(default=0)
-    kesifPTSSpiralMetre = models.IntegerField(default=0)
-    kesifPTSSpiralÇapı = models.CharField(max_length=25,default="yok") 
-    kesifPTSBariyerSayisi =  models.IntegerField(default=0)
-    kesifPTSBariyerModeli = models.CharField(max_length=25,default="yok",choices=BARIYER_MODELİ_CHOICE) 
-    kesifPTSBariyerKolBoyu =  models.IntegerField(default=0)
-    kesifPTSLedEkranSayisi =  models.IntegerField(default=0)
-    kesifPTSLedEkranModeli = models.CharField(max_length=25, null=True,default="yok") 
+    LOOP_KABLO_CHOICE = (
+        ("0.75mm² NYAF","0.75mm² NYAF"),
+        ("1mm² NYAF","1mm² NYAF"),
+        ("1.5mm² NYAF","1.5mm² NYAF"),
+        ("2.5mm² NYAF","2.5mm² NYAF"),
 
-    kesifPTSFiberMetre = models.IntegerField(default=0)
+    )
+    #check box dropdown menu
+    kesifPTSyeradi = models.CharField(max_length=50, null=True,blank=True)
+    kesifPTSKameraSayisi =  models.IntegerField(null=True,blank=True)
+    kesifPTSKameraBoatSayisi =  models.IntegerField(null=True,blank=True)
+    kesifPTSKameraAdaptorSayisi =  models.IntegerField(null=True,blank=True)
+    kesifPTSExtraKameraAdaptorSayisi =  models.IntegerField(null=True,blank=True)
+    kesifPTSKameraTipi = models.CharField(null=True,blank=True,max_length=25,choices=COLOR_CHOICES)
+    kesifPTSExtraKameraSayisi =  models.IntegerField(null=True,blank=True)
+    kesifPTSExtraKameraTipi = models.CharField(null=True,blank=True,max_length=25,choices=COLOR_CHOICES)
+    kesifPTSDirekSayisi = models.IntegerField(null=True,blank=True)
+    kesifPTSDirekUzunlugu = models.CharField(max_length=25,null=True,blank=True)
+    kesifPTSFlanshSayisi = models.CharField(max_length=25,default="1",choices=DIREK_FLANSH_CHOICE)
+    kesifPTSDirekAçıklama = models.TextField(max_length=200,null=True,blank=True)
+    kesifPTSAdaptorSayisi = models.IntegerField(null=True,blank=True)
+    kesifPTSSwitchPortSayisi = models.CharField(max_length=25, null=True,default="yok",choices=SWITCH_PORT_CHOICE)
+    kesifPTSSwitchSayisi = models.IntegerField(null=True,blank=True)
+    kesifPTSSwitchPoeMi = models.BooleanField(default=False)
+    kesifPTSBilgisayarConfigi = models.CharField(max_length=100,null=True,blank=True)
+    kesifPTSBilgisayarSayısı = models.IntegerField(null=True,blank=True)
+    kesifPTSIoKartSayısı = models.IntegerField(null=True,blank=True)
+    kesifPTSIoKartTipi = models.CharField(max_length=25,default="yok",choices=IO_MODUL_CHOICE)
+    kesifPTSIoKartModulSayısı = models.IntegerField(null=True,blank=True)
+    kesifPTSIoKartAdaptorSayısı = models.IntegerField(null=True,blank=True)
+    kesifPTSPanoTipi = models.CharField(max_length=50,default="yok",choices=PANO_ORTAM_CHOICE)
+    kesifPTSPanoOlcusu = models.CharField(max_length=50,null=True,blank=True)
+    kesifPTSPanoSayisi = models.IntegerField(null=True,blank=True)
+    kesifPTSCAT6kablometre = models.IntegerField(null=True,blank=True)
+    kesifPTSEnerjikablometre = models.IntegerField(null=True,blank=True)
+    kesifPTSEnerjikabloTipi = models.CharField(max_length=50,default="yok",choices=ENERJİ_KABLO_CHOICE)
+    kesifPTSDT8kablometre = models.IntegerField(null=True,blank=True)
+    kesifPTSSpiralMetre = models.IntegerField(null=True,blank=True)
+    kesifPTSSpiralÇapı = models.CharField(max_length=25,null=True,blank=True) 
+
+    kesifPTSBariyerSayisi =  models.IntegerField(null=True,blank=True)
+    kesifPTSBariyerModeli = models.CharField(max_length=25,default="yok",choices=BARIYER_MODELİ_CHOICE) 
+    kesifPTSBariyerKolBoyu =  models.IntegerField(null=True,blank=True)
+
+    kesifPTSMantarBariyerAciklama = models.TextField(max_length=200,null=True,blank=True)
+
+
+    kesifPTSLoopDedektorSayisi = models.IntegerField(null=True,blank=True)
+    kesifPTSLoopTrafoSayisi = models.IntegerField(null=True,blank=True)
+    kesifPTSLoopKabloCesidi = models.CharField(max_length=25, null=True,blank=True,choices=LOOP_KABLO_CHOICE)
+    kesifPTSLoopKabloMetresi = models.IntegerField(null=True,blank=True)
+
+
+
+    kesifPTSLedEkranSayisi =  models.IntegerField(null=True,blank=True)
+    kesifPTSLedEkranModeli = models.CharField(max_length=25,null=True,blank=True) 
+
+    kesifPTSFiberMetre = models.IntegerField(null=True,blank=True)
     kesifPTSFiberKabloModeli = models.CharField(max_length=25,default="yok",choices=FIBER_KABLO_MODELİ_CHOICE) 
 
-    kesifPTSPatchPanelSayisi =  models.IntegerField(default=0)
+    kesifPTSPatchPanelSayisi =  models.IntegerField(null=True,blank=True)
     kesifPTSPatchPanelTipi = models.CharField(max_length=25,default="yok",choices=PATCH_PANEL_MODELİ_CHOICE) 
 
-    kesifPTSPatchPanelEkKasetSayisi =  models.IntegerField(default=0)
-    kesifPTSPatchCordSayisi =  models.IntegerField(default=0)
+    kesifPTSPatchPanelEkKasetSayisi =  models.IntegerField(null=True,blank=True)
+    kesifPTSPatchCordSayisi =  models.IntegerField(null=True,blank=True)
     kesifPTSPatchCordTipi = models.CharField(max_length=25,default="yok",choices=PATCH_CORD_AND_FIBER_ADAPTOR_MODELİ_CHOICE) 
 
-    kesifPTSFiberAdaptorSayisi =  models.IntegerField(default=0)
+    kesifPTSFiberAdaptorSayisi =  models.IntegerField(null=True,blank=True)
     kesifPTSFiberAdaptorTipi = models.CharField(max_length=25,default="yok",choices=PATCH_CORD_AND_FIBER_ADAPTOR_MODELİ_CHOICE) 
 
-    kesifPTSCibikModuleSayisi =  models.IntegerField(default=0)
+    kesifPTSCibikModuleSayisi =  models.IntegerField(null=True,blank=True)
 
 
 
-    slug = models.SlugField(null=False, unique=True,
+    slug = models.SlugField(null=False,
                             db_index=True, blank=True, editable=False)
     
 
     def __str__(self):
-        return f"{self.kesifKameraSayisi}"
+        return f"{'Pts'+self.kesifKameraSayisi}"
 
     def save(self, *args, **kwargs):
         super(KesifPTSMalzeme, self).save(*args, **kwargs)
         if not self.slug:
-            self.slug = slugify(self.kesifPTSyeradi) + "-" + str(self.id)
+            self.slug ="Pts"+ slugify(self.kesifPTSyeradi) + "-" + str(self.id)
             self.save()
 
 class KesifOlayMalzeme(models.Model):
 
-    #check box dropdown menu
-    kesifOlayKameraSayisi =  models.IntegerField(default=0)
-    kesifOlayDirekSayisi = models.IntegerField(default=0)
-    kesifOlaySwitchSayisi = models.IntegerField(default=0)
-    kesifOlayBigisayarConfigi = models.CharField(max_length=100,default="yok")
+    COLOR_CHOICES = (
+    ('yok','yok'),
+    ('IPC-HFW1431TP-ZS 4MP','IPC-HFW1431TP-ZS 4MP'),
+    ('IPC-HFW5231EP-Z 2MP', 'IPC-HFW5231EP-Z 2MP'),
+    ('Muhafazalı Set (Box)', 'Muhafazalı Set (Box)'), 
+    )
+    DIREK_FLANSH_CHOICE = (
+        ("1","1"),
+        ("2","2"),
+    )
+    IO_MODUL_CHOICE = (
+        ("TİNY","TİNY"),
+        ("AKSİYON","AKSİYON"),
+    )
+    SWITCH_PORT_CHOICE = (
+        ("5","5"),
+        ("8","8"),
+        ("5+2","5+2"),
+        ("8+2","8+2"),
+        ("16+2","16+2"),
+        ("8+4","8+4"),
+        ("16+4","16+4"),
+    )
+    ENERJİ_KABLO_CHOICE = (
+        ("3x1.5 TTR","3x1.5 TTR"),
+        ("3x2.5 TTR","3x2.5 TTR"),
+        ("2x1.5 TTR","2x1.5 TTR"),
+    )
+    PANO_ORTAM_CHOICE = (
+        ("iç ortam ","iç ortam "),
+        ("dış ortam","dış ortam"),
+    )
+    BARIYER_MODELİ_CHOICE = (
+        ("3250","3250"),
+        ("G-4000","G-4000"),
+        ("4040E","4040E"),
+        ("2080E","2080E"),
+        ("GT-4","GT-4"),
+        ("GT-8","GT-8"),
+    )
+    MANTAR_BARIYER_MODELİ_CHOICE = (
+        ("2 li","2 li"),
+        ("3 lu","3 lu"),
+        ("4 lu","4 lu"),
+        ("5 li","5 li"),
+        ("6 li","6 li"),
+    )
+    FIBER_KABLO_MODELİ_CHOICE = (
+        ("2 Core","2 Core"),
+        ("4 Core","4 Core"),
+        ("8 Core","8 Core"),
+        ("16 Core","16 Core"),
+    )
+    PATCH_PANEL_MODELİ_CHOICE = (
+        ("2 li","2 li"),
+        ("4 lu","4 lu"),
+        ("8 li","8 li"),
+        ("12 li","12 li"),
+    )
+    PATCH_CORD_AND_FIBER_ADAPTOR_MODELİ_CHOICE = (
+        ("SC-LC","SC-LC"),
+        ("SC-SC","SC-SC"),
+        ("LC-LC","LC-LC"),
+    )
+    LOOP_KABLO_CHOICE = (
+        ("0.75mm² NYAF","0.75mm² NYAF"),
+        ("1mm² NYAF","1mm² NYAF"),
+        ("1.5mm² NYAF","1.5mm² NYAF"),
+        ("2.5mm² NYAF","2.5mm² NYAF"),
+
+    )  #checkox dropdown menu
+
+    kesifOlayyeradi = models.CharField(max_length=50, null=True,blank=True)
+    kesifOlayKameraSayisi =  models.IntegerField(null=True,blank=True)
+    kesifOlayKameraBoatSayisi =  models.IntegerField(null=True,blank=True)
+    kesifOlayKameraAdaptorSayisi =  models.IntegerField(null=True,blank=True)
+    kesifOlayExtraKameraAdaptorSayisi =  models.IntegerField(null=True,blank=True)
+    kesifOlayKameraTipi = models.CharField(null=True,blank=True,max_length=25,choices=COLOR_CHOICES)
+    kesifOlayExtraKameraSayisi =  models.IntegerField(null=True,blank=True)
+    kesifOlayExtraKameraTipi = models.CharField(null=True,blank=True,max_length=25,choices=COLOR_CHOICES)
+    kesifOlayDirekSayisi = models.IntegerField(null=True,blank=True)
+    kesifOlayDirekUzunlugu = models.CharField(max_length=25,null=True,blank=True)
+    kesifOlayFlanshSayisi = models.CharField(max_length=25,default="1",choices=DIREK_FLANSH_CHOICE)
+    kesifOlayDirekAçıklama = models.TextField(max_length=200,null=True,blank=True)
+    kesifOlayAdaptorSayisi = models.IntegerField(null=True,blank=True)
+    kesifOlaySwitchPortSayisi = models.CharField(max_length=25, null=True,default="yok",choices=SWITCH_PORT_CHOICE)
+    kesifOlaySwitchSayisi = models.IntegerField(null=True,blank=True)
+    kesifOlaySwitchPoeMi = models.BooleanField(default=False)
+    kesifOlayBilgisayarConfigi = models.CharField(max_length=100,null=True,blank=True)
+    kesifOlayBilgisayarSayısı = models.IntegerField(null=True,blank=True)
+    kesifOlayIoKartSayısı = models.IntegerField(null=True,blank=True)
+    kesifOlayIoKartTipi = models.CharField(max_length=25,default="yok",choices=IO_MODUL_CHOICE)
+    kesifOlayIoKartModulSayısı = models.IntegerField(null=True,blank=True)
+    kesifOlayIoKartAdaptorSayısı = models.IntegerField(null=True,blank=True)
+    kesifOlayPanoTipi = models.CharField(max_length=50,default="yok",choices=PANO_ORTAM_CHOICE)
+    kesifOlayPanoOlcusu = models.CharField(max_length=50,null=True,blank=True)
+    kesifOlayPanoSayisi = models.IntegerField(null=True,blank=True)
+    kesifOlayCAT6kablometre = models.IntegerField(null=True,blank=True)
+    kesifOlayEnerjikablometre = models.IntegerField(null=True,blank=True)
+    kesifOlayEnerjikabloTipi = models.CharField(max_length=50,default="yok",choices=ENERJİ_KABLO_CHOICE)
+    kesifOlayDT8kablometre = models.IntegerField(null=True,blank=True)
+    kesifOlaySpiralMetre = models.IntegerField(null=True,blank=True)
+    kesifOlayBariyerSayisi =  models.IntegerField(null=True,blank=True)
+    kesifOlaySpiralÇapı = models.CharField(max_length=25,null=True,blank=True) 
+    kesifOlayBariyerModeli = models.CharField(max_length=25,default="yok",choices=BARIYER_MODELİ_CHOICE) 
+    kesifOlayBariyerKolBoyu =  models.IntegerField(null=True,blank=True)
+    kesifOlayMantarBariyerAciklama = models.TextField(max_length=200,null=True,blank=True)
+    kesifOlayLoopDedektorSayisi = models.IntegerField(null=True,blank=True)
+    kesifOlayLoopTrafoSayisi = models.IntegerField(null=True,blank=True)
+    kesifOlayLoopKabloCesidi = models.CharField(max_length=25, null=True,blank=True,choices=LOOP_KABLO_CHOICE)
+    kesifOlayLoopKabloMetresi = models.IntegerField(null=True,blank=True)
+    kesifOlayLedEkranSayisi =  models.IntegerField(null=True,blank=True)
+    kesifOlayLedEkranModeli = models.CharField(max_length=25,null=True,blank=True) 
+    kesifOlayFiberMetre = models.IntegerField(null=True,blank=True)
+    kesifOlayFiberKabloModeli = models.CharField(max_length=25,default="yok",choices=FIBER_KABLO_MODELİ_CHOICE) 
+    kesifOlayPatchPanelSayisi =  models.IntegerField(null=True,blank=True)
+    kesifOlayPatchPanelTipi = models.CharField(max_length=25,default="yok",choices=PATCH_PANEL_MODELİ_CHOICE) 
+    kesifOlayPatchPanelEkKasetSayisi =  models.IntegerField(null=True,blank=True)
+    kesifOlayPatchCordSayisi =  models.IntegerField(null=True,blank=True)
+    kesifOlayPatchCordTipi = models.CharField(max_length=25,default="yok",choices=PATCH_CORD_AND_FIBER_ADAPTOR_MODELİ_CHOICE) 
+    kesifOlayFiberAdaptorSayisi =  models.IntegerField(null=True,blank=True)
+    kesifOlayFiberAdaptorTipi = models.CharField(max_length=25,default="yok",choices=PATCH_CORD_AND_FIBER_ADAPTOR_MODELİ_CHOICE) 
+    kesifOlayCibikModuleSayisi =  models.IntegerField(null=True,blank=True)
+      #checOlayox dropdown menu
+    # kesOlaylayKameraSayisi =  models.IntegerField(default=0)
+    # kesifOlayDirekSayisi = models.IntegerField(default=0)
+    # kesifOlaySwitchSayisi = models.IntegerField(default=0)
+    # kesifOlayBigisayarConfigi = models.CharField(max_length=100,default="yok")
 
 
-    slug = models.SlugField(null=False, unique=True,
+    slug = models.SlugField(null=False,
                             db_index=True, blank=True, editable=False)
     
 
     def __str__(self):
-        return f"{self.kesifKameraSayisi}"
+        return f"{'Olay'+self.kesifKameraSayisi}"
 
     def save(self, *args, **kwargs):
         super(KesifOlayMalzeme, self).save(*args, **kwargs)
         if not self.slug:
-            self.slug = slugify(self.kesifKameraSayisi) + "-" + str(self.id)
+            self.slug ="Olay"+slugify(self.kesifOlayyeradi) + "-" + str(self.id)
             self.save()
 
 
@@ -299,19 +448,24 @@ class Kesif(models.Model):
     #check box dropdown menu
     kesifYapilanYerAdi = models.CharField(max_length=50)
     kesifYapanKisi = models.CharField(max_length=50)
-    kesifSenaryosu = models.CharField(max_length=2000)
+    kesifSenaryosu = models.TextField()
     kesifYapilanYerTarihi = models.DateTimeField(auto_now_add=True, auto_now=False)
     kesifPTSVarMi = models.BooleanField(default=False)
     kesifOlayVarMi = models.BooleanField(default=False)
     kesifCctvVarMi = models.BooleanField(default=False)
+    # kesifCreateTime = models.DateTimeField(auto_now_add=True, auto_now=False,null=True)
+
     KesifPTSMalzemelerid = models.ForeignKey(
         KesifPTSMalzeme,null=True, on_delete=models.CASCADE, blank=True, editable=False)
     KesifOlayMalzemelerid = models.ForeignKey(
         KesifOlayMalzeme,null=True, on_delete=models.CASCADE, blank=True, editable=False)
     
 
-    slug = models.SlugField(null=False, unique=True,
+    slug = models.SlugField(null=False,
                             db_index=True, blank=True, editable=False)
+
+    kesifOnaylandiMi = models.BooleanField(default=False)
+    kesifArsivMi = models.BooleanField(default=False)
     
 
     def __str__(self):
@@ -320,7 +474,7 @@ class Kesif(models.Model):
     def save(self, *args, **kwargs):
         super(Kesif, self).save(*args, **kwargs)
         if not self.slug:
-            self.slug = slugify(self.kesifYapilanYerAdi) + "-" + str(self.id)
+            self.slug ="Kesif"+ slugify(self.kesifYapilanYerAdi) + "-" + str(self.id)
             self.save()
 
 
@@ -332,7 +486,7 @@ class ImageKesif(models.Model):
         super().save(*args, **kwargs)
         img = Image.open(self.kesifImage.path)
 
-        if img.height > 300 or img.weight>300:
-            output_size = (300,300)
+        if img.height > 600 or img.width >600:
+            output_size = (600,600)
             img.thumbnail(output_size)
             img.save(self.kesifImage.path)
