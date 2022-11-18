@@ -30,7 +30,7 @@
                     <a href="#"> <i class="fa fa-play-circle-o " aria-hidden="true"> </i> <span style="margin-left:10px;"> Arizalar</span> </a>
                 </li>
                 <li>
-                    <a href="{% url 'arsiv' %}"> <i class="fa fa-puzzle-piece" aria-hidden="true"> </i> <span style="margin-left:10px;"> Arsiv</span> </a>
+                    <a href=""> <i class="fa fa-puzzle-piece" aria-hidden="true"> </i> <span style="margin-left:10px;"> Arsiv</span> </a>
                 </li>
                 <li>
                     <a href="{% url 'paylasimgir' %}"> <i class="fa fa-font" aria-hidden="true"> </i> <span style="margin-left:10px;"> Paylaşım Gir</span> </a>
@@ -93,8 +93,8 @@
         }
       }
       function myFunctionCCTV() {
-        var checkBox = document.getElementById("myFunctionCCTV");
-        var deneme = document.getElementById("deneme");
+        var checkBox = document.getElementById("myCheckCCTV");
+        var deneme = document.getElementById("CCTVform");
         if (checkBox.checked == true){
           deneme.style.display = "block";
         } else {
@@ -353,6 +353,125 @@
           deneme5.style.display = "none";
         }
       }
+      // CCTV - Script Başlangıç
+      function myFunctionKameraCCTV() {
+        var checkBox = document.getElementById("myCheckKameraCCTV");
+        var deneme5 = document.getElementById("CCTVformKamera");
+        if (checkBox.checked == true) {
+          deneme5.style.display = "block";
+        } else {
+          deneme5.style.display = "none";
+        }
+      }
+      function myFunctionKameraBoatCCTV() {
+        var checkBox = document.getElementById("myCheckKameraBoatCCTV");
+        var deneme5 = document.getElementById("CCTVformKameraBoat");
+        if (checkBox.checked == true) {
+          deneme5.style.display = "block";
+        } else {
+          deneme5.style.display = "none";
+        }
+      }
+      function myFunctionKameraAdaptorCCTV() {
+        var checkBox = document.getElementById("myCheckKameraAdaptorCCTV");
+        var deneme5 = document.getElementById("CCTVformKameraAdaptor");
+        if (checkBox.checked == true) {
+          deneme5.style.display = "block";
+        } else {
+          deneme5.style.display = "none";
+        }
+      }
+      function myFunctionExtraKameraCCTV() {
+        var checkBox = document.getElementById("myCheckExtraKameraCCTV");
+        var deneme5 = document.getElementById("CCTVformExtraKamera");
+        if (checkBox.checked == true) {
+          deneme5.style.display = "block";
+        } else {
+          deneme5.style.display = "none";
+        }
+      }
+      function myFunctionExtraKameraAdaptorCCTV() {
+        var checkBox = document.getElementById("myCheckExtraKameraAdaptorCCTV");
+        var deneme5 = document.getElementById("CCTVformExtraKameraAdaptor");
+        if (checkBox.checked == true) {
+          deneme5.style.display = "block";
+        } else {
+          deneme5.style.display = "none";
+        }
+      }
+      function myFunctionDirekCCTV() {
+        var checkBox = document.getElementById("myCheckDirekCCTV");
+        var deneme5 = document.getElementById("CCTVformDirek");
+        if (checkBox.checked == true) {
+          deneme5.style.display = "block";
+        } else {
+          deneme5.style.display = "none";
+        }
+      }
+      function myFunctionBilgisayarCCTV() {
+        var checkBox = document.getElementById("myCheckBilgisayarCCTV");
+        var deneme5 = document.getElementById("CCTVformBilgisayar");
+        if (checkBox.checked == true) {
+          deneme5.style.display = "block";
+        } else {
+          deneme5.style.display = "none";
+        }
+      }
+      function myFunctionIOkartCCTV() {
+        var checkBox = document.getElementById("myCheckIOkartCCTV");
+        var deneme5 = document.getElementById("CCTVformIOkart");
+        if (checkBox.checked == true) {
+          deneme5.style.display = "block";
+        } else {
+          deneme5.style.display = "none";
+        }
+      }
+      function myFunctionModulVarMıCCTV() {
+        var checkBox = document.getElementById("myCheckModulVarMıCCTV");
+        var deneme5 = document.getElementById("CCTVformModulVarMı");
+        if (checkBox.checked == true) {
+          deneme5.style.display = "block";
+        } else {
+          deneme5.style.display = "none";
+        }
+      }
+      function myFunctionSwitchCCTV() {
+        var checkBox = document.getElementById("myCheckSwitchCCTV");
+        var deneme5 = document.getElementById("CCTVformSwitch");
+        if (checkBox.checked == true) {
+          deneme5.style.display = "block";
+        } else {
+          deneme5.style.display = "none";
+        }
+      }
+      function myFunctionSarfMalzemeCCTV() {
+        var checkBox = document.getElementById("myCheckSarfMalzemeCCTV");
+        var deneme5 = document.getElementById("CCTVformSarfMalzeme");
+        if (checkBox.checked == true) {
+          deneme5.style.display = "block";
+        } else {
+          deneme5.style.display = "none";
+        }
+      }
+      function myFunctionFiberCCTV() {
+        var checkBox = document.getElementById("myCheckFiberCCTV");
+        var deneme5 = document.getElementById("CCTVformFiber");
+        if (checkBox.checked == true) {
+          deneme5.style.display = "block";
+        } else {
+          deneme5.style.display = "none";
+        }
+      }
+      function myFunctionKayitCihaziCCTV() {
+        var checkBox = document.getElementById("myCheckKayitCihaziCCTV");
+        var deneme5 = document.getElementById("CCTVformKayitCihazi");
+        if (checkBox.checked == true) {
+          deneme5.style.display = "block";
+        } else {
+          deneme5.style.display = "none";
+        }
+      }
+
       </script>
       {% for msg in messages%}
 

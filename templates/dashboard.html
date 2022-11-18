@@ -80,6 +80,24 @@
 
 <!-- <hr class="featurette-divider"> -->
 
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="row">
+    <div class="col">
+      <div class="footer-copyright text-center">Designed By <a href="https://www.linkedin.com/in/mert-tekin3406/"> Mert Tekin</a> - © 2022 Copyright:
+        <a href="/"> Aksiyon Teknoloji</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
 
 
 
@@ -95,14 +113,24 @@
 </style>
 
 {% for msg in messages%}
-
+{% if message.tags == 'success' %}
 <script>
   swal({
   title: "{{msg}}",
   text: "Teşekkürler!",
-  icon: "success",
+  icon: message.tag,
   button: "Devam Et!",
 });
 </script>
+{%else%}
+<script>
+  swal({
+  title: "{{msg}}",
+  text: "Teşekkürler!",
+  icon: message.tag,
+  button: "Devam Et!",
+});
+</script>
+{%endif%}
 
 {% endfor %}

@@ -1,0 +1,306 @@
+<div class="div" id="CCTVform" style="display: none">
+  <h5 class="bas text-center mt-3">CCTV Algılama Sistemi Kesif Formu</h5>
+  <div class="row">
+    <div class="col-4">
+        <div class="form-check">
+          <label for="myCheckKameraCCTV" class="form-check-label">Kamera</label>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="myCheckKameraCCTV"
+            onclick="myFunctionKameraCCTV()"
+          />
+        </div>
+    </div>
+    <div class="col-8">
+      <!-- PTS SAĞ TARAF FORMU -->
+      <table>
+        <div class="div" id="CCTVformKamera" style="display: none">
+          <h5 class="bas text-center mt-3">Kamera Formu</h5>
+          <label
+            class="form-label"
+            for="{{CCTVform.kesifCCTVKameraSayisi.id_for_label}}"
+          >
+            Kamera Sayısı
+          </label>
+          {{CCTVform.kesifCCTVKameraSayisi}}
+          <label
+            class="form-label"
+            for="{{CCTVform.kesifCCTVKameraTipi.id_for_label}}"
+          >
+            Kamera Modeli
+          </label>
+          {{CCTVform.kesifCCTVKameraTipi}}
+          <div class="form-check mt-3">
+            <label for="myCheckKameraBoatCCTV" class="form-check-label"
+              >Kamera Boat var mı ?</label
+            >
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="myCheckKameraBoatCCTV"
+              onclick="myFunctionKameraBoatCCTV()"
+            />
+          </div>
+          <div class="div"id="CCTVformKameraBoat"
+          style="display: none">
+          <label
+              class="form-label"
+              for="{{CCTVform.kesifCCTVKameraBoatSayisi.id_for_label}}"
+            >
+              Kamera Boat Sayısı
+            </label>
+            {{CCTVform.kesifCCTVKameraBoatSayisi}}
+          </div>
+          <div class="form-check mt-3">
+            <label for="myCheckKameraAdaptorCCTV" class="form-check-label"
+              >Kamera Adaptör var mı ?</label
+            >
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="myCheckKameraAdaptorCCTV"
+              onclick="myFunctionKameraAdaptorCCTV()"
+            />
+          </div>
+          <div class="div"id="CCTVformKameraAdaptor"
+          style="display: none">
+          <label
+              class="form-label"
+              for="{{CCTVform.kesifCCTVKameraAdaptorSayisi.id_for_label}}"
+            >
+              Kamera Adaptör Sayısı
+            </label>
+            {{CCTVform.kesifCCTVKameraAdaptorSayisi}}
+          </div>
+          <div class="form-check mt-3">
+            <label for="myCheckExtraKameraCCTV" class="form-check-label"
+              >Extra Kamera var mı ?</label
+            >
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="myCheckExtraKameraCCTV"
+              onclick="myFunctionExtraKameraCCTV()"
+            />
+          </div>
+          <div
+            class="div"
+            id="CCTVformExtraKamera"
+            style="display: none"
+          >
+            <label
+              class="form-label"
+              for="{{CCTVform.kesifCCTVExtraKameraSayisi.id_for_label}}"
+            >
+              Extra Kamera Sayısı
+            </label>
+            {{CCTVform.kesifCCTVExtraKameraSayisi}}
+            <label
+              class="form-label"
+              for="{{CCTVform.kesifCCTVExtraKameraTipi.id_for_label}}"
+            >
+              Extra Kamera Modeli
+            </label>
+            {{CCTVform.kesifCCTVExtraKameraTipi}}
+            <div class="form-check mt-3">
+              <label for="myCheckExtraKameraAdaptorCCTV" class="form-check-label"
+                >Extra Kamera Adaptör var mı ?</label
+              >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="myCheckExtraKameraAdaptorCCTV"
+                onclick="myFunctionExtraKameraAdaptorCCTV()"
+              />
+            </div>
+            <div class="div"id="CCTVformExtraKameraAdaptor"
+            style="display: none">
+            <label
+                class="form-label"
+                for="{{CCTVform.kesifCCTVExtraKameraAdaptorSayisi.id_for_label}}"
+              >
+                Extra Kamera Adaptör Sayısı
+              </label>
+              {{CCTVform.kesifCCTVExtraKameraAdaptorSayisi}}
+          </div>
+        </div>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <div class="form-check">
+        <label for="myCheckDirekCCTV" class="form-check-label">Direk</label>
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="myCheckDirekCCTV"
+          onclick="myFunctionDirekCCTV()"
+        />
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="div" id="CCTVformDirek" style="display: none">
+        <h5 class="bas text-center mt-3">Direk Formu</h5>
+        <label
+          class="form-label"
+          for="{{CCTVform.kesifCCTVDirekSayisi.id_for_label}}"
+        >
+          Direk Sayısı
+        </label>
+        {{CCTVform.kesifCCTVDirekSayisi}}
+        <label
+          class="form-label"
+          for="{{CCTVform.kesifCCTVDirekUzunlugu.id_for_label}}"
+        >
+          Direk Uzunluğu
+        </label>
+        {{CCTVform.kesifCCTVDirekUzunlugu}}
+        <label
+          class="form-label"
+          for="{{CCTVform.kesifCCTVFlanshSayisi.id_for_label}}"
+        >
+          Direk Flansh Sayısı
+        </label>
+        {{CCTVform.kesifCCTVFlanshSayisi}}
+        <label
+          class="form-label"
+          for="{{CCTVform.kesifCCTVDirekAçıklama.id_for_label}}"
+        >
+          Direk Açıklama
+        </label>
+        {{CCTVform.kesifCCTVDirekAçıklama}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <div class="form-check">
+        <label for="myCheckSarfMalzemeCCTV" class="form-check-label">Sarf Malzeme</label>
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="myCheckSarfMalzemeCCTV"
+          onclick="myFunctionSarfMalzemeCCTV()"
+        />
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="div" id="CCTVformSarfMalzeme" style="display: none">
+        <h5 class="bas text-center mt-3">Kablolama Formu</h5>
+        <label
+          class="form-label"
+          for="{{CCTVform.kesifCCTVSpiralMetre.id_for_label}}"
+        >
+        Spiral Metresi 
+        </label>
+        {{CCTVform.kesifCCTVSpiralMetre}}
+        <label
+          class="form-label"
+          for="{{CCTVform.kesifCCTVSpiralÇapı.id_for_label}}"
+        >
+        Spiral Çapı
+        </label>
+        {{CCTVform.kesifCCTVSpiralÇapı}}           
+        <label
+          class="form-label"
+          for="{{CCTVform.kesifCCTVEnerjikablometre.id_for_label}}"
+        >
+        Enerji Kablosu Metre
+        </label>
+        {{CCTVform.kesifCCTVEnerjikablometre}}           
+        <label
+          class="form-label"
+          for="{{CCTVform.kesifCCTVEnerjikabloTipi.id_for_label}}"
+        >
+        Enerji Kablosu Tipi
+        </label>
+        {{CCTVform.kesifCCTVEnerjikabloTipi}}           
+        <label
+          class="form-label"
+          for="{{CCTVform.kesifCCTVCAT6kablometre.id_for_label}}"
+        >
+        CCTV kablo metresi
+        </label>
+        {{CCTVform.kesifCCTVCCTVkablometre}}           
+        <label
+          class="form-label"
+          for="{{CCTVform.kesifCCTVDT8kablometre.id_for_label}}"
+        >
+        CCTV kablo tipi
+        </label>
+        {{CCTVform.kesifCCTVCCTVkabloTipi}}           
+        <label
+          class="form-label"
+          for="{{CCTVform.kesifCCTVCCTVkabloTipi.id_for_label}}"
+        >
+        DT8 kablo metresi
+        </label>
+        {{CCTVform.kesifCCTVDT8kablometre}}     
+        <h5 class="bas text-center mt-3">Pano Formu</h5>
+        <label
+          class="form-label"
+          for="{{CCTVform.kesifCCTVPanoSayisi.id_for_label}}"
+        >
+        Pano Sayısı
+        </label>
+        {{CCTVform.kesifCCTVPanoSayisi}}
+        <label
+          class="form-label"
+          for="{{CCTVform.kesifCCTVPanoOlcusu.id_for_label}}"
+        >
+        Pano Ölçüsü
+        </label>
+        {{CCTVform.kesifCCTVPanoOlcusu}}
+        <label
+          class="form-label"
+          for="{{CCTVform.kesifCCTVPanoTipi.id_for_label}}"
+        >
+        Pano Ortam Tipi
+        </label>
+        {{CCTVform.kesifCCTVPanoTipi}}            
+        </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <div class="form-check">
+        <label for="myCheckKayitCihaziCCTV" class="form-check-label">Kayıt Cihazı</label>
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="myCheckKayitCihaziCCTV"
+          onclick="myFunctionKayitCihaziCCTV()"
+        />
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="div" id="CCTVformKayitCihazi" style="display: none">
+        <h5 class="bas text-center mt-3">Kayıt Cihazı Formu</h5>
+        <label
+          class="form-label"
+          for="{{CCTVform.kesifCCTVKayitCihaziSayisi.id_for_label}}"
+        >
+          Kayıt Cihazı Sayısı
+        </label>
+        {{CCTVform.kesifCCTVKayitCihaziSayisi}}
+        <label
+          class="form-label"
+          for="{{CCTVform.kesifCCTVKayitCihaziModeli.id_for_label}}"
+        >
+        Kayıt Cihazı Modeli
+        </label>
+        {{CCTVform.kesifCCTVKayitCihaziModeli}}
+        <label
+          class="form-label"
+          for="{{CCTVform.kesifCCTVKayitCihaziHDDTeraByte.id_for_label}}"
+        >
+        Kayıt Cihazı HDD(TeraByte)
+        </label>
+        {{CCTVform.kesifCCTVKayitCihaziHDDTeraByte}}
+        
+      </div>
+    </div>
+  </div>
+</div>

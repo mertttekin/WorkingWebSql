@@ -106,7 +106,7 @@ class Category(models.Model):
 class Paylasim(models.Model):
     göndericiAdi = models.CharField(max_length=100, null=False, blank=False)
     gönderiKonu = models.CharField(max_length=100, null=False, blank=False)
-    gönderiAciklama = RichTextField()
+    gönderiAciklama = models.TextField()
     gönderiFoto = models.ImageField(
         upload_to="Paylasim/", blank=True, null=True, default="Paylasim/akslogo.png")
     gönderiDurumu = models.BooleanField(default=True)
@@ -443,6 +443,134 @@ class KesifOlayMalzeme(models.Model):
             self.save()
 
 
+class KesifCCTVMalzeme(models.Model):
+
+    COLOR_CHOICES = (
+    ('yok','yok'),
+    ('IPC-HFW1431TP-ZS 4MP','IPC-HFW1431TP-ZS 4MP'),
+    ('IPC-HFW5231EP-Z 2MP', 'IPC-HFW5231EP-Z 2MP'),
+    ('Muhafazalı Set (Box)', 'Muhafazalı Set (Box)'), 
+    )
+    DIREK_FLANSH_CHOICE = (
+        ("1","1"),
+        ("2","2"),
+    )
+    IO_MODUL_CHOICE = (
+        ("TİNY","TİNY"),
+        ("AKSİYON","AKSİYON"),
+    )
+    SWITCH_PORT_CHOICE = (
+        ("5","5"),
+        ("8","8"),
+        ("5+2","5+2"),
+        ("8+2","8+2"),
+        ("16+2","16+2"),
+        ("8+4","8+4"),
+        ("16+4","16+4"),
+    )
+    ENERJİ_KABLO_CHOICE = (
+        ("3x1.5 TTR","3x1.5 TTR"),
+        ("3x2.5 TTR","3x2.5 TTR"),
+        ("2x1.5 TTR","2x1.5 TTR"),
+    )
+    PANO_ORTAM_CHOICE = (
+        ("iç ortam ","iç ortam "),
+        ("dış ortam","dış ortam"),
+    )
+    BARIYER_MODELİ_CHOICE = (
+        ("3250","3250"),
+        ("G-4000","G-4000"),
+        ("4040E","4040E"),
+        ("2080E","2080E"),
+        ("GT-4","GT-4"),
+        ("GT-8","GT-8"),
+    )
+    MANTAR_BARIYER_MODELİ_CHOICE = (
+        ("2 li","2 li"),
+        ("3 lu","3 lu"),
+        ("4 lu","4 lu"),
+        ("5 li","5 li"),
+        ("6 li","6 li"),
+    )
+    FIBER_KABLO_MODELİ_CHOICE = (
+        ("2 Core","2 Core"),
+        ("4 Core","4 Core"),
+        ("8 Core","8 Core"),
+        ("16 Core","16 Core"),
+    )
+    PATCH_PANEL_MODELİ_CHOICE = (
+        ("2 li","2 li"),
+        ("4 lu","4 lu"),
+        ("8 li","8 li"),
+        ("12 li","12 li"),
+    )
+    PATCH_CORD_AND_FIBER_ADAPTOR_MODELİ_CHOICE = (
+        ("SC-LC","SC-LC"),
+        ("SC-SC","SC-SC"),
+        ("LC-LC","LC-LC"),
+    )
+    LOOP_KABLO_CHOICE = (
+        ("0.75mm² NYAF","0.75mm² NYAF"),
+        ("1mm² NYAF","1mm² NYAF"),
+        ("1.5mm² NYAF","1.5mm² NYAF"),
+        ("2.5mm² NYAF","2.5mm² NYAF"),
+    )  
+    CCTV_KABLO_CHOICE = (
+        ("2+1","2+1"),
+        ("4+1","4+1"),
+
+    )  
+    CCTV_KAYIT_CIHAZ_MODELI_CHOICE = (
+        ("4 lu","4 lu"),
+        ("8 li","8 li"),
+        ("16 lı","16 lı"),
+        ("32 li","32 li"),
+        ("64 lü","64 lü"),
+    )
+    kesifCCTVyeradi = models.CharField(max_length=50, null=True,blank=True)
+    kesifCCTVKameraSayisi =  models.IntegerField(null=True,blank=True)
+    kesifCCTVKameraBoatSayisi =  models.IntegerField(null=True,blank=True)
+    kesifCCTVKameraAdaptorSayisi =  models.IntegerField(null=True,blank=True)
+    kesifCCTVExtraKameraAdaptorSayisi =  models.IntegerField(null=True,blank=True)
+    kesifCCTVKameraTipi = models.CharField(null=True,blank=True,max_length=25)
+    kesifCCTVExtraKameraSayisi =  models.IntegerField(null=True,blank=True)
+    kesifCCTVExtraKameraTipi = models.CharField(null=True,blank=True,max_length=25,choices=COLOR_CHOICES)
+    kesifCCTVDirekSayisi = models.IntegerField(null=True,blank=True)
+    kesifCCTVDirekUzunlugu = models.CharField(max_length=25,null=True,blank=True)
+    kesifCCTVFlanshSayisi = models.CharField(max_length=25,default="1",choices=DIREK_FLANSH_CHOICE)
+    kesifCCTVDirekAçıklama = models.TextField(max_length=200,null=True,blank=True)
+    kesifCCTVAdaptorSayisi = models.IntegerField(null=True,blank=True)
+    kesifCCTVPanoTipi = models.CharField(max_length=50,default="yok",choices=PANO_ORTAM_CHOICE)
+    kesifCCTVPanoOlcusu = models.CharField(max_length=50,null=True,blank=True)
+    kesifCCTVPanoSayisi = models.IntegerField(null=True,blank=True)
+    kesifCCTVCCTVkablometre = models.IntegerField(null=True,blank=True)
+    kesifCCTVCCTVkabloTipi = models.CharField(max_length=50,default="yok",choices=CCTV_KABLO_CHOICE)
+    kesifCCTVEnerjikablometre = models.IntegerField(null=True,blank=True)
+    kesifCCTVEnerjikabloTipi = models.CharField(max_length=50,default="yok",choices=ENERJİ_KABLO_CHOICE)
+    kesifCCTVDT8kablometre = models.IntegerField(null=True,blank=True)
+    kesifCCTVSpiralMetre = models.IntegerField(null=True,blank=True)
+    kesifCCTVBariyerSayisi =  models.IntegerField(null=True,blank=True)
+    kesifCCTVSpiralÇapı = models.CharField(max_length=25,null=True,blank=True) 
+    kesifCCTVKayitCihaziSayisi =  models.IntegerField(null=True,blank=True)
+    kesifCCTVKayitCihaziModeli = models.CharField(max_length=25,null=True,blank=True,choices=CCTV_KAYIT_CIHAZ_MODELI_CHOICE)
+    kesifCCTVKayitCihaziHDDTeraByte =  models.CharField(max_length=25,null=True,blank=True) 
+
+  
+
+    slug = models.SlugField(null=False,
+                            db_index=True, blank=True, editable=False)
+    
+
+    def __str__(self):
+        return f"{'CCTV'+self.kesifKameraSayisi}"
+
+    def save(self, *args, **kwargs):
+        super(KesifCCTVMalzeme, self).save(*args, **kwargs)
+        if not self.slug:
+            self.slug ="CCTV"+slugify(self.kesifCCTVyeradi) + "-" + str(self.id)
+            self.save()
+
+
 class Kesif(models.Model):
 
     #check box dropdown menu
@@ -459,6 +587,8 @@ class Kesif(models.Model):
         KesifPTSMalzeme,null=True, on_delete=models.CASCADE, blank=True, editable=False)
     KesifOlayMalzemelerid = models.ForeignKey(
         KesifOlayMalzeme,null=True, on_delete=models.CASCADE, blank=True, editable=False)
+    KesifCCTVMalzemelerid = models.ForeignKey(
+        KesifCCTVMalzeme,null=True, on_delete=models.CASCADE, blank=True, editable=False)
     
 
     slug = models.SlugField(null=False,
@@ -481,6 +611,9 @@ class Kesif(models.Model):
 class ImageKesif(models.Model):
     aitKesif = models.ForeignKey(Kesif,on_delete=models.CASCADE)
     kesifImage = models.ImageField(upload_to="Kesif/",null=True,blank = True)
+
+    def __str__(self):
+        return f"{self.aitKesif}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

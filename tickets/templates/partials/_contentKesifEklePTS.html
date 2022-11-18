@@ -1,0 +1,604 @@
+
+        <!-- PTS Sol taraf formu --------------------- -->
+        <div class="div" id="PTSform" style="display: none">
+          <h5 class="bas text-center mt-3">Plaka Tanıma Sistemi Kesif Formu</h5>
+          <div class="row">
+            <div class="col-4">
+                <div class="form-check">
+                  <label for="myCheckKamera" class="form-check-label">Kamera</label>
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="myCheckKamera"
+                    onclick="myFunctionKamera()"
+                  />
+                </div>
+            </div>
+            <div class="col-8">
+              <!-- PTS SAĞ TARAF FORMU -->
+              <table>
+                <div class="div" id="PTSformKamera" style="display: none">
+                  <h5 class="bas text-center mt-3">Kamera Formu</h5>
+                  <label
+                    class="form-label"
+                    for="{{PTSform.kesifPTSKameraSayisi.id_for_label}}"
+                  >
+                    Kamera Sayısı
+                  </label>
+                  {{PTSform.kesifPTSKameraSayisi}}
+                  <label
+                    class="form-label"
+                    for="{{PTSform.kesifPTSKameraTipi.id_for_label}}"
+                  >
+                    Kamera Modeli
+                  </label>
+                  {{PTSform.kesifPTSKameraTipi}}
+                  <div class="form-check mt-3">
+                    <label for="myCheckKameraBoat" class="form-check-label"
+                      >Kamera Boat var mı ?</label
+                    >
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="myCheckKameraBoat"
+                      onclick="myFunctionKameraBoat()"
+                    />
+                  </div>
+                  <div class="div"id="PTSformKameraBoat"
+                  style="display: none">
+                  <label
+                      class="form-label"
+                      for="{{PTSform.kesifPTSKameraBoatSayisi.id_for_label}}"
+                    >
+                      Kamera Boat Sayısı
+                    </label>
+                    {{PTSform.kesifPTSKameraBoatSayisi}}
+                  </div>
+                  <div class="form-check mt-3">
+                    <label for="myCheckKameraAdaptor" class="form-check-label"
+                      >Kamera Adaptör var mı ?</label
+                    >
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="myCheckKameraAdaptor"
+                      onclick="myFunctionKameraAdaptor()"
+                    />
+                  </div>
+                  <div class="div"id="PTSformKameraAdaptor"
+                  style="display: none">
+                  <label
+                      class="form-label"
+                      for="{{PTSform.kesifPTSKameraAdaptorSayisi.id_for_label}}"
+                    >
+                      Kamera Adaptör Sayısı
+                    </label>
+                    {{PTSform.kesifPTSKameraAdaptorSayisi}}
+                  </div>
+                  <div class="form-check mt-3">
+                    <label for="myCheckExtraKamera" class="form-check-label"
+                      >Extra Kamera var mı ?</label
+                    >
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="myCheckExtraKamera"
+                      onclick="myFunctionExtraKamera()"
+                    />
+                  </div>
+                  <div
+                    class="div"
+                    id="PTSformExtraKamera"
+                    style="display: none"
+                  >
+                    <label
+                      class="form-label"
+                      for="{{PTSform.kesifPTSExtraKameraSayisi.id_for_label}}"
+                    >
+                      Extra Kamera Sayısı
+                    </label>
+                    {{PTSform.kesifPTSExtraKameraSayisi}}
+                    <label
+                      class="form-label"
+                      for="{{PTSform.kesifPTSExtraKameraTipi.id_for_label}}"
+                    >
+                      Extra Kamera Modeli
+                    </label>
+                    {{PTSform.kesifPTSExtraKameraTipi}}
+                    <div class="form-check mt-3">
+                      <label for="myCheckExtraKameraAdaptor" class="form-check-label"
+                        >Extra Kamera Adaptör var mı ?</label
+                      >
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="myCheckExtraKameraAdaptor"
+                        onclick="myFunctionExtraKameraAdaptor()"
+                      />
+                    </div>
+                    <div class="div"id="PTSformExtraKameraAdaptor"
+                    style="display: none">
+                    <label
+                        class="form-label"
+                        for="{{PTSform.kesifPTSExtraKameraAdaptorSayisi.id_for_label}}"
+                      >
+                        Extra Kamera Adaptör Sayısı
+                      </label>
+                      {{PTSform.kesifPTSExtraKameraAdaptorSayisi}}
+                  </div>
+                </div>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check">
+                <label for="myCheckDirek" class="form-check-label">Direk</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="myCheckDirek"
+                  onclick="myFunctionDirek()"
+                />
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="div" id="PTSformDirek" style="display: none">
+                <h5 class="bas text-center mt-3">Direk Formu</h5>
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSDirekSayisi.id_for_label}}"
+                >
+                  Direk Sayısı
+                </label>
+                {{PTSform.kesifPTSDirekSayisi}}
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSDirekUzunlugu.id_for_label}}"
+                >
+                  Direk Uzunluğu
+                </label>
+                {{PTSform.kesifPTSDirekUzunlugu}}
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSFlanshSayisi.id_for_label}}"
+                >
+                  Direk Flansh Sayısı
+                </label>
+                {{PTSform.kesifPTSFlanshSayisi}}
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSDirekAçıklama.id_for_label}}"
+                >
+                  Direk Açıklama
+                </label>
+                {{PTSform.kesifPTSDirekAçıklama}}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check">
+                <label for="myCheckBilgisayar" class="form-check-label">Bilgisayar</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="myCheckBilgisayar"
+                  onclick="myFunctionBilgisayar()"
+                />
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="div" id="PTSformBilgisayar" style="display: none">
+                <h5 class="bas text-center mt-3">Bilgisayar Formu</h5>
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSBilgisayarConfigi.id_for_label}}"
+                >
+                  Bilgisayar Özellikleri
+                </label>
+                {{PTSform.kesifPTSBilgisayarConfigi}}
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSBilgisayarSayısı.id_for_label}}"
+                >
+                  Bilgisayar Sayısı
+                </label>
+                {{PTSform.kesifPTSBilgisayarSayısı}}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check">
+                <label for="myCheckIOkart" class="form-check-label">IO-kart</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="myCheckIOkart"
+                  onclick="myFunctionIOkart()"
+                />
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="div" id="PTSformIOkart" style="display: none">
+                <h5 class="bas text-center mt-3">IO-Kart Formu</h5>
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSIoKartSayısı.id_for_label}}"
+                >
+                  IO-kart Sayısı
+                </label>
+                {{PTSform.kesifPTSIoKartSayısı}}
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSIoKartTipi.id_for_label}}"
+                >
+                  IO-kart Tipi
+                </label>
+                {{PTSform.kesifPTSIoKartTipi}}
+                <div class="form-check mt-3">
+                  <label for="myCheckModulVarMı" class="form-check-label"
+                    >Modul var mı ?</label
+                  >
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="myCheckModulVarMı"
+                    onclick="myFunctionModulVarMı()"
+                  />
+                </div>
+                <div class="div" id="PTSformModulVarMı" style="display: none">
+                  <label
+                    class="form-label"
+                    for="{{PTSform.kesifPTSIoKartModulSayısı.id_for_label}}"
+                  >
+                    Modul Sayısı
+                  </label>
+                  {{PTSform.kesifPTSIoKartModulSayısı}}
+                
+                </div>    
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check">
+                <label for="myCheckSwitch" class="form-check-label">Switch</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="myCheckSwitch"
+                  onclick="myFunctionSwitch()"
+                />
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="div" id="PTSformSwitch" style="display: none">
+                <h5 class="bas text-center mt-3" >Switch Formu</h5>
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSSwitchSayisi.id_for_label}}"
+                >
+                  Switch Sayısı
+                </label>
+                {{PTSform.kesifPTSSwitchSayisi}}
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSSwitchPortSayisi.id_for_label}}"
+                >
+                   Switch Portu
+                </label>
+                {{PTSform.kesifPTSSwitchPortSayisi}}           
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSSwitchPoeMi.id_for_label}}"
+                >
+                   Switch Poe Mi
+                </label>
+                {{PTSform.kesifPTSSwitchPoeMi}}           
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check">
+                <label for="myCheckLoop" class="form-check-label">Loop Dedektor</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="myCheckLoop"
+                  onclick="myFunctionLoop()"
+                />
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="div" id="PTSformLoop" style="display: none">
+                <h5 class="bas text-center mt-3" >Loop Dedektor Formu</h5>
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSLoopDedektorSayisi.id_for_label}}"
+                >
+                Loop Dedektor Sayısı
+                </label>
+                {{PTSform.kesifPTSLoopDedektorSayisi}}
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSLoopTrafoSayisi.id_for_label}}"
+                >
+                Loop Trafo Sayısı
+                </label>
+                {{PTSform.kesifPTSLoopTrafoSayisi}}           
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSLoopKabloCesidi.id_for_label}}"
+                >
+                  Loop Kablo Çeşidi
+                </label>
+                {{PTSform.kesifPTSLoopKabloCesidi}}           
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSLoopKabloMetresi.id_for_label}}"
+                >
+                  Loop Kablo Metresi
+                </label>
+                {{PTSform.kesifPTSLoopKabloMetresi}}           
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check">
+                <label for="myCheckLedEkran" class="form-check-label">Led Ekran</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="myCheckLedEkran"
+                  onclick="myFunctionLedEkran()"
+                />
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="div" id="PTSformLedEkran" style="display: none">
+                <h5 class="bas text-center mt-3">LedEkran Formu</h5>
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSLedEkranSayisi.id_for_label}}"
+                >
+                LedEkran Sayısı
+                </label>
+                {{PTSform.kesifPTSLedEkranSayisi}}
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSLedEkranModeli.id_for_label}}"
+                >
+                LedEkran Modeli
+                </label>
+                {{PTSform.kesifPTSLedEkranModeli}}           
+                        
+               
+              </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-4">
+                <div class="form-check">
+                  <label for="myCheckBariyer" class="form-check-label">Bariyer</label>
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="myCheckBariyer"
+                    onclick="myFunctionBariyer()"
+                  />
+                </div>
+              </div>
+              <div class="col-8">
+                <div class="div" id="PTSformBariyer" style="display: none">
+                  <h5 class="bas text-center mt-3">Bariyer Formu</h5>
+                  <label
+                    class="form-label"
+                    for="{{PTSform.kesifPTSBariyerSayisi.id_for_label}}"
+                  >
+                  Bariyer Sayısı
+                  </label>
+                  {{PTSform.kesifPTSBariyerSayisi}}
+                  <label
+                    class="form-label"
+                    for="{{PTSform.kesifPTSBariyerModeli.id_for_label}}"
+                  >
+                  Bariyer Modeli
+                  </label>
+                  {{PTSform.kesifPTSBariyerModeli}}           
+                  <label
+                    class="form-label"
+                    for="{{PTSform.kesifPTSBariyerKolBoyu.id_for_label}}"
+                  >
+                  Bariyer Kol Boyu
+                  </label>
+                  {{PTSform.kesifPTSBariyerKolBoyu}}           
+                  <label
+                    class="form-label"
+                    for="{{PTSform.kesifPTSMantarBariyerAciklama.id_for_label}}"
+                  >
+                  Mantar Bariyer Açıklama
+                  </label>
+                  {{PTSform.kesifPTSMantarBariyerAciklama}}                            
+                </div>
+              </div>
+          </div>  
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check">
+                <label for="myCheckSarfMalzeme" class="form-check-label">Sarf Malzeme</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="myCheckSarfMalzeme"
+                  onclick="myFunctionSarfMalzeme()"
+                />
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="div" id="PTSformSarfMalzeme" style="display: none">
+                <h5 class="bas text-center mt-3">Kablolama Formu</h5>
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSSpiralMetre.id_for_label}}"
+                >
+                Spiral Metresi 
+                </label>
+                {{PTSform.kesifPTSSpiralMetre}}
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSSpiralÇapı.id_for_label}}"
+                >
+                Spiral Çapı
+                </label>
+                {{PTSform.kesifPTSSpiralÇapı}}           
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSEnerjikablometre.id_for_label}}"
+                >
+                Enerji Kablosu Metre
+                </label>
+                {{PTSform.kesifPTSEnerjikablometre}}           
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSEnerjikabloTipi.id_for_label}}"
+                >
+                Enerji Kablosu Tipi
+                </label>
+                {{PTSform.kesifPTSEnerjikabloTipi}}           
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSCAT6kablometre.id_for_label}}"
+                >
+                CAT6 kablo metresi
+                </label>
+                {{PTSform.kesifPTSCAT6kablometre}}           
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSDT8kablometre.id_for_label}}"
+                >
+                DT8 kablo metresi
+                </label>
+                {{PTSform.kesifPTSDT8kablometre}}     
+                <h5 class="bas text-center mt-3">Pano Formu</h5>
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSPanoSayisi.id_for_label}}"
+                >
+                Pano Sayısı
+                </label>
+                {{PTSform.kesifPTSPanoSayisi}}
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSPanoOlcusu.id_for_label}}"
+                >
+                Pano Ölçüsü
+                </label>
+                {{PTSform.kesifPTSPanoOlcusu}}
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSPanoTipi.id_for_label}}"
+                >
+                Pano Ortam Tipi
+                </label>
+                {{PTSform.kesifPTSPanoTipi}}            
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check">
+                <label for="myCheckFiber" class="form-check-label">Fiber</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="myCheckFiber"
+                  onclick="myFunctionFiber()"
+                />
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="div" id="PTSformFiber" style="display: none">
+                <h5 class="bas text-center mt-3">Fiber Formu</h5>
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSFiberMetre.id_for_label}}"
+                >
+                Fiber Metresi 
+                </label>
+                {{PTSform.kesifPTSFiberMetre}}
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSFiberKabloModeli.id_for_label}}"
+                >
+                Fiber Kablo Tipi
+                </label>
+                {{PTSform.kesifPTSFiberKabloModeli}}           
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSPatchPanelSayisi.id_for_label}}"
+                >
+                Patch Panel Sayısı
+                </label>
+                {{PTSform.kesifPTSPatchPanelSayisi}}           
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSPatchPanelTipi.id_for_label}}"
+                >
+                Patch Panel Tipi
+                </label>
+                {{PTSform.kesifPTSPatchPanelTipi}}           
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSPatchPanelEkKasetSayisi.id_for_label}}"
+                >
+                Patch Panel Kaset Sayısı
+                </label>
+                {{PTSform.kesifPTSPatchPanelEkKasetSayisi}}           
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSPatchCordSayisi.id_for_label}}"
+                >
+                Patch Cord Sayısı
+                </label>
+                {{PTSform.kesifPTSPatchCordSayisi}}     
+                   
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSPatchCordTipi.id_for_label}}"
+                >
+                Patch Cord Tipi
+                </label>
+                {{PTSform.kesifPTSPatchCordTipi}}     
+                   
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSFiberAdaptorSayisi.id_for_label}}"
+                >
+                Fiber Adaptor Sayısı
+                </label>
+                {{PTSform.kesifPTSFiberAdaptorSayisi}}     
+                   
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSFiberAdaptorTipi.id_for_label}}"
+                >
+                Fiber Adaptor Tipi
+                </label>
+                {{PTSform.kesifPTSFiberAdaptorTipi}}     
+                   
+                <label
+                  class="form-label"
+                  for="{{PTSform.kesifPTSCibikModuleSayisi.id_for_label}}"
+                >
+                Cibik Modul Sayısı
+                </label>
+                {{PTSform.kesifPTSCibikModuleSayisi}}     
+                   
+                </div>
+              </div>
+          </div>
+      </div>
