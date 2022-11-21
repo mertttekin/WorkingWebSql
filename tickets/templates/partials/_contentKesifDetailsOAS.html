@@ -1,0 +1,324 @@
+<table style="width: 100%" class="table table-primary">
+  <h4>OAS Kesif Detay Bilgileri</h4>
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <td style="width: 40%; font-weight: bolder; color: #d10606" scope="col-5">
+        Ürün
+      </td>
+      <td style="width: 60%; font-weight: bolder; color: #d10606" scope="col-5">
+        Sayı/Metre/Model
+      </td>
+      <th
+        style="width: 0%; font-weight: bolder; color: #d10606"
+        scope="col-2"
+      ></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">-</th>
+      <td>Kamera Adet</td>
+      <td>{{Olaymalzemeinfo.kesifOlayKameraSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Kamera Model</td>
+      <td>{{Olaymalzemeinfo.kesifOlayKameraTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Kamera Boat Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlayKameraBoatSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Kamera Adaptor Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlayKameraAdaptorSayisi}}</td>
+      <td></td>
+    </tr>
+    {% if Olaymalzemeinfo.kesifOlayExtraKameraSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Extra Kamera Adet</td>
+      <td>{{Olaymalzemeinfo.kesifOlayExtraKameraSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Extra Kamera Model</td>
+      <td>{{Olaymalzemeinfo.kesifOlayExtraKameraTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Extra Kamera Adaptor Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlayExtraKameraAdaptorSayisi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if Olaymalzemeinfo.kesifOlayDirekSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Direk Adet</td>
+      <td>{{Olaymalzemeinfo.kesifOlayDirekSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Direk Uzunluğu</td>
+      <td>{{Olaymalzemeinfo.kesifOlayDirekUzunlugu}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Direk Flansh Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlayFlanshSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Direk Hakkında Açıklama</td>
+      <td>{{Olaymalzemeinfo.kesifOlayDirekAçıklama}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if Olaymalzemeinfo.kesifOlayBilgisayarConfigi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Bilgisayar Configi</td>
+      <td>{{Olaymalzemeinfo.kesifOlayBilgisayarConfigi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Bilgisayar Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlayBilgisayarSayısı}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if Olaymalzemeinfo.kesifOlayIoKartSayısı %}
+    <tr>
+      <th scope="row">-</th>
+      <td>IO-kart Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlayIoKartSayısı}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>IO-kart Tipi</td>
+      <td>{{Olaymalzemeinfo.kesifOlayIoKartTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>IO-kart Modul Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlayIoKartModulSayısı}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if Olaymalzemeinfo.kesifOlaySwitchSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Switch Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlaySwitchSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Switch Portu</td>
+      <td>{{Olaymalzemeinfo.kesifOlaySwitchPortSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Switch Poe Mi</td>
+      <td>{{Olaymalzemeinfo.kesifOlaySwitchPoeMi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if Olaymalzemeinfo.kesifOlayLoopDedektorSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Loop Dedektor Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlayLoopDedektorSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Loop Trafo Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlayLoopTrafoSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Loop Kablo Çeşidi</td>
+      <td>{{Olaymalzemeinfo.kesifOlayLoopKabloCesidi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Loop Kablo Metresi</td>
+      <td>{{Olaymalzemeinfo.kesifOlayLoopKabloMetresi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if Olaymalzemeinfo.kesifOlaySpiralMetre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Spiral Metresi</td>
+      <td>{{Olaymalzemeinfo.kesifOlaySpiralMetre}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Spiral Çapı</td>
+      <td>{{Olaymalzemeinfo.kesifOlaySpiralÇapı}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if Olaymalzemeinfo.kesifOlayEnerjikablometre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Enerji Kablo Metresi</td>
+      <td>{{Olaymalzemeinfo.kesifOlayEnerjikablometre}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Enerji Kablo Tipi</td>
+      <td>{{Olaymalzemeinfo.kesifOlayEnerjikabloTipi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if Olaymalzemeinfo.kesifOlayDT8kablometre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>DT-8 Kablo Metresi</td>
+      <td>{{Olaymalzemeinfo.kesifOlayDT8kablometre}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if Olaymalzemeinfo.kesifOlayCAT6kablometre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>CAT-6 Kablo Metresi</td>
+      <td>{{Olaymalzemeinfo.kesifOlayCAT6kablometre}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if Olaymalzemeinfo.kesifOlayPanoSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Pano Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlayPanoSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Pano Olcusu</td>
+      <td>{{Olaymalzemeinfo.kesifOlayPanoOlcusu}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Pano Tipi</td>
+      <td>{{Olaymalzemeinfo.kesifOlayPanoTipi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if Olaymalzemeinfo.kesifOlayBariyerSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Bariyer Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlayBariyerSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Bariyer Modeli</td>
+      <td>{{Olaymalzemeinfo.kesifOlayBariyerModeli}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Bariyer Kol Boyu</td>
+      <td>{{Olaymalzemeinfo.kesifOlayBariyerKolBoyu}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if Olaymalzemeinfo.kesifOlayMantarBariyerAciklama %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Mantar Bariyer Açıklama</td>
+      <td>{{Olaymalzemeinfo.kesifOlayMantarBariyerAciklama}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if Olaymalzemeinfo.kesifOlayLedEkranSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>LedEkran Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlayLedEkranSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>LedEkran Modeli</td>
+      <td>{{Olaymalzemeinfo.kesifOlayLedEkranModeli}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if Olaymalzemeinfo.kesifOlayFiberMetre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Fiber Metresi</td>
+      <td>{{Olaymalzemeinfo.kesifOlayFiberMetre}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Fiber Kablo Tipi</td>
+      <td>{{Olaymalzemeinfo.kesifOlayFiberKabloModeli}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Panel Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlayPatchPanelSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Panel Tipi</td>
+      <td>{{Olaymalzemeinfo.kesifOlayPatchPanelTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Panel Ek Kaset Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlayPatchPanelEkKasetSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Cord Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlayPatchCordSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Cord Tipi</td>
+      <td>{{Olaymalzemeinfo.kesifOlayPatchCordTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Fiber Adaptor Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlayFiberAdaptorSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Fiber Adaptor Tipi</td>
+      <td>{{Olaymalzemeinfo.kesifOlayFiberAdaptorTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Cibik Modul Sayısı</td>
+      <td>{{Olaymalzemeinfo.kesifOlayCibikModuleSayisi}}</td>
+      <td></td>
+    </tr>
+    {%endif%}
+  </tbody>
+</table>

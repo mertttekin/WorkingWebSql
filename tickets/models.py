@@ -549,7 +549,6 @@ class KesifCCTVMalzeme(models.Model):
     kesifCCTVEnerjikabloTipi = models.CharField(max_length=50,default="yok",choices=ENERJİ_KABLO_CHOICE)
     kesifCCTVDT8kablometre = models.IntegerField(null=True,blank=True)
     kesifCCTVSpiralMetre = models.IntegerField(null=True,blank=True)
-    kesifCCTVBariyerSayisi =  models.IntegerField(null=True,blank=True)
     kesifCCTVSpiralÇapı = models.CharField(max_length=25,null=True,blank=True) 
     kesifCCTVKayitCihaziSayisi =  models.IntegerField(null=True,blank=True)
     kesifCCTVKayitCihaziModeli = models.CharField(max_length=25,null=True,blank=True,choices=CCTV_KAYIT_CIHAZ_MODELI_CHOICE)

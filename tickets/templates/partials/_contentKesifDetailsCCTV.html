@@ -1,0 +1,324 @@
+<table style="width: 100%;" class="table table-primary">
+  <h4>CCTV Kesif Detay Bilgileri</h4>
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <td style="width: 40%; font-weight: bolder; color: #d10606" scope="col-5">
+        Ürün
+      </td>
+      <td style="width: 60%; font-weight: bolder; color: #d10606" scope="col-5">
+        Sayı/Metre/Model
+      </td>
+      <td
+        style="width: 0%; font-weight: bolder; color: #d10606"
+        scope="col-2"
+      ></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">-</th>
+      <td>Kamera Adet</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVKameraSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Kamera Model</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVKameraTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Kamera Boat Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVKameraBoatSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Kamera Adaptor Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVKameraAdaptorSayisi}}</td>
+      <td></td>
+    </tr>
+    {% if CCTVmalzemeinfo.kesifCCTVExtraKameraSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Extra Kamera Adet</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVExtraKameraSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Extra Kamera Model</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVExtraKameraTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Extra Kamera Adaptor Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVExtraKameraAdaptorSayisi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if CCTVmalzemeinfo.kesifCCTVDirekSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Direk Adet</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVDirekSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Direk Uzunluğu</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVDirekUzunlugu}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Direk Flansh Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVFlanshSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Direk Hakkında Açıklama</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVDirekAçıklama}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if CCTVmalzemeinfo.kesifCCTVBilgisayarConfigi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Bilgisayar Configi</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVBilgisayarConfigi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Bilgisayar Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVBilgisayarSayısı}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if CCTVmalzemeinfo.kesifCCTVIoKartSayısı %}
+    <tr>
+      <th scope="row">-</th>
+      <td>IO-kart Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVIoKartSayısı}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>IO-kart Tipi</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVIoKartTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>IO-kart Modul Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVIoKartModulSayısı}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if CCTVmalzemeinfo.kesifCCTVSwitchSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Switch Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVSwitchSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Switch Portu</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVSwitchPortSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Switch Poe Mi</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVSwitchPoeMi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if CCTVmalzemeinfo.kesifCCTVLoopDedektorSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Loop Dedektor Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVLoopDedektorSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Loop Trafo Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVLoopTrafoSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Loop Kablo Çeşidi</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVLoopKabloCesidi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Loop Kablo Metresi</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVLoopKabloMetresi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if CCTVmalzemeinfo.kesifCCTVSpiralMetre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Spiral Metresi</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVSpiralMetre}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Spiral Çapı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVSpiralÇapı}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if CCTVmalzemeinfo.kesifCCTVEnerjikablometre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Enerji Kablo Metresi</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVEnerjikablometre}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Enerji Kablo Tipi</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVEnerjikabloTipi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if CCTVmalzemeinfo.kesifCCTVDT8kablometre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>DT-8 Kablo Metresi</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVDT8kablometre}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if CCTVmalzemeinfo.kesifCCTVCAT6kablometre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>CAT-6 Kablo Metresi</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVCAT6kablometre}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if CCTVmalzemeinfo.kesifCCTVPanoSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Pano Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVPanoSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Pano Olcusu</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVPanoOlcusu}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Pano Tipi</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVPanoTipi}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if CCTVmalzemeinfo.kesifCCTVBariyerSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Bariyer Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVBariyerSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Bariyer Modeli</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVBariyerModeli}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Bariyer Kol Boyu</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVBariyerKolBoyu}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if CCTVmalzemeinfo.kesifCCTVMantarBariyerAciklama %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Mantar Bariyer Açıklama</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVMantarBariyerAciklama}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if CCTVmalzemeinfo.kesifCCTVLedEkranSayisi %}
+    <tr>
+      <th scope="row">-</th>
+      <td>LedEkran Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVLedEkranSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>LedEkran Modeli</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVLedEkranModeli}}</td>
+      <td></td>
+    </tr>
+    {%endif%} {% if CCTVmalzemeinfo.kesifCCTVFiberMetre %}
+    <tr>
+      <th scope="row">-</th>
+      <td>Fiber Metresi</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVFiberMetre}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Fiber Kablo Tipi</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVFiberKabloModeli}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Panel Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVPatchPanelSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Panel Tipi</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVPatchPanelTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Panel Ek Kaset Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVPatchPanelEkKasetSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Cord Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVPatchCordSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Patch Cord Tipi</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVPatchCordTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Fiber Adaptor Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVFiberAdaptorSayisi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Fiber Adaptor Tipi</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVFiberAdaptorTipi}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">-</th>
+      <td>Cibik Modul Sayısı</td>
+      <td>{{CCTVmalzemeinfo.kesifCCTVCibikModuleSayisi}}</td>
+      <td></td>
+    </tr>
+    {%endif%}
+  </tbody>
+</table>

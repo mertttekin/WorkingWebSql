@@ -498,8 +498,9 @@ def panelkesifekle(request):
 
             }
             return render(request,"panelKesifEkle.html",data)
-
         else:
+            messages.info(
+                    request, "Düzenleme Yetkiniz Bulunmamaktadır. Keşif listesine yönlendirildiniz", extra_tags="info")
             return redirect("panelkesifliste")
     else:
         return redirect("tickets")
@@ -522,12 +523,14 @@ def panelkesifdetails(request,slug):
         kesifid = hangi_kesif.pk
         ptsmalzeme_id = hangi_kesif.KesifPTSMalzemelerid_id
         olaymalzeme_id = hangi_kesif.KesifOlayMalzemelerid_id
+        cctvmalzeme_id = hangi_kesif.KesifCCTVMalzemelerid_id
         print(ptsmalzeme_id)
         print("kesif id = {}".format(kesifid) )
         data = {
             "kesifbilgi": hangi_kesif,
             "ptsmalzemeinfo":KesifPTSMalzeme.objects.get(id=ptsmalzeme_id),
-            "olaymalzemeinfo":KesifOlayMalzeme.objects.get(id=olaymalzeme_id),
+            "Olaymalzemeinfo":KesifOlayMalzeme.objects.get(id=olaymalzeme_id),
+            "CCTVmalzemeinfo":KesifCCTVMalzeme.objects.get(id=cctvmalzeme_id),
             "images":ImageKesif.objects.filter(aitKesif=kesifid),
             # "Olayliste":KesifPTSMalzeme.objects.all(),
         }
@@ -552,6 +555,20 @@ def panelkesifedit(request,slug):
             olaymalzemekesifid = olaymalzemekesif.id
             olaymalzemeinfo = get_object_or_404(KesifOlayMalzeme, id=olaymalzemekesifid)
 
+            #CCTV veri çekme
+            cctvkesifid = form.KesifCCTVMalzemelerid_id
+            cctvmalzemekesif=KesifCCTVMalzeme.objects.get(pk=cctvkesifid)
+            cctvmalzemekesifid = cctvmalzemekesif.id
+            cctvmalzemeinfo = get_object_or_404(KesifCCTVMalzeme, id=cctvmalzemekesifid)
+
+            # Fotograf Verileri Çekme
+            imageid=form.id
+            imagesinfo=ImageKesif.objects.filter(aitKesif_id=imageid).first()
+            
+            print(imageid)
+            print(imagesinfo)
+
+
 
             
             if request.method == 'POST':
@@ -561,6 +578,10 @@ def panelkesifedit(request,slug):
                 request.POST, request.FILES, instance=ptsmalzemeinfo)
                 Olayform = KesifOlayMalzemeForm(
                 request.POST,request.FILES, instance=olaymalzemeinfo)
+                CCTVform = KesifCCTVMalzemeForm(
+                request.POST,request.FILES, instance=cctvmalzemeinfo)
+                imgform = ImageForm(
+                request.POST,request.FILES, instance=imagesinfo)
 
 
                 if form.is_valid():
@@ -570,6 +591,8 @@ def panelkesifedit(request,slug):
                         form.save()
                         PTSform.save()
                         Olayform.save()
+                        CCTVform.save()
+                        imgform.save()
                         messages.success(request,"Kesif Güncellendi")
                         print("Güncelleme gönderildi")
                         return redirect("panelkesifliste")
@@ -580,6 +603,8 @@ def panelkesifedit(request,slug):
                 form = KesifForm(instance=form)
                 ptsmalzemeinfo = KesifPTSMalzemeForm(instance=ptsmalzemeinfo)
                 olaymalzemeinfo = KesifOlayMalzemeForm(instance=olaymalzemeinfo)
+                cctvmalzemeinfo = KesifCCTVMalzemeForm(instance=cctvmalzemeinfo)
+                images = ImageForm(instance=imagesinfo)
 
 
             data = {
@@ -587,7 +612,8 @@ def panelkesifedit(request,slug):
                 "form":form,
                 "ptsmalzemeinfo":ptsmalzemeinfo,
                 "olaymalzemeinfo":olaymalzemeinfo,
-
+                "cctvmalzemeinfo":cctvmalzemeinfo,
+                "images":images,
                 }
             print(type(data))
             return render(request,"panelKesifEdit.html",data)
@@ -605,18 +631,20 @@ def panelkesifindir(request,slug):
     kesifid = hangi_kesif.pk
     ptsmalzeme_id = hangi_kesif.KesifPTSMalzemelerid_id
     olaymalzeme_id = hangi_kesif.KesifOlayMalzemelerid_id
+    cctvmalzeme_id = hangi_kesif.KesifCCTVMalzemelerid_id
 
     data = {
         "kesifbilgi": hangi_kesif,
         "ptsmalzemeinfo":KesifPTSMalzeme.objects.get(id=ptsmalzeme_id),
-        "olaymalzemeinfo":KesifOlayMalzeme.objects.get(id=olaymalzeme_id),
+        "Olaymalzemeinfo":KesifOlayMalzeme.objects.get(id=olaymalzeme_id),
+        "CCTVmalzemeinfo":KesifCCTVMalzeme.objects.get(id=cctvmalzeme_id),
         "images":ImageKesif.objects.filter(aitKesif=kesifid),
     }
     pdf = render_to_pdf('invoice.html', data)
     if pdf:
         response = HttpResponse(pdf, content_type='application/pdf')
-        filename = "Kesif_%s.pdf"%(hangi_kesif.kesifYapilanYerAdi)
-        content = "inline; filename='%s'"%(filename)
+        filename = 'Kesif_%s.pdf'%(hangi_kesif.kesifYapilanYerAdi)
+        content = "inline; filename=%s"%(filename)
         download = request.GET.get("download")
         if download:
             content = "inline; filename='%s'"%(filename)

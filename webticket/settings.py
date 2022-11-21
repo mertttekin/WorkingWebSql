@@ -36,7 +36,7 @@ SECRET_KEY = 'django-insecure-r#w!b0abs31+jkzv2%6j9fl5pr@aroo&6hnb84=j6$ixf)6t!2
 # DEBUG = True
 DEBUG = getenv("IS_DEVELOPMENT", True)
 
-# ALLOWED_HOSTS = ["172.16.54.55"]
+# ALLOWED_HOSTS = ["172.16.54.192"]
 
 ALLOWED_HOSTS = ["*"]
 
@@ -140,7 +140,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'webticket.wsgi.application'
 
 
-
+# SQLite database information
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -152,26 +152,31 @@ WSGI_APPLICATION = 'webticket.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'webticket',
-#         'USER': 'merttekin',
-#         'PASSWORD': 'smartmed1a',
-#         'HOST': 'webticket-2.ceiungwlltpc.eu-central-1.rds.amazonaws.com',
-#         'PORT': '5432',
-#     }
-# }
+#Production database information
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'webticket',
-        'USER': 'postgres',
-        'PASSWORD': 'merttekin',
-        'HOST': 'localhost',
-        'PORT': '',
+        'USER': 'merttekin',
+        'PASSWORD': 'smartmed1a',
+        'HOST': 'webticket-2.ceiungwlltpc.eu-central-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
+
+#Development database information
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'webticket',
+#         'USER': 'postgres',
+#         'PASSWORD': 'merttekin',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 
 # Password validation

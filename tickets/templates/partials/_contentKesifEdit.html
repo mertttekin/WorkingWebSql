@@ -8,6 +8,7 @@
         {% csrf_token %}
         <table>
           {{form.media}} {{form.as_p }}
+          {{images.media}} {{images.as_p }}
           <hr>
           <h5 class="bas text-center mt-3">Plaka Tanıma Malzemeler</h5>
 
@@ -19,6 +20,12 @@
 
           <hr>
           {{olaymalzemeinfo.media}} {{olaymalzemeinfo.as_p }}
+          <hr>
+
+          <h5 class="bas text-center mt-3">CCTV Malzemeler</h5>
+
+          <hr>
+          {{cctvmalzemeinfo.media}} {{cctvmalzemeinfo.as_p }}
           <hr>
 
           <!-- <button class="btn btn-primary btn-lg" type="submit">Formu Getir</button> -->
