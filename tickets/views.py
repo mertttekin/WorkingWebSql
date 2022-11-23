@@ -671,6 +671,34 @@ def panelkesifarsivle(request,slug):
     else:
         return redirect("tickets")
 
+def dash(request):
+    if request.user.is_authenticated:
+
+        data={
+            "kesifCount": Kesif.objects.count(),
+            "PTSkesifCount": Kesif.objects.filter(kesifPTSVarMi=True).count(),
+            "OASkesifCount": Kesif.objects.filter(kesifOlayVarMi=True).count(),
+            "CCTVkesifCount": Kesif.objects.filter(kesifCctvVarMi=True).count(),
+
+            "BekleyenKesifCount": Kesif.objects.filter(kesifOnaylandiMi=False,kesifArsivMi=False).count(),
+            "OnaylananKesifCount": Kesif.objects.filter(kesifOnaylandiMi=True).count(),
+            "ArsivlenmisKesifCount": Kesif.objects.filter(kesifArsivMi=True).count(),
+
+            "BekleyenArizaCount": Ariza.objects.filter(CozumVarMı=False,Arsivmi=False).count(),
+            "ÇozumlenenArizaCount": Ariza.objects.filter(CozumVarMı=False).count(),
+            "ArsivlenmisArizaCount": Ariza.objects.filter(Arsivmi=True).count(),
+
+            "Arizalar": Ariza.objects.all().order_by("create_time")[::-1],
+            "firmalar": Firma.objects.order_by('FirmaName').filter(ariza__Arsivmi=False).distinct(),
+
+
+        }
+        print(data["kesifCount"])
+        return render(request,"paneldash.html",data)
+    else:
+        return redirect("tickets")
+
+
 
 
 

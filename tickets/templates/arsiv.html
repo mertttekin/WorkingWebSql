@@ -1,38 +1,23 @@
-{% extends "baseform.html" %}
-{% load static %}
+{% extends "panelBase.html" %} {% load static %} {% block content %}
 
-{% block content %}
-
-    {% include 'partials/_navbar.html' %}
-
-    <h5 class="bass text-center">Arsiv</h5>
-    <div class="container mt-3">
-        <div class="row">
-            <div class="hidden-mobile col-3 mt-3">
-              
-                {% include 'partials/_arsivfirmalist.html' %}
-            </div>
-            <div class="col-lg">
-                
-                {% include 'partials/_arsivcards.html' %}
-               
-            </div>
-
-        </div>
+<h5 class="bass text-center">Arsiv</h5>
+<div class="container mt-3">
+  <div class="row">
+    <div class="hidden-mobile col-3 mt-3">
+      {% include 'partials/_arsivfirmalist.html' %}
     </div>
+    <div class="col-lg">{% include 'partials/_arsivcards.html' %}</div>
+  </div>
+</div>
 
-    <style>
-        .bass {     
-              
-            position: relative;
-            background-color: rgba(238, 8, 8, 0.623);
-            margin-bottom: 2px;
-            padding-bottom: 2px;
-            color: rgb(255, 255, 255);
-            
-      
-        }
-      </style>
+<style>
+  .bass {
+    position: relative;
+    background-color: rgba(238, 8, 8, 0.623);
+    margin-bottom: 2px;
+    padding-bottom: 2px;
+    color: rgb(255, 255, 255);
+  }
+</style>
 
 {% endblock %}
-

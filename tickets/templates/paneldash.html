@@ -1,0 +1,234 @@
+{% extends "panelBase.html" %} {% block content %}
+
+<div class="container mt-3">
+  <div
+    class="row"
+    style="justify-content: center; margin: 20px; background-color: aqua"
+  >
+    KEŞİF İSTATİSTİKLERİ
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <div>
+        <canvas
+          id="myChart"
+          style="width: 200px; height: 200px; position: relative"
+        ></canvas>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx = document.getElementById("myChart");
+
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: [
+              "KESİF-SAYISI",
+              "PTS KEŞFİ",
+              "OAS KEŞFİ",
+              "CCTV KEŞFİ",
+            ],
+            datasets: [
+              {
+                label: "KEŞİF YAPILAN ALANLAR",
+                data: [{{kesifCount}},{{PTSkesifCount}},{{OASkesifCount}},{{CCTVkesifCount}}],
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.7)',
+                'rgba(255, 159, 64, 0.7)',
+                'rgba(255, 205, 86, 0.7)',
+                'rgba(75, 192, 192, 0.7)',
+              ],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          },
+        });
+      </script>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-5">
+      <div>
+        <canvas id="myChart2" width="400" height="400"></canvas>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+        const ctx2 = document.getElementById("myChart2");
+
+        new Chart(ctx2, {
+          type: "pie",
+          data: {
+            labels: [
+              "BEKLEYEN KESİF-SAYISI",
+              "ONAYLANAN KESİF-SAYISI",
+              "ARSİVLENEN KESİF-SAYISI",
+
+            ],
+            datasets: [
+              {
+                label: "KEŞİF DURUMLARI",
+                data: [{{BekleyenKesifCount}},{{OnaylananKesifCount}},{{ArsivlenmisKesifCount}}],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          },
+        });
+      </script>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <div
+    class="row"
+    style="justify-content: center; margin: 20px; background-color: aqua"
+  >
+    ARIZA İSTATİSTİKLERİ
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <div class="row">
+        <div>
+          <canvas id="myChart3" width="400" height="400"></canvas>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+          const ctx3 = document.getElementById("myChart3");
+
+          new Chart(ctx3, {
+            type: "bar",
+            data: {
+              labels: [
+              {%for i in firmalar%} '{{i.FirmaName}}',{%endfor%}
+              ],
+              datasets: [
+                {
+                  label: "BEKLEYEN ARIZALAR",
+                  data: [{%for i in firmalar%} '1',{%endfor%} ],
+                  backgroundColor: [
+                  'rgba(255, 99, 132, 0.7)',
+                  'rgba(255, 159, 64, 0.7)',
+                  'rgba(255, 205, 86, 0.7)',
+                  'rgba(75, 192, 192, 0.7)',
+                ],
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
+        </script>
+      </div>
+      <div class="row">
+        <div
+          class="col-9"
+          style="width: 100%; margin-top: 20px; margin-bottom: 30px"
+        >
+          <a
+            href="{% url 'arizalar'%}"
+            class="btn btn-primary"
+            style="width: 100%"
+            >ARIZALARA GİT</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-5">
+      <div>
+        <canvas id="myChart4" width="400" height="400"></canvas>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+        const ctx4 = document.getElementById("myChart4");
+
+        new Chart(ctx4, {
+          type: "doughnut",
+          data: {
+            labels: [
+                "BEKLEYEN ARIZA-SAYISI",
+                "ÇÖZÜLEN ARIZA-SAYISI",
+                "ARSİVLENEN ARIZA-SAYISI",
+
+            ],
+            datasets: [
+              {
+                label: "ARIZA DURUMLARI",
+                data: [{{BekleyenArizaCount}},{{ÇozumlenenArizaCount}},{{ArsivlenmisArizaCount}}],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          },
+        });
+      </script>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <div
+    class="row"
+    style="justify-content: center; margin: 20px; background-color: aqua"
+  >
+    TÜM ARIZALAR
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">FİRMA</th>
+            <th scope="col">DURUM</th>
+            <th scope="col">OLUŞTURMA ZAMAN</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for x in Arizalar %}
+          <tr>
+            <th scope="row"></th>
+            <td>{{x.firma_bilgi}}</td>
+            {% if x.CozumVarMı%}
+            <td style="color: green">Çözüldü</td>
+            {%else%}
+            <td style="color: red">Bekliyor</td>
+            {%endif%}
+
+            <td>{{x.create_time | date:"d M Y"}}</td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

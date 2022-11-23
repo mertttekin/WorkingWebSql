@@ -7,6 +7,9 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+<!-- Chart java script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
+
 <head><link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"></head>
 <div class="container">
 	<div class="row">
@@ -24,22 +27,22 @@
                     
                 </li>
                 <li>
-                    <a href="{% url 'panel' %}"><i class="fa fa-sort-alpha-asc " aria-hidden="true"> </i> <span style="margin-left:10px;">Anasayfa</span>  </a>
+                    <a href="{% url 'dash' %}"><i class="fa fa-home fa-lg" aria-hidden="true"> </i> <span style="margin-left:10px;">Anasayfa</span>  </a>
                 </li>
                 <li>
-                    <a href="#"> <i class="fa fa-play-circle-o " aria-hidden="true"> </i> <span style="margin-left:10px;"> Arizalar</span> </a>
+                    <a href="{% url 'arizalar' %}"> <i class="fa fa-bell fa-lg" aria-hidden="true"> </i> <span style="margin-left:10px;"> Arizalar</span> </a>
                 </li>
                 <li>
-                    <a href=""> <i class="fa fa-puzzle-piece" aria-hidden="true"> </i> <span style="margin-left:10px;"> Arsiv</span> </a>
+                    <a href="{% url 'arsiv' %}"> <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"> </i> <span style="margin-left:10px;"> Arsiv</span> </a>
                 </li>
                 <li>
-                    <a href="{% url 'paylasimgir' %}"> <i class="fa fa-font" aria-hidden="true"> </i> <span style="margin-left:10px;"> Paylaşım Gir</span> </a>
+                    <a href="{% url 'paylasimgir' %}"> <i class="fa fa-pencil fa-lg" aria-hidden="true"> </i> <span style="margin-left:10px;"> Paylaşım Gir</span> </a>
                 </li>
                 <li>
-                    <a href="{% url 'panelkesifekle' %}"><i class="fa fa-info-circle " aria-hidden="true"> </i> <span style="margin-left:10px;">Kesif Ekle </span> </a>
+                    <a href="{% url 'panelkesifekle' %}"><i class="fa fa-camera-retro fa-lg " aria-hidden="true"> </i> <span style="margin-left:10px;">Kesif Ekle </span> </a>
                 </li>
                 <li>
-                    <a href="{% url 'panelkesifliste' %}"> <i class="fa fa-comment-o" aria-hidden="true"> </i> <span style="margin-left:10px;"> Kesifler</span> </a>
+                    <a href="{% url 'panelkesifliste' %}"> <i class="fa fa-folder-open fa-lg" aria-hidden="true"> </i> <span style="margin-left:10px;"> Kesifler</span> </a>
                 </li>
             </ul>
         </div>

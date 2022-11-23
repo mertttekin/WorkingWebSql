@@ -35,14 +35,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'yazilim' %}">Yazılım</a>
         </li>
-        {% if user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'arizalar' %}">Arızalar</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'arsiv' %}">Arsiv</a>
-        </li>
-        {% endif %}
+        {% if user.is_authenticated %} {% endif %}
       </ul>
 
       <ul class="mx-2 navbar-nav ms-auto mb-2 mb-lg-0">
@@ -67,7 +60,7 @@
           <a class="nav-link" href="{% url 'logout' %}">Çıkış yap</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'paylasimgir' %}"
+          <a class="nav-link" href="{% url 'dash' %}"
             >Hoş Geldin {{user.first_name}}</a
           >
         </li>
