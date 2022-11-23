@@ -1,4 +1,5 @@
 {% extends "panelBase.html" %} {% load static %} {% block content %}
+<h5 class="bass text-center">Ariza</h5>
 
 <div class="container mt-3">
   <div class="row">
@@ -8,5 +9,15 @@
     <div class="col-lg">{% include 'partials/_arizacards.html' %}</div>
   </div>
 </div>
+
+<style>
+  .bass {
+    position: relative;
+    background-color: rgba(46, 94, 236, 0.623);
+    margin-bottom: 2px;
+    padding-bottom: 2px;
+    color: rgb(255, 255, 255);
+  }
+</style>
 
 {% endblock %}
