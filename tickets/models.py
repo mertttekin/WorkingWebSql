@@ -573,9 +573,9 @@ class KesifCCTVMalzeme(models.Model):
 class Kesif(models.Model):
 
     #check box dropdown menu
-    kesifYapilanYerAdi = models.CharField(max_length=50)
-    kesifYapanKisi = models.CharField(max_length=50)
-    kesifSenaryosu = models.TextField()
+    kesifYapilanYerAdi = models.CharField(help_text = "Bu Alan Zorunludur",max_length=50)
+    kesifYapanKisi = models.CharField(help_text = "Bu Alan Zorunludur",max_length=50)
+    kesifSenaryosu = models.TextField(help_text = "Bu Alan Zorunludur",)
     kesifYapilanYerTarihi = models.DateTimeField(auto_now_add=True, auto_now=False)
     kesifPTSVarMi = models.BooleanField(default=False)
     kesifOlayVarMi = models.BooleanField(default=False)

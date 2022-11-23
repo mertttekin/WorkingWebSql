@@ -482,8 +482,6 @@ def panelkesifekle(request):
                             print("Olay kayıt hatası")
                     else:
                         print("PTS kayıt hatası")
-            
-
             Olayform = KesifOlayMalzemeForm()            
             PTSform = KesifPTSMalzemeForm()
             CCTVform = KesifCCTVMalzemeForm()
@@ -495,7 +493,6 @@ def panelkesifekle(request):
                 "Olayform":Olayform,
                 "CCTVform":CCTVform,
                 "images":images,
-
             }
             return render(request,"panelKesifEkle.html",data)
         else:

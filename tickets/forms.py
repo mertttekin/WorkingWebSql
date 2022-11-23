@@ -249,9 +249,9 @@ class KesifForm(forms.ModelForm):
             "kesifPTSBigisayarConfigi",
         ]
         labels={
-            "kesifYapilanYerAdi":"Keşif yapılan yerin adını:",
-            "kesifYapanKisi":"Keşif yapan kişi-kişiler:",
-            "kesifSenaryosu":"Keşif Senaryosunu giriniz",
+            "kesifYapilanYerAdi":"Keşif Yapılan Yerin Adını Yazınız:",
+            "kesifYapanKisi":"Keşif Yapan Kişi-Kişileri Yazınız:",
+            "kesifSenaryosu":"Keşif Senaryosunu Yazınız",
             "kesifPTSVarMi":"PTS var mı?",
             "kesifOlayVarMi":"OAS var mı ?",
             "kesifCctvVarMi":"CC-TV var mı ?",
@@ -265,6 +265,15 @@ class KesifForm(forms.ModelForm):
             "kesifOlayVarMi":widgets.NullBooleanSelect(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
             "kesifCctvVarMi":widgets.NullBooleanSelect(attrs={"class": "form-control", "placeholder": "Aksiyon Teknoloji Hizmetleri"}),
 
+        }
+        error_messages={
+            "kesifYapilanYerAdi":{
+                "required":"Kesif yapılan yer ismi girilmesi zorunludur.",
+            }
+        }
+
+        help_texts = {
+            'kesifYapilanYerAdi': 'Group to which this message belongs to',
         }
 
 

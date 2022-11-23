@@ -6,6 +6,7 @@
     padding-top: 5px;
     padding-bottom: 2px;
     color: rgb(255, 255, 255);
+    width: 95%;
   }
 </style>
 
@@ -16,7 +17,24 @@
       <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <table>
-          {{form.media}} {{form.as_p }} {{images.media}} {{images.as_p }}
+          {% for field in form %}
+
+          <div class="mb-3 {% if field.errors %} invalid {% endif %}">
+            {% if field.errors %}
+            <div class="alert alert-danger">{{ field.errors }}</div>
+            {% endif %}
+            <label class="form-label" for="{{ field.id_for_label}}">
+              {{ field.label }}
+            </label>
+            {{ field }} {% if field.help_text %}
+            <small style="color: rgb(17, 79, 237)">Zorunlu Alan</small>
+            {% endif %}
+          </div>
+
+          {% endfor %} {{images.media}} {{images.as_p }}
+          <small style="color: rgb(232, 15, 15)"
+            >Keşif Fotoğraflarını Yüklemeyi Unutmayınız</small
+          >
 
           <!-- <label for="GenelSecim">Hangi Keşifler Yapılacak </label>  -->
           <hr />
