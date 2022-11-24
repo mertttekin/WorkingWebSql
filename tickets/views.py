@@ -579,17 +579,21 @@ def panelkesifedit(request,slug):
                 request.POST,request.FILES, instance=cctvmalzemeinfo)
                 imgform = ImageForm(
                 request.POST,request.FILES, instance=imagesinfo)
+                files = request.FILES.getlist("kesifImage")
+                form1 = KesifForm()
 
 
                 if form.is_valid():
                     formyeradi = form.cleaned_data['kesifYapilanYerAdi']
                     print(formyeradi)
                     if PTSform.is_valid():
+                        form1 = form.save(commit=False)
                         form.save()
                         PTSform.save()
                         Olayform.save()
-                        CCTVform.save()
-                        imgform.save()
+                        CCTVform.save()            
+                        for i in files:
+                            ImageKesif.objects.create(aitKesif=form1,kesifImage=i)
                         messages.success(request,"Kesif Güncellendi")
                         print("Güncelleme gönderildi")
                         return redirect("panelkesifliste")
