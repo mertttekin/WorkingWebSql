@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # aşağıda 3 parametre prodoction mode için ayarlandı
-SECRET_KEY = 'django-insecure-r#w!b0abs31+jkzv2%6j9fl5pr@aroo&6hnb84=j6$ixf)6t!2'
+SECRET_KEY = env('SECRET_KEY')
 # SECRET_KEY = getenv("SECRET_KEY")
 
 
