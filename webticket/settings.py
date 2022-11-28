@@ -44,7 +44,7 @@ ALLOWED_HOSTS = ["*"]
 #     getenv("APP_HOST")
 # ]
 
-# EmailProject/settings.py
+# EmailProject/settings.py #
 
 # Bottom of the file
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
