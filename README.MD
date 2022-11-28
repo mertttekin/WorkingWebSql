@@ -1,14 +1,43 @@
-# KEŞİF OLUŞTURMA
+# Web Sitesi Genel Kullanım Kılavuzu
 
-## KULLANIM KILAVUZU
+- Sitemize giriş yapıyoruz
+
+[Aksiyon Teknoloji](https://www.aksiyonteknikservis.online/)
+
+Sisteme girildiğinde karşımıza çıkması gereken ekran resimdeki gibidir.
+<img src="https://i.hizliresim.com/sjfqq78.png" alt="drawing" width="800"/>
+
+- ## _Arıza/Şikayet Taleplerinin bildirilmesi_
+  Satışını yaptığımız her ürünün sadece satışı konusunda değil satış sonrasında destek konusundada arkasında olduğumuz gibi bize daha kolay ulaşım sağlanabilmesi için ürünler hakkında **"Arıza/Şikayet"** formumuzu doldurarak sorununuzu bildirebilir ve bizden destek alabilirsiniz.
+
+<img src="https://i.hizliresim.com/5b15rg5.png" alt="drawing" width="800"/>
+
+- ## _Sık Sorulan Sorular_
+
+  Ürünlerimiz hakkında daha önce yaşanmış olan sorunlar veya başınıza gelebilecek durumlarda teknik servisimize ulaşmadan yapabileceğiniz işlemlerin bulunduğu kısımdır.
+  <img src="https://i.hizliresim.com/gsagbyq.png" alt="drawing" width="800"/>
+
+- ## _CAME_
+  Şirketimizin Türkiye distribütörü olduğu İtalyan markası Came'nin ürünlerinin yer aldığı bu kısımda istediğiniz ürünün teknik özelliklerini inceleyebileceğiniz kısım bulunmaktadır.
+
+<img src="https://i.hizliresim.com/3d6njib.png" alt="drawing" width="800"/>
+
+- ## _Yazılım_
+  Aksiyon Teknoloji olarak yaptığımız Plaka tanıma, Araç altı görüntüleme, Olay Algılama Sistemi, Kişi Sayma Sistemi, Uykucu Güvenlik, Personel Takip Sistemi
+  Yüz Tanıma Sistemi, Konteyner Kod Tanıma Sistemi sistemleri kurulumu yapılırken yapılacak ayarlamalar ve uygulamalar hakkında bilgi edinebileceğiniz kısımdır.
+
+<img src="https://i.hizliresim.com/i19z2on.png" alt="drawing" width="800"/>
+
+- ## _Keşif Listesi Oluşturma_
 
 Keşif listesi hazırlamak için kullanılacak adımlar aşağıdaki gibidir.
+
 Birinci adım olarak siteye giriş yapıyoruz.
 
 [Aksiyon Teknoloji](https://www.aksiyonteknikservis.online/)
 
 Giriş Yapılan Web sitesinde karşımıza çıkacak site bu şekilde olacaktır.
-<img src="https://i.hizliresim.com/8aigzs5.png" alt="drawing" width="800"/>
+<img src="https://i.hizliresim.com/tv16dpa.png" alt="drawing" width="800"/>
 
 Sağ üst köşede bulunan Giriş yap butonuna basarak daha önce kişisel olarak oluşturulan Kullanıcı adı ve Şifreyi girerek oturum açılması gerekmektedir.
 
@@ -16,15 +45,15 @@ Sağ üst köşede bulunan Giriş yap butonuna basarak daha önce kişisel olara
 
 Kullanıcı Adı ve Şifre kısımları doldurulur.
 
-<img src="https://i.hizliresim.com/6zgdo9g.png" alt="drawing" width="800"/>
+<img src="https://i.hizliresim.com/e7gyjki.png" alt="drawing" width="800"/>
 
 Keşif Sayfasına giriş yapılması için Sağ üst kısımda bulunan Hoş geldiniz yazısına basarak Keşif Formuna ulaşılır.
 
-<img src="https://i.hizliresim.com/tfbyj35.png" alt="drawing" width="800"/>
+<img src="https://i.hizliresim.com/sgbz5r0.png" alt="drawing" width="800"/>
 
 Hoş Geldin yazısına basıldığında karşımıza çıkacak ekran şu şekildedir.
 
-<img src="https://i.hizliresim.com/b7ybdxp.png" alt="drawing" width="800"/>
+<img src="https://i.hizliresim.com/slc4vz6.png" alt="drawing" width="800"/>
 
 Açılan ekrandan Keşif ekleyebilmek için sol üst kısımda bulunan üç yatay çizgiye basılarak menü açılmalıdır.
 
