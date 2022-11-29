@@ -157,10 +157,10 @@ WSGI_APPLICATION = 'webticket.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'webticket',
-        'USER': 'merttekin',
-        'PASSWORD': 'smartmed1a',
-        'HOST': 'webticket-2.ceiungwlltpc.eu-central-1.rds.amazonaws.com',
+        'NAME': env('DATABASE_NAME'),
+        'USER': env('DATABASE_USER'),
+        'PASSWORD': env('DATABASE_PASSWORD'),
+        'HOST': env('DATABASE_HOST'),
         'PORT': '5432',
     }
 }
