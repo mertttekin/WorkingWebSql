@@ -1,10 +1,57 @@
 # Web Sitesi Genel Kullanım Kılavuzu
 
-- Sitemize giriş yapıyoruz
+# Ticket app ye ek olarak içeriğe teknik servis kesif formu ve yönetimide eklenmiştir.
+
+<h2> Bu sistem ne gibi özellikler barındırıyor ? </h2>
+
+<ul>
+  <li>
+    Kullanıcılardan Ariza Taleblerini alabiliyoruz
+  </li>
+  <li>
+    Alınan arizaların durumlarını çözüm süreçlerini takip edip depolayabiliyoruz.
+  </li>
+  <li>
+    SSS bölümü altında kullanıcılarımıza editörumuzün girdiği hızlı çözümleri sunabiliyoruz.
+  </li>
+  <li>
+    Came bölümü altında ürünlerimizin özelliklerini tanıtabiliyoruz.
+  </li>
+  <li>
+    Yazılım kategorisi altında yazılım tarafında karsılaşılan sorunlara karşı çözümlerimizi yayınlayabiliyoruz.
+  </li>
+  <li>
+    Saha ekibinin yaptığı kesifleri sistemik bir yolla depolayıp atlanabilcek durumları hatırlatarak hata payını minimize edebiliyoruz.
+  </li>
+  <li>
+    Yapılan tüm keşifleri şu bilgilerle liste şeklinde gösteriyoruz :
+    <ol>
+      <li>Hangi Sistem keşfi olduğu,</li>
+      <li>Locasyon bilgisi, </li>
+      <li>Keşif sorumlusu, </li>
+      <li>Keşif Tarihlerini (sıralı), </li>
+      <li>Keşif Durumunu (Beklemede, Onaylandı , Arsivlendi)</li>
+    </ol>
+  </li>
+    Keşifler saha ekibi tarafından dolduruluyoruz ve hatalı olma durumları incelenip onaylanıyor.
+  <li>
+    Onaylanan keşifler satış grubu (yetkisi dahilinde) tarafından görüntülenebilir hale geliyor.
+  </li>
+  <li>
+      Satış ve satın alma bu raporu isterse sistemden canlı olarak görüntüleyebilir istersen PDF olarak bilgisyarına klasörleyebilir.
+  </li>
+  <li>
+    Yönetim ekibi tüm bu durumların analizini panel tarafından cartlarla veya içeriklere erişebilerek görüntüleyebiliyor.
+  </li>
+</ul>
+<hr>
+<h2> <strong>Aşağıda tüm kullanım aşamaları görsellerle anlatılmıştır.</h3>
+<!-- - Sitemize giriş yapıyoruz -->
 
 [Aksiyon Teknoloji](https://www.aksiyonteknikservis.online/)
 
 Sisteme girildiğinde karşımıza çıkması gereken ekran resimdeki gibidir.
+
 <img src="https://i.hizliresim.com/sjfqq78.png" alt="drawing" width="800"/>
 
 - ## _Arıza/Şikayet Taleplerinin bildirilmesi_
@@ -15,7 +62,8 @@ Sisteme girildiğinde karşımıza çıkması gereken ekran resimdeki gibidir.
 - ## _Sık Sorulan Sorular_
 
   Ürünlerimiz hakkında daha önce yaşanmış olan sorunlar veya başınıza gelebilecek durumlarda teknik servisimize ulaşmadan yapabileceğiniz işlemlerin bulunduğu kısımdır.
-  <img src="https://i.hizliresim.com/gsagbyq.png" alt="drawing" width="800"/>
+
+<img src="https://i.hizliresim.com/gsagbyq.png" alt="drawing" width="800"/>
 
 - ## _CAME_
   Şirketimizin Türkiye distribütörü olduğu İtalyan markası Came'nin ürünlerinin yer aldığı bu kısımda istediğiniz ürünün teknik özelliklerini inceleyebileceğiniz kısım bulunmaktadır.
@@ -37,6 +85,7 @@ Birinci adım olarak siteye giriş yapıyoruz.
 [Aksiyon Teknoloji](https://www.aksiyonteknikservis.online/)
 
 Giriş Yapılan Web sitesinde karşımıza çıkacak site bu şekilde olacaktır.
+
 <img src="https://i.hizliresim.com/tv16dpa.png" alt="drawing" width="800"/>
 
 Sağ üst köşede bulunan Giriş yap butonuna basarak daha önce kişisel olarak oluşturulan Kullanıcı adı ve Şifreyi girerek oturum açılması gerekmektedir.
@@ -73,9 +122,11 @@ Açılan keşif formunda ise yapılan keşifte belirlenen kullanılması planlan
 
 **Keşfin düzenlenmesi ;**
 _Keşifler Açılır_
+
 <img src="https://i.hizliresim.com/kpgwudw.png" alt="drawing" width="800"/>
 
 Keşif formlarından düzenlemek istediğimiz keşfin 'DETAYLAR' butonuna basılır.
+
 <img src="https://i.hizliresim.com/3dii40x.png" alt="drawing" width="800"/>
 
 En üst kısımda keşif numarası (Keşif no:19) olarak belirtilen keşif bu şekilde gözükmelidir.
@@ -83,21 +134,26 @@ En üst kısımda keşif numarası (Keşif no:19) olarak belirtilen keşif bu ş
 <img src="https://i.hizliresim.com/o8ui3xy.png" alt="drawing" width="800"/>
 
 Keşif formunun en alt kısmında bulunan düzenle butonu için sayfanın en altına inilir ve butona basılarak keşif formu bölümüne geri dönülür, değiştirilmesi istenen bilgiler değiştirilebilir.
+
 <img src="https://i.hizliresim.com/dp8b1p4.png" alt="drawing" width="800"/>
 
 Keşif formunun onaylanması için sayfanın en alt kısmında bulunan ONAYLA butonuna basılacaktır. Ve formun doğruluğu hakkında bir eksiklik olmadığı gözlemlenecektir.
+<br>
 
 <img src="https://i.hizliresim.com/45rin7m.png" alt="drawing" width="800"/>
 
 Sistemde oluşturulan formun indirilip çıktı olarak alınması için sol kısımda bulunan menüde seçilen Keşifler listesinde açılan keşiflerin alt kısmında bulunan İNDİR butonuna basılır.
+
 <img src="https://i.hizliresim.com/bcb96tg.png" alt="drawing" width="800"/>
 
 İndir butonuna basıldıktan sonra karşımıza çıkan bu ekranda ise istersek keşif formunu indirebilir veya yazdırabiliriz.
+
 <img src="https://i.hizliresim.com/b5sgrfv.png" alt="drawing" width="800"/>
 
 **Keşif Arşivlemek;**
 Arşivlenmesi istenen keşifler için ilk önce sol menüden keşifler sekmesi açılır,
 burada onaylanan keşifler kısmındaki keşiflerden hangisi arşivlenmek isteniyor ise altında bulunan detaylar butonuna basılır.
+
 <img src="https://i.hizliresim.com/gbd729o.png" alt="drawing" width="800"/>
 
 Daha sonra ise açılan keşif listesinin en alt kısmında bulunan düzenle butonunun da yanında bulunan ARŞİVLE butonuna basarak istenen keşif listesi arşive gönderilecektir.
@@ -107,3 +163,7 @@ Daha sonra ise açılan keşif listesinin en alt kısmında bulunan düzenle but
 Arşive gönderilen keşifler bu şekilde gözükmektedir.
 
 <img src="https://i.hizliresim.com/n6cs336.png" alt="drawing" width="800"/>
+
+Anasayfa üzerinden tüm keşifler ve arızalar chartlar üzerinden görüntülenebilmektedir.
+
+<img src="https://i.hizliresim.com/gloe7m0.png" alt="drawing" width="800"/>
