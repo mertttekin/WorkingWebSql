@@ -1,5 +1,4 @@
 # Web Uygulaması Genel Kullanım Kılavuzu
-# Ticket app ye ek olarak içeriğe teknik servis kesif formu ve yönetimide eklenmiştir.
 
 # Ticket app ye ek olarak içeriğe teknik servis kesif formu ve yönetimide eklenmiştir.
 
